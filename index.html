@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.10.5</title>
+<title>Chocolate Accidents — V3.10.6</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.10.5 employee punch-in */
+/* V3.10.6 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -55,9 +55,9 @@
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.5</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.6</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
 <div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.5</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.6</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -152,11 +152,11 @@ const furniture=[
  // Warehouse A/B shelving stays against the perimeter.
  {x:1380,y:80,w:64,h:180,solid:true},{x:1515,y:82,w:150,h:46,solid:true},{x:1515,y:285,w:150,h:46,solid:true},
  {x:1380,y:445,w:70,h:145,solid:true},{x:1540,y:450,w:135,h:46,solid:true},{x:1540,y:645,w:135,h:46,solid:true},
- // Chocolate Storage V3.10.5: perimeter racks leave a broad cross-shaped travel lane through every doorway.
+ // Chocolate Storage V3.10.6: perimeter racks leave a broad cross-shaped travel lane through every doorway.
  {x:985,y:785,w:48,h:165,solid:true},
  {x:1215,y:690,w:78,h:42,solid:true},{x:1215,y:790,w:78,h:42,solid:true},{x:1215,y:970,w:78,h:42,solid:true},
  {x:1080,y:970,w:78,h:42,solid:true},
- // Break Room V3.10.5 artwork collisions. These are invisible and aligned to the finished room art.
+ // Break Room V3.10.6 artwork collisions. These are invisible and aligned to the finished room art.
  // Left kitchenette / microwave / fridge stack.
  {x:43,y:637,w:58,h:205,solid:true,draw:false,room:'break'},
  // Couch in the upper-right. It stays above the right-side doorway lane.
@@ -165,7 +165,7 @@ const furniture=[
  {x:312,y:658,w:20,h:42,solid:true,draw:false,room:'break'},
  // Trash can in lower-right corner.
  {x:303,y:817,w:28,h:28,solid:true,draw:false,room:'break'},
- // Reception V3.10.5 artwork collisions.
+ // Reception V3.10.6 artwork collisions.
  {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'}, // reception desk
  {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'}, // long narrow couch
  {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}, // sign-in table
@@ -210,10 +210,14 @@ const chrisFiles={
   idleUp:'assets/chris/idle_back.png',
   idleLeft:'assets/chris/idle_left.png',
   idleRight:'assets/chris/idle_right.png',
-  left1:'assets/chris/left.png',
-  left2:'assets/chris/left2.png',
-  right1:'assets/chris/right.png',
-  right2:'assets/chris/right2.png'
+  left1:'assets/chris/walk_left_1.png',
+  left2:'assets/chris/walk_left_2.png',
+  left3:'assets/chris/walk_left_3.png',
+  left4:'assets/chris/walk_left_4.png',
+  right1:'assets/chris/walk_right_1.png',
+  right2:'assets/chris/walk_right_2.png',
+  right3:'assets/chris/walk_right_3.png',
+  right4:'assets/chris/walk_right_4.png'
 };
 for(const [key,url] of Object.entries(chrisFiles)){
   const img=new Image();
@@ -223,9 +227,10 @@ for(const [key,url] of Object.entries(chrisFiles)){
 let playerAnimClock=0;
 function playerSpriteKey(){
   if(!player.moving)return 'idle'+player.facing[0].toUpperCase()+player.facing.slice(1);
-  if(player.facing==='left')return (Math.floor(playerAnimClock*8)%2)?'left2':'left1';
-  if(player.facing==='right')return (Math.floor(playerAnimClock*8)%2)?'right2':'right1';
-  // The supplied Chris pack has no up/down walking frames yet, so use the matching directional pose.
+  const walkFrame=(Math.floor(playerAnimClock*10)%4)+1;
+  if(player.facing==='left')return 'left'+walkFrame;
+  if(player.facing==='right')return 'right'+walkFrame;
+  // Chris still uses the existing directional poses for up/down movement.
   return player.facing==='up'?'idleUp':'idleDown';
 }
 function drawChris(c,minimap=false){
@@ -786,7 +791,7 @@ addEventListener('keyup',e=>{
 })();
 
 
-// V3.10.5 employee punch-in
+// V3.10.6 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
