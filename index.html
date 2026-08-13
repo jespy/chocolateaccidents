@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.10.7</title>
+<title>Chocolate Accidents — V3.11.2</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.10.7 employee punch-in */
+/* V3.11.2 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.10.7 cool industrial UI */
+/* V3.11.2 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -69,9 +69,9 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.7</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.11.2</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
 <div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.7</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.11.2</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -166,11 +166,11 @@ const furniture=[
  // Warehouse A/B shelving stays against the perimeter.
  {x:1380,y:80,w:64,h:180,solid:true},{x:1515,y:82,w:150,h:46,solid:true},{x:1515,y:285,w:150,h:46,solid:true},
  {x:1380,y:445,w:70,h:145,solid:true},{x:1540,y:450,w:135,h:46,solid:true},{x:1540,y:645,w:135,h:46,solid:true},
- // Chocolate Storage V3.10.7: perimeter racks leave a broad cross-shaped travel lane through every doorway.
+ // Chocolate Storage V3.11.2: perimeter racks leave a broad cross-shaped travel lane through every doorway.
  {x:985,y:785,w:48,h:165,solid:true},
  {x:1215,y:690,w:78,h:42,solid:true},{x:1215,y:790,w:78,h:42,solid:true},{x:1215,y:970,w:78,h:42,solid:true},
  {x:1080,y:970,w:78,h:42,solid:true},
- // Break Room V3.10.7 artwork collisions. These are invisible and aligned to the finished room art.
+ // Break Room V3.11.2 artwork collisions. These are invisible and aligned to the finished room art.
  // Left kitchenette / microwave / fridge stack.
  {x:43,y:637,w:58,h:205,solid:true,draw:false,room:'break'},
  // Couch in the upper-right. It stays above the right-side doorway lane.
@@ -179,7 +179,7 @@ const furniture=[
  {x:312,y:658,w:20,h:42,solid:true,draw:false,room:'break'},
  // Trash can in lower-right corner.
  {x:303,y:817,w:28,h:28,solid:true,draw:false,room:'break'},
- // Reception V3.10.7 artwork collisions.
+ // Reception V3.11.2 artwork collisions.
  {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'}, // reception desk
  {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'}, // long narrow couch
  {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}, // sign-in table
@@ -271,15 +271,18 @@ function drawChris(c,minimap=false){
 // without making doorways or collision detection feel wider.
 const reneeSprites={};
 const reneeFiles={
-  idle:'assets/renee/renee_idle.png',
-  down1:'assets/renee/renee_forward.png',
-  down2:'assets/renee/renee_forward2.png',
-  up1:'assets/renee/renee_away.png',
-  up2:'assets/renee/renee_away2.png',
-  left1:'assets/renee/renee_Left.png',
-  left2:'assets/renee/renee_Left2.png',
-  right1:'assets/renee/Right.png',
-  right2:'assets/renee/Right2.png'
+  down1:'assets/renee/walk_front_1.png',
+  down2:'assets/renee/walk_front_2.png',
+  up1:'assets/renee/walk_back_1.png',
+  up2:'assets/renee/walk_back_2.png',
+  left1:'assets/renee/walk_left_1.png',
+  left2:'assets/renee/walk_left_2.png',
+  left3:'assets/renee/walk_left_3.png',
+  left4:'assets/renee/walk_left_4.png',
+  right1:'assets/renee/walk_right_1.png',
+  right2:'assets/renee/walk_right_2.png',
+  right3:'assets/renee/walk_right_3.png',
+  right4:'assets/renee/walk_right_4.png'
 };
 for(const [key,url] of Object.entries(reneeFiles)){
   const img=new Image();
@@ -289,14 +292,15 @@ for(const [key,url] of Object.entries(reneeFiles)){
 let bossAnimClock=0;
 let bossWasMoving=false;
 function bossSpriteKey(){
-  if(!bossWasMoving)return 'idle';
+  
   const a=Math.atan2(Math.sin(boss.angle),Math.cos(boss.angle));
   let dir;
   if(a>=-Math.PI/4&&a<Math.PI/4)dir='right';
   else if(a>=Math.PI/4&&a<3*Math.PI/4)dir='down';
   else if(a<=-Math.PI/4&&a>-3*Math.PI/4)dir='up';
   else dir='left';
-  const frame=(Math.floor(bossAnimClock*7)%2)+1;
+  const frameCount=(dir==='left'||dir==='right')?4:2;
+  const frame=(Math.floor(bossAnimClock*8)%frameCount)+1;
   return dir+frame;
 }
 function drawRenee(c,minimap=false){
@@ -730,7 +734,7 @@ if(activeTask.kind==='hold'){
   if(taskState.progress>=100)finishTask();
 }
 }
-function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by Renee';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
+function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
 function reset(){tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
 function drawDoor(c,d,minimap){c.save();c.translate(d.x,d.y);c.strokeStyle='#ffc35c';c.lineWidth=minimap?10:5;c.fillStyle='#2b1c14';if(d.o==='v'){c.fillRect(-WALL/2,-DOOR/2,WALL,DOOR);c.rotate(d.open*Math.PI/2);c.beginPath();c.moveTo(0,-DOOR/2);c.lineTo(0,DOOR/2);c.stroke()}else{c.fillRect(-DOOR/2,-WALL/2,DOOR,WALL);c.rotate(-d.open*Math.PI/2);c.beginPath();c.moveTo(-DOOR/2,0);c.lineTo(DOOR/2,0);c.stroke()}c.restore()}
 function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scale(s,s);c.fillStyle='#15100c';c.fillRect(0,0,WORLD.w,WORLD.h);rooms.forEach(r=>{
@@ -805,7 +809,7 @@ addEventListener('keyup',e=>{
 })();
 
 
-// V3.10.7 employee punch-in
+// V3.11.2 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
