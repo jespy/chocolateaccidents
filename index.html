@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.10.4</title>
+<title>Chocolate Accidents — V3.10.5</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -35,12 +35,58 @@
 .temperFill{height:100%;width:0%;background:#79ce8c;transition:width .1s linear}
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
+
+/* V3.10.5 employee punch-in */
+.punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
+.punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
+.punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
+.pinDisplay{height:48px;border:2px inset #6b4933;border-radius:9px;background:#0d0b09;color:#f6e8cf;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:900;letter-spacing:.32em;padding-left:.32em;margin:10px 0 12px}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.keypad button{padding:11px 0;font-size:17px;font-weight:900}
+.employeeCard{background:#1b120d;border:1px solid #60422f;border-radius:12px;padding:12px;margin-top:12px}
+.employeeCard .empName{font-size:20px;font-weight:900;color:#f2dfc5}
+.employeeCard .empRole{font-size:11px;color:#c9ae90;margin-top:3px}
+.employeeCard .empStatus{font-size:11px;margin-top:8px;color:#d6c3ab}
+.empReady{color:#83d99a!important}
+.pinError{color:#e88276!important}
+#startBtn[disabled]{opacity:.4;cursor:not-allowed;filter:grayscale(.4)}
+@media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.4</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.5</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
 <div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.4</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p><button id="startBtn" style="width:100%;margin-top:12px;padding:12px">Clock In</button></div></div>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.5</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="punchWrap" id="punchWrap">
+  <div>
+    <div class="employeeCard">
+      <div class="empName" id="employeeName">NO EMPLOYEE SELECTED</div>
+      <div class="empRole" id="employeeRole">Enter your 4-digit employee PIN.</div>
+      <div class="empStatus" id="employeeStatus">Waiting for PIN…</div>
+    </div>
+  </div>
+  <div class="punchPanel">
+    <h3>EMPLOYEE PUNCH-IN</h3>
+    <div class="pinDisplay" id="pinDisplay">••••</div>
+    <div class="keypad" id="keypad">
+      <button type="button" data-pin="1">1</button>
+      <button type="button" data-pin="2">2</button>
+      <button type="button" data-pin="3">3</button>
+      <button type="button" data-pin="4">4</button>
+      <button type="button" data-pin="5">5</button>
+      <button type="button" data-pin="6">6</button>
+      <button type="button" data-pin="7">7</button>
+      <button type="button" data-pin="8">8</button>
+      <button type="button" data-pin="9">9</button>
+      <button type="button" id="pinClear">CLEAR</button>
+      <button type="button" data-pin="0">0</button>
+      <button type="button" id="pinBack">⌫</button>
+    </div>
+  </div>
+</div>
+
+<button id="startBtn" style="width:100%;margin-top:12px;padding:12px" disabled>Clock In</button></div></div>
 <div class="overlay" id="taskOverlay"><div class="card"><h2 id="taskTitle">Task</h2><p class="sub" id="taskDesc"></p><div class="taskArea">
         <div class="bar miniBar" id="miniBar">
           <div class="scanZone" id="scanZone"></div>
@@ -106,11 +152,11 @@ const furniture=[
  // Warehouse A/B shelving stays against the perimeter.
  {x:1380,y:80,w:64,h:180,solid:true},{x:1515,y:82,w:150,h:46,solid:true},{x:1515,y:285,w:150,h:46,solid:true},
  {x:1380,y:445,w:70,h:145,solid:true},{x:1540,y:450,w:135,h:46,solid:true},{x:1540,y:645,w:135,h:46,solid:true},
- // Chocolate Storage V3.10.4: perimeter racks leave a broad cross-shaped travel lane through every doorway.
+ // Chocolate Storage V3.10.5: perimeter racks leave a broad cross-shaped travel lane through every doorway.
  {x:985,y:785,w:48,h:165,solid:true},
  {x:1215,y:690,w:78,h:42,solid:true},{x:1215,y:790,w:78,h:42,solid:true},{x:1215,y:970,w:78,h:42,solid:true},
  {x:1080,y:970,w:78,h:42,solid:true},
- // Break Room V3.10.4 artwork collisions. These are invisible and aligned to the finished room art.
+ // Break Room V3.10.5 artwork collisions. These are invisible and aligned to the finished room art.
  // Left kitchenette / microwave / fridge stack.
  {x:43,y:637,w:58,h:205,solid:true,draw:false,room:'break'},
  // Couch in the upper-right. It stays above the right-side doorway lane.
@@ -119,7 +165,7 @@ const furniture=[
  {x:312,y:658,w:20,h:42,solid:true,draw:false,room:'break'},
  // Trash can in lower-right corner.
  {x:303,y:817,w:28,h:28,solid:true,draw:false,room:'break'},
- // Reception V3.10.4 artwork collisions.
+ // Reception V3.10.5 artwork collisions.
  {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'}, // reception desk
  {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'}, // long narrow couch
  {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}, // sign-in table
@@ -145,7 +191,7 @@ const tasks=[
  {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
 ];
 const hides=[{x:248,y:748,label:'Break Room couch',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1190,y:920,label:'Storage rack',approachX:1155,approachY:920,hideX:1190,hideY:920,exitX:1150,exitY:920}];
-const player={x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
+const player={characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
 const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1135,y:760},{x:1260,y:900},{x:1450,y:900}];
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
 
@@ -738,4 +784,119 @@ addEventListener('keyup',e=>{
   }
 });document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset();canvas.focus&&canvas.focus()};document.getElementById('restartBtn').onclick=reset;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;const sprintBtn=document.getElementById('sprintBtn');sprintBtn.onpointerdown=()=>keys.ShiftLeft=true;sprintBtn.onpointerup=sprintBtn.onpointerleave=()=>keys.ShiftLeft=false;document.querySelectorAll('#mobilePad button').forEach(b=>{let code=b.dataset.key;b.onpointerdown=()=>keys[code]=true;b.onpointerup=b.onpointerleave=()=>keys[code]=false});updateUI();
 })();
+
+
+// V3.10.5 employee punch-in
+const employeePins={
+  '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
+};
+let enteredPin='';
+let selectedEmployee=null;
+
+const punchPinDisplay=document.getElementById('pinDisplay');
+const punchEmployeeName=document.getElementById('employeeName');
+const punchEmployeeRole=document.getElementById('employeeRole');
+const punchEmployeeStatus=document.getElementById('employeeStatus');
+const punchStartBtn=document.getElementById('startBtn');
+
+function refreshPunch(){
+  if(!punchPinDisplay)return;
+  punchPinDisplay.textContent=enteredPin.length?enteredPin.padEnd(4,'•'):'••••';
+}
+function resetPunch(message='Waiting for PIN…'){
+  enteredPin='';
+  selectedEmployee=null;
+  if(punchStartBtn)punchStartBtn.disabled=true;
+  if(punchEmployeeName)punchEmployeeName.textContent='NO EMPLOYEE SELECTED';
+  if(punchEmployeeRole)punchEmployeeRole.textContent='Enter your 4-digit employee PIN.';
+  if(punchEmployeeStatus){
+    punchEmployeeStatus.textContent=message;
+    punchEmployeeStatus.className='empStatus';
+  }
+  refreshPunch();
+}
+function validatePunchPin(){
+  if(enteredPin.length!==4)return;
+  const emp=employeePins[enteredPin];
+  if(emp){
+    selectedEmployee=emp;
+    punchEmployeeName.textContent=emp.name.toUpperCase();
+    punchEmployeeRole.textContent=emp.role;
+    punchEmployeeStatus.textContent='PIN ACCEPTED — READY TO CLOCK IN';
+    punchEmployeeStatus.className='empStatus empReady';
+    punchStartBtn.disabled=false;
+  }else{
+    selectedEmployee=null;
+    punchEmployeeName.textContent='PIN NOT RECOGNIZED';
+    punchEmployeeRole.textContent='Try another employee PIN.';
+    punchEmployeeStatus.textContent='ACCESS DENIED';
+    punchEmployeeStatus.className='empStatus pinError';
+    punchStartBtn.disabled=true;
+  }
+}
+document.querySelectorAll('[data-pin]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(enteredPin.length>=4)return;
+    enteredPin+=btn.dataset.pin;
+    refreshPunch();
+    if(enteredPin.length===4)validatePunchPin();
+  });
+});
+const pinClearBtn=document.getElementById('pinClear');
+if(pinClearBtn)pinClearBtn.addEventListener('click',()=>resetPunch());
+const pinBackBtn=document.getElementById('pinBack');
+if(pinBackBtn)pinBackBtn.addEventListener('click',()=>{
+  enteredPin=enteredPin.slice(0,-1);
+  selectedEmployee=null;
+  punchStartBtn.disabled=true;
+  punchEmployeeName.textContent='NO EMPLOYEE SELECTED';
+  punchEmployeeRole.textContent='Enter your 4-digit employee PIN.';
+  punchEmployeeStatus.textContent='Waiting for PIN…';
+  punchEmployeeStatus.className='empStatus';
+  refreshPunch();
+});
+window.addEventListener('keydown',e=>{
+  const startOverlay=document.getElementById('startOverlay');
+  if(!startOverlay || !startOverlay.classList.contains('show'))return;
+  if(/^[0-9]$/.test(e.key)){
+    if(enteredPin.length<4){
+      enteredPin+=e.key;
+      refreshPunch();
+      if(enteredPin.length===4)validatePunchPin();
+    }
+    e.preventDefault();
+  }else if(e.key==='Backspace'){
+    enteredPin=enteredPin.slice(0,-1);
+    selectedEmployee=null;
+    punchStartBtn.disabled=true;
+    punchEmployeeName.textContent='NO EMPLOYEE SELECTED';
+    punchEmployeeRole.textContent='Enter your 4-digit employee PIN.';
+    punchEmployeeStatus.textContent='Waiting for PIN…';
+    punchEmployeeStatus.className='empStatus';
+    refreshPunch();
+    e.preventDefault();
+  }else if(e.key==='Escape'){
+    resetPunch();
+    e.preventDefault();
+  }
+});
+refreshPunch();
+
+
+
+const punchClockInGuard=document.getElementById('startBtn');
+if(punchClockInGuard){
+  punchClockInGuard.addEventListener('click',e=>{
+    if(!selectedEmployee){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      return;
+    }
+    if(typeof player!=='undefined'){
+      player.characterId=selectedEmployee.id;
+      player.characterName=selectedEmployee.name;
+    }
+  },true);
+}
+
 </script></body></html>
