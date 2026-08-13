@@ -3,37 +3,91 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V2.1</title>
+<title>Chocolate Accidents — V3.10.3</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
-#app{height:100%;display:grid;grid-template-rows:auto 1fr}.topbar{min-height:64px;background:linear-gradient(#2c1d14,#1d130e);border-bottom:1px solid #5c3e2b;display:flex;align-items:center;gap:12px;padding:10px 14px;z-index:5}.brand{font-weight:900;white-space:nowrap}.brand span{color:var(--accent)}.progress-wrap{flex:1;display:flex;gap:9px;align-items:center;min-width:180px}.bar{height:16px;flex:1;border-radius:99px;overflow:hidden;background:#0e0a07;border:1px solid #674630}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffd779,#ff9d48)}.stat{font-size:12px;color:#decab2;white-space:nowrap}.pill{padding:6px 10px;border:1px solid #684733;border-radius:999px;font-size:12px;font-weight:900;min-width:118px;text-align:center}button{border:1px solid #765239;background:#38251a;color:#fff4e7;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}button:hover{background:#4b3222}button:disabled{opacity:.45}.stage{position:relative;min-height:0;background:#090705}canvas{display:block;width:100%;height:100%}.hint{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);background:#21150feF;border:1px solid #74513a;border-radius:12px;padding:10px 14px;font-weight:800;max-width:min(92vw,680px);text-align:center;pointer-events:none;box-shadow:0 8px 28px #0009}.controls{position:absolute;right:14px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.overlay{position:absolute;inset:0;background:#080605ca;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.overlay.show{display:flex}.card{width:min(720px,96vw);max-height:90vh;overflow:auto;background:linear-gradient(#2d1e15,#21160f);border:1px solid #78533a;border-radius:18px;padding:22px;box-shadow:0 24px 80px #000c}.card h1,.card h2{margin:0 0 8px}.sub{color:#d5bea6}.small{font-size:12px;color:#bfa88f}.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:120px}.taskArea{margin-top:14px;padding:16px;background:#160f0b;border:1px solid #60432f;border-radius:14px}.taskArea .bar{height:24px}.taskBtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.taskBtns button{min-width:92px}.roomToast{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#110c08dc;border:1px solid #6d4a34;font-weight:900;opacity:0;transition:opacity .18s;pointer-events:none}.roomToast.show{opacity:1}#mobilePad{position:absolute;left:14px;bottom:14px;display:none;grid-template-columns:46px 46px 46px;grid-template-rows:46px 46px;gap:4px}#mobilePad button{padding:0;font-size:18px;background:#2f2017dd}.up{grid-column:2}.left{grid-column:1;grid-row:2}.down{grid-column:2;grid-row:2}.right{grid-column:3;grid-row:2}@media(max-width:760px){.topbar{flex-wrap:wrap}.brand{width:100%}.progress-wrap{order:3;width:100%}.controls{bottom:72px}.hint{bottom:126px}#mobilePad{display:grid}}
+#app{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:auto 1fr}.topbar{grid-column:1/-1;min-height:64px;background:linear-gradient(#2c1d14,#1d130e);border-bottom:1px solid #5c3e2b;display:flex;align-items:center;gap:12px;padding:10px 14px;z-index:5}.brand{font-weight:900;white-space:nowrap}.brand span{color:var(--accent)}.progress-wrap{flex:1;display:flex;gap:9px;align-items:center;min-width:180px}.bar{height:16px;flex:1;border-radius:99px;overflow:hidden;background:#0e0a07;border:1px solid #674630}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffd779,#ff9d48)}.stat{font-size:12px;color:#decab2;white-space:nowrap}.pill{padding:6px 10px;border:1px solid #684733;border-radius:999px;font-size:12px;font-weight:900;min-width:118px;text-align:center}button{border:1px solid #765239;background:#38251a;color:#fff4e7;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}button:hover{background:#4b3222}button:disabled{opacity:.45}.stage{grid-column:1;grid-row:2;position:relative;min-height:0;background:#090705}canvas{display:block;width:100%;height:100%}.hint{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);background:#21150feF;border:1px solid #74513a;border-radius:12px;padding:10px 14px;font-weight:800;max-width:min(92vw,680px);text-align:center;pointer-events:none;box-shadow:0 8px 28px #0009}.controls{position:absolute;right:14px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.overlay{position:absolute;inset:0;background:#080605ca;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.overlay.show{display:flex}.card{width:min(720px,96vw);max-height:90vh;overflow:auto;background:linear-gradient(#2d1e15,#21160f);border:1px solid #78533a;border-radius:18px;padding:22px;box-shadow:0 24px 80px #000c}.card h1,.card h2{margin:0 0 8px}.sub{color:#d5bea6}.small{font-size:12px;color:#bfa88f}.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:120px}.taskArea{margin-top:14px;padding:16px;background:#160f0b;border:1px solid #60432f;border-radius:14px}.taskArea .bar{height:24px}.taskBtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.taskBtns button{min-width:92px}.taskList{grid-column:2;grid-row:2;background:#17100d;border-left:1px solid #5b3d2a;padding:16px 14px;overflow:auto;box-shadow:inset 8px 0 22px #0004}.taskList b{font-size:13px;letter-spacing:.04em}.taskList div{font-size:12px;color:#d9c2a9;margin-top:9px;line-height:1.25;padding-bottom:8px;border-bottom:1px solid #332319}.taskList .done{color:#76d89b;text-decoration:line-through}.roomToast{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#110c08dc;border:1px solid #6d4a34;font-weight:900;opacity:0;transition:opacity .18s;pointer-events:none}.roomToast.show{opacity:1}#mobilePad{position:absolute;left:14px;bottom:14px;display:none;grid-template-columns:46px 46px 46px;grid-template-rows:46px 46px;gap:4px}#mobilePad button{padding:0;font-size:18px;background:#2f2017dd}.up{grid-column:2}.left{grid-column:1;grid-row:2}.down{grid-column:2;grid-row:2}.right{grid-column:3;grid-row:2}@media(max-width:760px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.topbar{grid-column:1;grid-row:1;flex-wrap:wrap}.brand{width:100%}.progress-wrap{order:3;width:100%}.stage{grid-column:1;grid-row:2}.taskList{grid-column:1;grid-row:3;max-height:112px;border-left:0;border-top:1px solid #5b3d2a;padding:8px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 12px}.taskList b{grid-column:1/-1}.taskList div{font-size:10px;margin-top:2px;padding-bottom:2px;border-bottom:0}.controls{bottom:72px}.hint{bottom:126px}#mobilePad{display:grid}}
+
+
+.miniBar{position:relative;overflow:visible!important;margin-top:22px}
+.scanZone{display:none;position:absolute;left:45%;width:20%;top:0;bottom:0;background:#65d18f55;border-left:2px solid #8ff0ae;border-right:2px solid #8ff0ae;z-index:1}
+.scanBoundary{display:none;position:absolute;top:-4px;bottom:-4px;width:3px;background:#fff1a8;z-index:4;box-shadow:0 0 5px #000}
+.scanBoundary span{position:absolute;top:-23px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:900;letter-spacing:.08em;color:#fff1a8;background:#24170f;border:1px solid #7b583c;border-radius:5px;padding:2px 5px;white-space:nowrap}
+.scanLow{left:45%}.scanHigh{left:65%}
+.scanInstruction{display:none;text-align:center;margin-top:10px;font-size:12px;color:#e7d6bf;font-weight:700}
+.miniBar.scanning .scanZone,.miniBar.scanning .scanBoundary,.miniBar.scanning + .scanInstruction{display:block}
+.miniBar.scanning #miniFill{position:absolute!important;top:-3px!important;bottom:-3px!important;height:auto!important;width:5px!important;left:0;background:#ffef69!important;border-radius:4px!important;z-index:5;box-shadow:0 0 8px #ffef69}
+
+
+.heatGame{display:none;margin-top:18px}
+.heatGame.active{display:block}
+.heatReadout{display:flex;align-items:center;justify-content:space-between;color:#d7c0a7;font-size:11px;font-weight:800;letter-spacing:.08em}
+.heatReadout strong{font-size:22px;color:#f4e6d1;letter-spacing:0}
+.heatMeter{position:relative;height:32px;margin-top:28px;border:2px solid #704c34;border-radius:10px;background:linear-gradient(90deg,#6b91bf 0%,#8fb0c8 22%,#bba96d 48%,#b87548 72%,#a9483f 100%);overflow:visible}
+.perfectZone{position:absolute;left:42.5%;width:17.5%;top:-2px;bottom:-2px;border:3px solid #9be6a7;background:#74c98244;border-radius:7px}
+.perfectZone span{position:absolute;left:50%;top:-27px;transform:translateX(-50%);white-space:nowrap;font-size:10px;font-weight:900;letter-spacing:.08em;color:#9be6a7;background:#20150f;border:1px solid #5a3e2d;border-radius:5px;padding:2px 6px}
+.heatNeedle{position:absolute;left:17.5%;top:-8px;width:5px;height:44px;background:#fff3b5;border-radius:5px;transform:translateX(-50%);box-shadow:0 0 7px #000}
+.heatNeedle:after{content:'';position:absolute;left:50%;top:-7px;transform:translateX(-50%);border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #fff3b5}
+.heatScale{display:flex;justify-content:space-between;margin-top:7px;color:#bba58c;font-size:10px}
+.temperLabel{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font-size:12px;color:#e6d4bd}
+.temperTrack{height:12px;margin-top:6px;border:1px solid #684833;border-radius:999px;background:#241811;overflow:hidden}
+.temperFill{height:100%;width:0%;background:#79ce8c;transition:width .1s linear}
+.heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V2.1</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/6</div></div><div class="pill" id="bossStatus">BOSS: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.10.3</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">RENEE: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
 <div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V2.1</h1><p class="sub">The factory now has real walls and doors. Move room-to-room, finish your tasks, and don't let the boss catch you wandering.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Doors swing open automatically when you or the boss get close. You can only cross room walls through a doorway.</p><button id="startBtn" style="width:100%;margin-top:12px;padding:12px">Clock In</button></div></div>
-<div class="overlay" id="taskOverlay"><div class="card"><h2 id="taskTitle">Task</h2><p class="sub" id="taskDesc"></p><div class="taskArea"><div class="bar"><div class="fill" id="miniFill"></div></div><div class="taskBtns" id="taskBtns"></div></div><p class="small" id="taskTip"></p><button id="leaveTaskBtn" style="width:100%;margin-top:10px">Abandon Task</button></div></div>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.10.3</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p><button id="startBtn" style="width:100%;margin-top:12px;padding:12px">Clock In</button></div></div>
+<div class="overlay" id="taskOverlay"><div class="card"><h2 id="taskTitle">Task</h2><p class="sub" id="taskDesc"></p><div class="taskArea">
+        <div class="bar miniBar" id="miniBar">
+          <div class="scanZone" id="scanZone"></div>
+          <div class="scanBoundary scanLow" id="scanLow"><span>LOW</span></div>
+          <div class="scanBoundary scanHigh" id="scanHigh"><span>HIGH</span></div>
+          <div class="fill" id="miniFill"></div>
+        </div>
+        <div class="scanInstruction" id="scanInstruction">Stop the needle between LOW and HIGH. Press SPACE or use STOP SCAN.</div>
+<div class="heatGame" id="heatGame">
+  <div class="heatReadout">
+    <span>COLD</span>
+    <strong id="heatTemp">82°F</strong>
+    <span>HOT</span>
+  </div>
+  <div class="heatMeter">
+    <div class="perfectZone"><span>PERFECT TEMP</span></div>
+    <div class="heatNeedle" id="heatNeedle"></div>
+  </div>
+  <div class="heatScale">
+    <span>75°F</span><span>85°F</span><span>95°F</span><span>105°F</span><span>115°F</span>
+  </div>
+  <div class="temperLabel"><span>Tempering Progress</span><strong id="temperPct">0%</strong></div>
+  <div class="temperTrack"><div class="temperFill" id="temperFill"></div></div>
+  <p class="heatHelp" id="heatHelp">Hold HEAT or hold SPACE to warm the chocolate. Release to let it cool naturally.</p>
+</div>
+
+        <div class="taskBtns" id="taskBtns"></div>
+      </div><p class="small" id="taskTip"></p><button id="leaveTaskBtn" style="width:100%;margin-top:10px">Abandon Task (Esc)</button></div></div>
 <div class="overlay" id="mapOverlay"><div class="card"><h2>Factory Map</h2><p class="sub">Yellow = task · Blue = you · Red = boss · Green = hiding spot · Gold gaps = doors</p><canvas id="mapCanvas" width="900" height="560" style="width:100%;height:auto;background:#120e0b;border-radius:12px;border:1px solid #5f412e"></canvas><button id="closeMapBtn" style="width:100%;margin-top:12px">Close Map</button></div></div>
 <div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
-</div></div>
+</div><div class="taskList" id="taskList"><b>SHIFT TASKS</b><div>Clock in to load tasks…</div></div></div>
 <script>
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
-const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),bossStatus:document.getElementById('bossStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),taskBtns:document.getElementById('taskBtns'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText')};
+const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText')};
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In / Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
- {id:'break',name:'Break Room',x:40,y:620,w:300,h:240,c:'#67513e'},{id:'reception',name:'Reception',x:40,y:860,w:420,h:180,c:'#604839'},{id:'art',name:'Art Department',x:340,y:620,w:360,h:220,c:'#704d54'},{id:'mainboss',name:"Main Boss's Office",x:460,y:840,w:240,h:200,c:'#5a3c3c'},
- {id:'white',name:'White Chocolate Room',x:700,y:620,w:260,h:220,c:'#88735f'},{id:'edible',name:'Edible Printer',x:700,y:840,w:260,h:200,c:'#68547b'},{id:'storage',name:'Central Storage',x:960,y:620,w:380,h:420,c:'#675646'},
- {id:'whA',name:'Warehouse A',x:1340,y:40,w:420,h:360,c:'#615848'},{id:'whB',name:'Warehouse B',x:1340,y:400,w:420,h:340,c:'#615848'},{id:'sales',name:'Sales Office',x:1340,y:740,w:280,h:300,c:'#5d4b3e'},{id:'boss',name:"Boss's Office",x:1620,y:740,w:140,h:300,c:'#5a3c3c'}
+ {id:'break',name:'Break Room',x:40,y:620,w:300,h:240,c:'#67513e'},{id:'reception',name:'Reception',x:40,y:860,w:420,h:180,c:'#604839'},{id:'art',name:'Art Department',x:340,y:620,w:360,h:220,c:'#704d54'},{id:'mainboss',name:"Boss's Office",x:460,y:840,w:240,h:200,c:'#5a3c3c'},
+ {id:'white',name:'White Room',x:700,y:620,w:260,h:220,c:'#88735f'},{id:'edible',name:'Accounting Office',x:700,y:840,w:260,h:200,c:'#68547b'},{id:'storage',name:'Chocolate Storage',x:960,y:620,w:380,h:420,c:'#675646'},
+ {id:'whA',name:'Warehouse A',x:1340,y:40,w:420,h:360,c:'#615848'},{id:'whB',name:'Warehouse B',x:1340,y:400,w:420,h:340,c:'#615848'},{id:'sales',name:'Sales Office',x:1340,y:740,w:280,h:300,c:'#5d4b3e'},{id:'boss',name:"Control Room",x:1620,y:740,w:140,h:300,c:'#5a3c3c'}
 ];
 const roomBy=id=>rooms.find(r=>r.id===id);
 const doors=[
  {a:'shipping',b:'fancy',o:'h',x:210,y:320},{a:'shipping',b:'walkin',o:'h',x:565,y:320},{a:'shipping',b:'production',o:'v',x:700,y:185},
  {a:'fancy',b:'walkin',o:'v',x:460,y:475},{a:'fancy',b:'break',o:'h',x:185,y:620},{a:'walkin',b:'production',o:'v',x:700,y:480},
- {a:'break',b:'art',o:'v',x:340,y:730},{a:'break',b:'reception',o:'h',x:180,y:860},{a:'art',b:'white',o:'v',x:700,y:730},{a:'art',b:'mainboss',o:'h',x:575,y:840},{a:'reception',b:'mainboss',o:'v',x:460,y:945},
+ {a:'break',b:'art',o:'v',x:340,y:730},{a:'break',b:'reception',o:'h',x:230,y:860},{a:'art',b:'white',o:'v',x:700,y:730},{a:'art',b:'mainboss',o:'h',x:575,y:840},{a:'reception',b:'mainboss',o:'v',x:460,y:945},
  {a:'production',b:'white',o:'h',x:825,y:620},{a:'production',b:'storage',o:'h',x:1135,y:620},{a:'production',b:'whA',o:'v',x:1340,y:220},
  {a:'white',b:'edible',o:'h',x:825,y:840},{a:'white',b:'storage',o:'v',x:960,y:730},{a:'edible',b:'storage',o:'v',x:960,y:940},
  {a:'storage',b:'whB',o:'v',x:1340,y:660},{a:'storage',b:'sales',o:'v',x:1340,y:900},{a:'whA',b:'whB',o:'h',x:1520,y:400},{a:'whB',b:'sales',o:'h',x:1480,y:740},{a:'sales',b:'boss',o:'v',x:1620,y:900}
@@ -52,9 +106,23 @@ const furniture=[
  // Warehouse A/B shelving stays against the perimeter.
  {x:1380,y:80,w:64,h:180,solid:true},{x:1515,y:82,w:150,h:46,solid:true},{x:1515,y:285,w:150,h:46,solid:true},
  {x:1380,y:445,w:70,h:145,solid:true},{x:1540,y:450,w:135,h:46,solid:true},{x:1540,y:645,w:135,h:46,solid:true},
- // Central Storage: keep a generous 85px+ clear approach from the White Chocolate and Edible Printer doors before the first rack.
- {x:1045,y:665,w:48,h:205,solid:true},{x:1150,y:665,w:42,h:70,solid:true},{x:1150,y:815,w:42,h:70,solid:true},
- {x:1240,y:665,w:62,h:40,solid:true},{x:1240,y:810,w:62,h:40,solid:true},{x:1240,y:950,w:62,h:40,solid:true},
+ // Chocolate Storage V3.10.3: perimeter racks leave a broad cross-shaped travel lane through every doorway.
+ {x:985,y:785,w:48,h:165,solid:true},
+ {x:1215,y:690,w:78,h:42,solid:true},{x:1215,y:790,w:78,h:42,solid:true},{x:1215,y:970,w:78,h:42,solid:true},
+ {x:1080,y:970,w:78,h:42,solid:true},
+ // Break Room V3.10.3 artwork collisions. These are invisible and aligned to the finished room art.
+ // Left kitchenette / microwave / fridge stack.
+ {x:43,y:637,w:58,h:205,solid:true,draw:false,room:'break'},
+ // Couch in the upper-right. It stays above the right-side doorway lane.
+ {x:208,y:656,w:110,h:58,solid:true,draw:false,room:'break'},
+ // Small plant beside couch.
+ {x:312,y:658,w:20,h:42,solid:true,draw:false,room:'break'},
+ // Trash can in lower-right corner.
+ {x:303,y:817,w:28,h:28,solid:true,draw:false,room:'break'},
+ // Reception V3.10.3 artwork collisions.
+ {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'}, // reception desk
+ {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'}, // long narrow couch
+ {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}, // sign-in table
  // Office / art furniture reduced to perimeter pieces.
  {x:365,y:665,w:80,h:40,solid:true},{x:555,y:665,w:85,h:40,solid:true},{x:730,y:875,w:78,h:55,solid:true},{x:875,y:875,w:52,h:52,solid:true},
  {x:1370,y:785,w:72,h:45,solid:true},{x:1515,y:785,w:65,h:45,solid:true},
@@ -63,39 +131,611 @@ const furniture=[
 ];
 const solidFurniture=furniture.filter(o=>o.solid!==false);
 const tasks=[
+ {name:'Ward Off Solicitors',desc:'Send away three solicitors before they make it past Reception.',x:205,y:925,kind:'solicitors',done:false,room:'Reception'},
+ {name:'Make Coffee',desc:'Make a fresh cup of break-room coffee.',x:114,y:657,kind:'coffee',done:false,room:'Break Room'},
  {name:'Pack Rush Order',desc:'Pack three boxes before the order gets any later.',x:585,y:245,kind:'sequence',done:false,room:'Shipping'},
- {name:'Fancy Packaging',desc:'Complete the packaging sequence.',x:385,y:560,kind:'sequence',done:false,room:'Fancy Packaging'},
- {name:'Temper White Chocolate',desc:'Keep the temperature in the sweet spot.',x:820,y:785,kind:'hold',done:false,room:'White Chocolate Room'},
- {name:'Fix Edible Printer',desc:'Enter the reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Edible Printer'},
+ {name:'Build Fancy Gift Box',desc:'Assemble a gift box in the correct order.',x:385,y:560,kind:'sequence',done:false,room:'Fancy Packaging'},
+ {name:'Freezer Inventory',desc:'Scan three mystery cases before your fingers freeze.',x:560,y:530,kind:'timing',done:false,room:'Walk-In / Freezer'},
+ {name:'Temper White Chocolate',desc:'Keep the temperature in the sweet spot.',x:820,y:785,kind:'hold',done:false,room:'White Room'},
+ {name:'Fix Accounting Office',desc:'Enter the printer reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Accounting Office'},
  {name:'Production Quality Check',desc:'Approve the good chocolates and reject the accidents.',x:1180,y:520,kind:'choice',done:false,room:'Production'},
- {name:'Find Shipping Cases',desc:'Find and scan three cases in storage.',x:1260,y:980,kind:'timing',done:false,room:'Central Storage'}
+ {name:'Restart Tempering Line',desc:'Restart the production line in the proper order.',x:980,y:300,kind:'sequence',done:false,room:'Production'},
+ {name:'Find Shipping Cases',desc:'Scan three cases hidden in central storage.',x:1245,y:875,kind:'timing',done:false,room:'Chocolate Storage'},
+ {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A'},
+ {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
 ];
-const hides=[{x:280,y:790,label:'Break Room table'},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1435,y:690,label:'Warehouse shelf'},{x:1570,y:690,label:'Warehouse boxes'},{x:1290,y:1010,label:'Storage rack'}];
-const player={x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0};
-const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1120,y:900},{x:1450,y:900}];
+const hides=[{x:248,y:748,label:'Break Room couch',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1190,y:920,label:'Storage rack',approachX:1155,approachY:920,hideX:1190,hideY:920,exitX:1150,exitY:920}];
+const player={x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
+const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1135,y:760},{x:1260,y:900},{x:1450,y:900}];
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
+
+// Illustrated Break Room layer (designed at 4x, rendered into the existing 300x240 game room).
+const breakRoomArt=new Image();
+breakRoomArt.src='assets/rooms/break_room.png';
+const receptionArt=new Image();
+receptionArt.src='assets/rooms/reception.png';
+const hideHereArt=new Image();
+hideHereArt.src='assets/ui/hide_here.png';
+
+// Chris default-worker sprites. His physics point stays at his feet, matching the old player circle.
+const chrisSprites={};
+const chrisFiles={
+  idleDown:'assets/chris/idle_front.png',
+  idleUp:'assets/chris/idle_back.png',
+  idleLeft:'assets/chris/idle_left.png',
+  idleRight:'assets/chris/idle_right.png',
+  left1:'assets/chris/left.png',
+  left2:'assets/chris/left2.png',
+  right1:'assets/chris/right.png',
+  right2:'assets/chris/right2.png'
+};
+for(const [key,url] of Object.entries(chrisFiles)){
+  const img=new Image();
+  img.src=url;
+  chrisSprites[key]=img;
+}
+let playerAnimClock=0;
+function playerSpriteKey(){
+  if(!player.moving)return 'idle'+player.facing[0].toUpperCase()+player.facing.slice(1);
+  if(player.facing==='left')return (Math.floor(playerAnimClock*8)%2)?'left2':'left1';
+  if(player.facing==='right')return (Math.floor(playerAnimClock*8)%2)?'right2':'right1';
+  // The supplied Chris pack has no up/down walking frames yet, so use the matching directional pose.
+  return player.facing==='up'?'idleUp':'idleDown';
+}
+function drawChris(c,minimap=false){
+  if(minimap){
+    c.beginPath();c.arc(player.x,player.y,player.r,0,Math.PI*2);
+    c.fillStyle=player.hidden?'#67a9ff88':'#67a9ff';c.fill();
+    c.strokeStyle='#0e2a4c';c.lineWidth=3;c.stroke();
+    return;
+  }
+  const img=chrisSprites[playerSpriteKey()];
+  if(img&&img.complete&&img.naturalWidth){
+    const h=69;
+    const w=h*(img.naturalWidth/img.naturalHeight);
+    const bob=player.moving?Math.sin(playerAnimClock*16)*1.2:0;
+    c.drawImage(img,player.x-w/2,player.y-h+13+bob,w,h);
+  }else{
+    c.beginPath();c.arc(player.x,player.y,player.r,0,Math.PI*2);
+    c.fillStyle='#67a9ff';c.fill();
+    c.strokeStyle='#0e2a4c';c.lineWidth=3;c.stroke();
+  }
+}
+
+// Renee boss sprites. The boss physics point stays at her feet so her artwork can be taller
+// without making doorways or collision detection feel wider.
+const reneeSprites={};
+const reneeFiles={
+  idle:'assets/renee/renee_idle.png',
+  down1:'assets/renee/renee_forward.png',
+  down2:'assets/renee/renee_forward2.png',
+  up1:'assets/renee/renee_away.png',
+  up2:'assets/renee/renee_away2.png',
+  left1:'assets/renee/renee_Left.png',
+  left2:'assets/renee/renee_Left2.png',
+  right1:'assets/renee/Right.png',
+  right2:'assets/renee/Right2.png'
+};
+for(const [key,url] of Object.entries(reneeFiles)){
+  const img=new Image();
+  img.src=url;
+  reneeSprites[key]=img;
+}
+let bossAnimClock=0;
+let bossWasMoving=false;
+function bossSpriteKey(){
+  if(!bossWasMoving)return 'idle';
+  const a=Math.atan2(Math.sin(boss.angle),Math.cos(boss.angle));
+  let dir;
+  if(a>=-Math.PI/4&&a<Math.PI/4)dir='right';
+  else if(a>=Math.PI/4&&a<3*Math.PI/4)dir='down';
+  else if(a<=-Math.PI/4&&a>-3*Math.PI/4)dir='up';
+  else dir='left';
+  const frame=(Math.floor(bossAnimClock*7)%2)+1;
+  return dir+frame;
+}
+function drawRenee(c,minimap=false){
+  if(minimap){
+    c.beginPath();c.arc(boss.x,boss.y,boss.r,0,Math.PI*2);c.fillStyle='#d84e45';c.fill();
+    return;
+  }
+  const img=reneeSprites[bossSpriteKey()];
+  if(img&&img.complete&&img.naturalWidth){
+    const h=72;
+    const w=h*(img.naturalWidth/img.naturalHeight);
+    // boss.x/boss.y are Renee's foot position.
+    c.drawImage(img,boss.x-w/2,boss.y-h+13,w,h);
+  }else{
+    c.beginPath();c.arc(boss.x,boss.y,boss.r,0,Math.PI*2);c.fillStyle='#d84e45';c.fill();
+  }
+}
+
 function resize(){const dpr=Math.min(devicePixelRatio||1,2),r=stage.getBoundingClientRect();canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',resize);resize();
-function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}function collides(x,y,r){if(x-r<40||y-r<40||x+r>1760||y+r>1040)return true;return walls.some(w=>rectHit(w,x,y,r))||solidFurniture.some(o=>rectHit(o,x,y,r))}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){return hides.find(h=>Math.hypot(player.x-h.x,player.y-h.y)<46)}function completed(){return tasks.filter(t=>t.done).length}
+function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}function collides(x,y,r){if(x-r<40||y-r<40||x+r>1760||y+r>1040)return true;return walls.some(w=>rectHit(w,x,y,r))||solidFurniture.some(o=>rectHit(o,x,y,r))}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){
+  let best=null,bd=Infinity;
+  for(const raw of hides){
+    const h=normalizedHide(raw);
+    const d=Math.hypot(player.x-h.approachX,player.y-h.approachY);
+    if(d<72&&d<bd&&!collides(h.approachX,h.approachY,player.r+2)){bd=d;best=h}
+  }
+  return best;
+}function completed(){return tasks.filter(t=>t.done).length}
 function lineBlocked(a,b){const steps=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/18);for(let i=1;i<steps;i++){const x=a.x+(b.x-a.x)*i/steps,y=a.y+(b.y-a.y)*i/steps;if(walls.some(w=>rectHit(w,x,y,3))||solidFurniture.some(o=>rectHit(o,x,y,3)))return true}return false}
 function canSee(){if(player.hidden)return false;const dx=player.x-boss.x,dy=player.y-boss.y,d=Math.hypot(dx,dy),max=(keys.ShiftLeft||keys.ShiftRight)?310:245;if(d>max)return false;const ang=Math.atan2(dy,dx),diff=Math.atan2(Math.sin(ang-boss.angle),Math.cos(ang-boss.angle));return Math.abs(diff)<.62&&!lineBlocked(boss,player)}
-const GS=40,COLS=Math.ceil(WORLD.w/GS),ROWS=Math.ceil(WORLD.h/GS);function keyCell(c,r){return c+','+r}function cellPos(c,r){return{x:c*GS+GS/2,y:r*GS+GS/2}}function nearestCell(p){return{c:Math.max(1,Math.min(COLS-2,Math.floor(p.x/GS))),r:Math.max(1,Math.min(ROWS-2,Math.floor(p.y/GS)))}}function walkCell(c,r){const p=cellPos(c,r);return !collides(p.x,p.y,12)}
-function findPath(from,to){const s=nearestCell(from),g=nearestCell(to),open=[{...s,f:0,g:0}],came=new Map(),gScore=new Map([[keyCell(s.c,s.r),0]]),seen=new Set();while(open.length){open.sort((a,b)=>a.f-b.f);const cur=open.shift(),ck=keyCell(cur.c,cur.r);if(seen.has(ck))continue;seen.add(ck);if(cur.c===g.c&&cur.r===g.r){const path=[];let k=ck,node=cur;while(k!==keyCell(s.c,s.r)){path.push(cellPos(node.c,node.r));node=came.get(k);if(!node)break;k=keyCell(node.c,node.r)}return path.reverse()}for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){const nc=cur.c+dc,nr=cur.r+dr,nk=keyCell(nc,nr);if(nc<0||nr<0||nc>=COLS||nr>=ROWS||!walkCell(nc,nr))continue;const ng=cur.g+1;if(ng<(gScore.get(nk)??Infinity)){gScore.set(nk,ng);came.set(nk,{c:cur.c,r:cur.r});open.push({c:nc,r:nr,g:ng,f:ng+Math.abs(nc-g.c)+Math.abs(nr-g.r)})}}}return[]}
+const GS=20,COLS=Math.ceil(WORLD.w/GS),ROWS=Math.ceil(WORLD.h/GS);function keyCell(c,r){return c+','+r}
+function cellPos(c,r){return{x:c*GS+GS/2,y:r*GS+GS/2}}
+function rawCell(p){return{
+  c:Math.max(1,Math.min(COLS-2,Math.floor(p.x/GS))),
+  r:Math.max(1,Math.min(ROWS-2,Math.floor(p.y/GS)))
+}}
+function walkCell(c,r){
+  const p=cellPos(c,r);
+  return !collides(p.x,p.y,boss.r+1)
+}
+function nearestWalkableCell(p){
+  const base=rawCell(p);
+  if(walkCell(base.c,base.r))return base;
+  for(let rad=1;rad<=7;rad++){
+    let best=null,bestD=Infinity;
+    for(let dc=-rad;dc<=rad;dc++){
+      for(let dr=-rad;dr<=rad;dr++){
+        if(Math.abs(dc)!==rad&&Math.abs(dr)!==rad)continue;
+        const c=base.c+dc,r=base.r+dr;
+        if(c<1||r<1||c>=COLS-1||r>=ROWS-1||!walkCell(c,r))continue;
+        const cp=cellPos(c,r),d=Math.hypot(cp.x-p.x,cp.y-p.y);
+        if(d<bestD){bestD=d;best={c,r}}
+      }
+    }
+    if(best)return best
+  }
+  return base
+}
+function findPath(from,to){
+  const sCell=nearestWalkableCell(from),g=nearestWalkableCell(to);
+  const sk=keyCell(sCell.c,sCell.r),gk=keyCell(g.c,g.r);
+  if(sk===gk)return[];
+  const queue=[sCell];
+  let qi=0;
+  const came=new Map();
+  const seen=new Set([sk]);
+  let found=null;
+
+  while(qi<queue.length){
+    const cur=queue[qi++];
+    for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){
+      const nc=cur.c+dc,nr=cur.r+dr;
+      if(nc<1||nr<1||nc>=COLS-1||nr>=ROWS-1||!walkCell(nc,nr))continue;
+      const nk=keyCell(nc,nr);
+      if(seen.has(nk))continue;
+      seen.add(nk);
+      came.set(nk,{c:cur.c,r:cur.r});
+      if(nk===gk){found={c:nc,r:nr};qi=queue.length;break}
+      queue.push({c:nc,r:nr});
+    }
+  }
+  if(!found)return[];
+
+  const path=[];
+  let node=found,k=gk;
+  while(k!==sk){
+    path.push(cellPos(node.c,node.r));
+    node=came.get(k);
+    if(!node)break;
+    k=keyCell(node.c,node.r);
+  }
+  return path.reverse();
+}
+function recoverBoss(){
+  const base=nearestWalkableCell(boss);
+  const candidates=[
+    base,
+    {c:base.c+1,r:base.r},{c:base.c-1,r:base.r},
+    {c:base.c,r:base.r+1},{c:base.c,r:base.r-1},
+    {c:base.c+2,r:base.r},{c:base.c-2,r:base.r},
+    {c:base.c,r:base.r+2},{c:base.c,r:base.r-2}
+  ].filter(q=>q.c>0&&q.r>0&&q.c<COLS-1&&q.r<ROWS-1&&walkCell(q.c,q.r));
+  if(candidates.length){
+    candidates.sort((a,b)=>{
+      const pa=cellPos(a.c,a.r),pb=cellPos(b.c,b.r);
+      return Math.hypot(pa.x-boss.x,pa.y-boss.y)-Math.hypot(pb.x-boss.x,pb.y-boss.y)
+    });
+    const p=cellPos(candidates[0].c,candidates[0].r);
+    boss.x=p.x;boss.y=p.y;
+  }
+  boss.path=[];
+  boss.pathTimer=0;
+  boss.stuckTimer=0;
+  boss.lastX=boss.x;boss.lastY=boss.y
+}
+function updateBoss(dt){
+if(!running)return;
+bossWasMoving=false;
+if(canSee()){
+  boss.state='CHASING';boss.lastSeen={x:player.x,y:player.y};boss.searchTimer=2.5
+}else if(boss.state==='CHASING'){
+  boss.state='SEARCHING';boss.searchTimer=3.5
+}else if(boss.state==='SEARCHING'){
+  boss.searchTimer-=dt;
+  if(boss.searchTimer<=0){boss.state='PATROLLING';boss.lastSeen=null}
+}
+let target=boss.state==='CHASING'?player:boss.state==='SEARCHING'&&boss.lastSeen?boss.lastSeen:patrol[boss.patrolIndex];
+
+const moved=Math.hypot(boss.x-boss.lastX,boss.y-boss.lastY);
+if(moved<0.45)boss.stuckTimer+=dt;else boss.stuckTimer=Math.max(0,boss.stuckTimer-dt*2);
+boss.lastX=boss.x;boss.lastY=boss.y;
+
+if(boss.stuckTimer>1.15){
+  recoverBoss();
+}
+
+boss.pathTimer-=dt;
+if(boss.pathTimer<=0){
+  boss.path=findPath(boss,target);
+  boss.pathTimer=boss.state==='CHASING'?.24:.65;
+}
+let wp=boss.path[0];
+if(!wp){
+  if(boss.state==='PATROLLING'&&dist(boss,target)<28){
+    boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+    boss.pathTimer=0;
+  }
+  if(!player.hidden&&dist(player,boss)<34)loseGame();
+  return;
+}
+let dx=wp.x-boss.x,dy=wp.y-boss.y,d=Math.hypot(dx,dy);
+
+if(d<13&&boss.path.length){
+  boss.path.shift();
+}else if(d>1){
+  dx/=d;dy/=d;boss.angle=Math.atan2(dy,dx);
+  const beforeX=boss.x,beforeY=boss.y;
+  moveEntity(boss,dx*(boss.state==='CHASING'?175:boss.speed)*dt,dy*(boss.state==='CHASING'?175:boss.speed)*dt);
+  const bossStep=Math.hypot(boss.x-beforeX,boss.y-beforeY);
+  bossWasMoving=bossStep>0.05;
+  if(bossStep<0.05){
+    boss.pathTimer=0;
+  }
+}
+
+if(boss.state==='PATROLLING'&&dist(boss,target)<28){
+  boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+  boss.path=[];
+  boss.pathTimer=0
+}
+if(!player.hidden&&dist(player,boss)<34)loseGame()
+}
 function updateDoors(dt){for(const d of doors){const p={x:d.x,y:d.y},near=Math.min(dist(player,p),dist(boss,p))<82;d.open+=(near?1:-1)*dt*4;d.open=Math.max(0,Math.min(1,d.open))}}
-function updateBoss(dt){if(!running)return;if(canSee()){boss.state='CHASING';boss.lastSeen={x:player.x,y:player.y};boss.searchTimer=2.5}else if(boss.state==='CHASING'){boss.state='SEARCHING';boss.searchTimer=3.5}else if(boss.state==='SEARCHING'){boss.searchTimer-=dt;if(boss.searchTimer<=0){boss.state='PATROLLING';boss.lastSeen=null}}
-let target=boss.state==='CHASING'?player:boss.state==='SEARCHING'&&boss.lastSeen?boss.lastSeen:patrol[boss.patrolIndex];boss.pathTimer-=dt;if(boss.pathTimer<=0){boss.path=findPath(boss,target);boss.pathTimer=boss.state==='CHASING'?.22:.7}let wp=boss.path[0]||target,dx=wp.x-boss.x,dy=wp.y-boss.y,d=Math.hypot(dx,dy);if(d<22&&boss.path.length)boss.path.shift();else if(d>2){dx/=d;dy/=d;boss.angle=Math.atan2(dy,dx);moveEntity(boss,dx*(boss.state==='CHASING'?175:boss.speed)*dt,dy*(boss.state==='CHASING'?175:boss.speed)*dt)}if(boss.state==='PATROLLING'&&dist(boss,target)<34)boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;if(!player.hidden&&dist(player,boss)<34)loseGame()}
-function updatePlayer(dt){if(!running||activeTask||player.hidden)return;let dx=0,dy=0;if(keys.KeyW||keys.ArrowUp)dy--;if(keys.KeyS||keys.ArrowDown)dy++;if(keys.KeyA||keys.ArrowLeft)dx--;if(keys.KeyD||keys.ArrowRight)dx++;if(dx||dy){let l=Math.hypot(dx,dy);dx/=l;dy/=l;let sp=(keys.ShiftLeft||keys.ShiftRight)?player.sprint:player.speed;moveEntity(player,dx*sp*dt,dy*sp*dt)}const r=roomAt(player.x,player.y);if(r&&r.id!==lastRoom){lastRoom=r.id;ui.roomToast.textContent=r.name;ui.roomToast.classList.add('show');toastTimer=1.4}if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)ui.roomToast.classList.remove('show')}}
+
+function showHint(msg){
+  if(ui.hint){
+    ui.hint.textContent=msg;
+    ui.hint.classList.add('show');
+    clearTimeout(showHint._timer);
+    showHint._timer=setTimeout(()=>ui.hint.classList.remove('show'),1600);
+  }
+}
+
+
+function normalizedHide(h){
+  return {
+    ...h,
+    approachX:Number.isFinite(h.approachX)?h.approachX:h.x,
+    approachY:Number.isFinite(h.approachY)?h.approachY:h.y,
+    hideX:Number.isFinite(h.hideX)?h.hideX:h.x,
+    hideY:Number.isFinite(h.hideY)?h.hideY:h.y,
+    exitX:Number.isFinite(h.exitX)?h.exitX:(Number.isFinite(h.approachX)?h.approachX:h.x+42),
+    exitY:Number.isFinite(h.exitY)?h.exitY:(Number.isFinite(h.approachY)?h.approachY:h.y)
+  };
+}
+
+function safeHideExit(h){
+  if(!h)return {x:player.x,y:player.y};
+  const n=normalizedHide(h);
+  const candidates=[
+    {x:n.exitX,y:n.exitY},
+    {x:n.approachX,y:n.approachY},
+    {x:n.exitX+28,y:n.exitY},
+    {x:n.exitX-28,y:n.exitY},
+    {x:n.exitX,y:n.exitY+28},
+    {x:n.exitX,y:n.exitY-28},
+    {x:n.approachX+36,y:n.approachY},
+    {x:n.approachX-36,y:n.approachY},
+    {x:n.approachX,y:n.approachY+36},
+    {x:n.approachX,y:n.approachY-36}
+  ];
+  for(const c of candidates){
+    if(!collides(c.x,c.y,player.r+2))return c;
+  }
+  // Last resort: search rings around the approach point.
+  for(let rad=40;rad<=120;rad+=20){
+    for(let a=0;a<Math.PI*2;a+=Math.PI/4){
+      const x=n.approachX+Math.cos(a)*rad;
+      const y=n.approachY+Math.sin(a)*rad;
+      if(!collides(x,y,player.r+2))return {x,y};
+    }
+  }
+  return {x:player.x,y:player.y};
+}
+function updatePlayer(dt){
+  if(player.hidden){player.moving=false;return}
+  if(!running||activeTask){player.moving=false;return}
+  let dx=0,dy=0;
+  if(keys.KeyW||keys.ArrowUp)dy--;
+  if(keys.KeyS||keys.ArrowDown)dy++;
+  if(keys.KeyA||keys.ArrowLeft)dx--;
+  if(keys.KeyD||keys.ArrowRight)dx++;
+  if(dx||dy){
+    // Favor the dominant axis for the displayed sprite direction.
+    if(Math.abs(dx)>Math.abs(dy))player.facing=dx<0?'left':'right';
+    else if(dy!==0)player.facing=dy<0?'up':'down';
+    let l=Math.hypot(dx,dy);dx/=l;dy/=l;
+    let sp=(keys.ShiftLeft||keys.ShiftRight)?player.sprint:player.speed;
+    const beforeX=player.x,beforeY=player.y;
+    moveEntity(player,dx*sp*dt,dy*sp*dt);
+    player.moving=Math.hypot(player.x-beforeX,player.y-beforeY)>.05;
+  }else player.moving=false;
+  const r=roomAt(player.x,player.y);
+  if(r&&r.id!==lastRoom){lastRoom=r.id;ui.roomToast.textContent=r.name;ui.roomToast.classList.add('show');toastTimer=1.4}
+  if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)ui.roomToast.classList.remove('show')}
+}
 function updateHint(){if(player.hidden){ui.hint.textContent='Hiding — press SPACE to come out.';return}let t=nearTask();if(t){ui.hint.textContent=`Press E — ${t.name}`;return}let h=nearHide();if(h){ui.hint.textContent=`Press SPACE — hide at ${h.label}`;return}let d=doors.find(d=>Math.hypot(player.x-d.x,player.y-d.y)<90);if(d){const a=roomBy(d.a),b=roomBy(d.b);ui.hint.textContent=`Doorway: ${a.name} ↔ ${b.name}`;return}ui.hint.textContent=boss.state==='CHASING'?'THE BOSS SAW YOU! Get through a door and break line of sight.':'Move through the doorways to reach your tasks. M opens the map.'}
-function updateUI(){let n=completed();ui.shiftFill.style.width=n/tasks.length*100+'%';ui.taskCount.textContent=n+'/'+tasks.length;ui.bossStatus.textContent='BOSS: '+boss.state;ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733'}
-function interact(){if(!running||activeTask)return;const t=nearTask();if(t)startTask(t)}function toggleHide(){if(!running||activeTask)return;if(player.hidden){player.hidden=false;player.hideSpot=null;return}const h=nearHide();if(h){player.hidden=true;player.hideSpot=h;player.x=h.x;player.y=h.y}}
-function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.taskOverlay.classList.remove('show');updateUI();if(completed()===tasks.length)winGame()}
-function mk(txt,fn){const b=document.createElement('button');b.textContent=txt;b.onclick=fn;ui.taskBtns.appendChild(b);return b}function buildMini(t){ui.taskBtns.innerHTML='';ui.miniFill.style.width='0%';taskState={progress:0};ui.taskTip.textContent='';if(t.kind==='sequence'){['STEP 1','STEP 2','STEP 3'].forEach((x,i)=>mk(x,e=>{if(i===taskState.progress){taskState.progress++;e.currentTarget.disabled=true;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}}));ui.taskTip.textContent='Do the steps in order.'}if(t.kind==='memory'){const seq=['INK','IMAGE','PRINT'];ui.taskTip.textContent='Sequence: INK → IMAGE → PRINT';['PRINT','INK','IMAGE'].forEach(x=>mk(x,()=>{if(x===seq[taskState.progress]){taskState.progress++;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}else{taskState.progress=0;ui.miniFill.style.width='0%'}}))}if(t.kind==='choice'){ui.taskTip.textContent='Inspect 5 pieces.';const next=()=>{ui.taskBtns.innerHTML='';const good=Math.random()>.3;ui.taskDesc.textContent=good?'Looks surprisingly normal.':'Yep. That is definitely a Chocolate Accident.';mk('APPROVE',()=>pick(true,good));mk('REJECT',()=>pick(false,good))};const pick=(a,g)=>{taskState.progress=a===g?taskState.progress+1:Math.max(0,taskState.progress-1);ui.miniFill.style.width=taskState.progress/5*100+'%';taskState.progress>=5?finishTask():next()};next()}if(t.kind==='timing'){taskState.pos=0;taskState.dir=1;ui.taskTip.textContent='Press SCAN between 45% and 65%.';mk('SCAN',()=>{if(taskState.pos>=45&&taskState.pos<=65){taskState.progress++;if(taskState.progress>=3)return finishTask();ui.taskTip.textContent=`Good scan. ${taskState.progress}/3`}else ui.taskTip.textContent='Missed. Try again.'})}if(t.kind==='hold'){taskState.temp=20;taskState.holding=false;let b=mk('HOLD HEAT',()=>{});b.onpointerdown=()=>taskState.holding=true;b.onpointerup=b.onpointerleave=()=>taskState.holding=false;ui.taskTip.textContent='Keep temperature in the middle while progress rises.'}}
-function updateMini(dt){if(!activeTask||!taskState)return;if(activeTask.kind==='timing'){taskState.pos+=taskState.dir*95*dt;if(taskState.pos>100){taskState.pos=100;taskState.dir=-1}if(taskState.pos<0){taskState.pos=0;taskState.dir=1}ui.miniFill.style.width=taskState.pos+'%'}if(activeTask.kind==='hold'){taskState.temp+=(taskState.holding?34:-20)*dt;taskState.temp=Math.max(0,Math.min(100,taskState.temp));if(taskState.temp>40&&taskState.temp<70)taskState.progress+=24*dt;else taskState.progress=Math.max(0,taskState.progress-10*dt);ui.miniFill.style.width=Math.min(100,taskState.progress)+'%';ui.taskTip.textContent=`Temperature ${Math.round(taskState.temp)}° · ${Math.round(taskState.progress)}%`;if(taskState.progress>=100)finishTask()}}
-function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by the Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
-function reset(){tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
+function updateUI(){let n=completed();ui.shiftFill.style.width=n/tasks.length*100+'%';ui.taskCount.textContent=n+'/'+tasks.length;ui.bossStatus.textContent='RENEE: '+boss.state;ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733';ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+tasks.length+'</b>'+tasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+'</div>').join('')}
+function interact(){if(!running||activeTask)return;const t=nearTask();if(t)startTask(t)}function toggleHide(){
+  if(!running || activeTask)return;
+
+  if(player.hidden){
+    // Stay exactly where the player entered hiding so the camera never jumps.
+    player.hidden=false;
+    player.hideSpot=null;
+    player.moving=false;
+    showHint('You left your hiding spot.');
+    return;
+  }
+
+  let best=null,bestD=Infinity;
+  for(const raw of hides){
+    const h=normalizedHide(raw);
+    const d=Math.hypot(player.x-h.approachX,player.y-h.approachY);
+    if(d<72&&d<bestD){
+      if(!collides(h.approachX,h.approachY,player.r+2)){
+        best=h;bestD=d;
+      }
+    }
+  }
+
+  if(best){
+    // Do NOT move player.x/player.y to hideX/hideY. The player simply becomes
+    // hidden at their current walkable location, keeping the camera fixed.
+    player.hidden=true;
+    player.hideSpot=best;
+    player.moving=false;
+    showHint('Hiding — press SPACE to leave.');
+  }
+}
+function abandonTask(){
+  if(!activeTask)return;
+  // Clear any held task controls so Space/heat cannot remain latched.
+  if(taskState&&Object.prototype.hasOwnProperty.call(taskState,'heat'))taskState.heat=false;
+  activeTask=null;
+  taskState=null;
+  ui.heatGame.classList.remove('active');
+  ui.miniBar.style.display='block';
+  ui.miniBar.classList.remove('scanning');
+  ui.taskOverlay.classList.remove('show');
+  showHint('Task abandoned.');
+}
+function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===tasks.length)winGame()}
+function mk(txt,fn){const b=document.createElement('button');b.textContent=txt;b.onclick=fn;ui.taskBtns.appendChild(b);return b}function buildMini(t){
+ui.taskBtns.innerHTML='';ui.heatGame.classList.remove('active');ui.miniBar.style.display='block';
+ui.miniBar.classList.remove('scanning');
+ui.miniFill.style.position='';
+ui.miniFill.style.left='';
+ui.miniFill.style.width='0%';
+taskState={progress:0};
+ui.taskTip.textContent='';if(t.kind==='sequence'){['STEP 1','STEP 2','STEP 3'].forEach((x,i)=>mk(x,e=>{if(i===taskState.progress){taskState.progress++;e.currentTarget.disabled=true;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}}));ui.taskTip.textContent='Do the steps in order.'}if(t.kind==='coffee'){
+  const steps=['GET MUG','ADD COFFEE','CREAM & SUGAR','BREW'];
+  taskState.progress=0;
+  ui.taskTip.textContent='Make the coffee in order. Don’t forget the mug.';
+  const renderCoffee=()=>{
+    ui.taskBtns.innerHTML='';
+    steps.forEach((label,i)=>{
+      const b=mk(label,()=>{
+        if(i!==taskState.progress){
+          taskState.progress=0;
+          ui.miniFill.style.width='0%';
+          ui.taskTip.textContent='Wrong order — start again with GET MUG.';
+          renderCoffee();
+          return;
+        }
+        taskState.progress++;
+        ui.miniFill.style.width=(taskState.progress/steps.length*100)+'%';
+        if(taskState.progress>=steps.length){
+          ui.taskTip.textContent='Coffee ready!';
+          setTimeout(finishTask,260);
+        }else{
+          ui.taskTip.textContent=`Next: ${steps[taskState.progress]}`;
+          renderCoffee();
+        }
+      });
+      b.disabled=i!==taskState.progress;
+      if(i<taskState.progress)b.disabled=true;
+    });
+  };
+  renderCoffee();
+}if(t.kind==='solicitors'){
+  taskState.progress=0;
+  taskState.round=0;
+  const pitches=[
+    'We can cut your copier costs by 73%!',
+    'Would Chocolate Accidents like premium water delivery?',
+    'I’m here about your factory’s extended warranty.',
+    'Can I speak to whoever buys office supplies?',
+    'Free energy audit! It only takes forty-five minutes.'
+  ];
+  const responses=[
+    ['NO SOLICITING','SEND AWAY','COME ON IN'],
+    ['NOT INTERESTED','SEND AWAY','SCHEDULE MEETING'],
+    ['PLEASE LEAVE','SEND AWAY','CALL THE BOSS']
+  ];
+  const nextSolicitor=()=>{
+    ui.taskBtns.innerHTML='';
+    const pitch=pitches[Math.floor(Math.random()*pitches.length)];
+    ui.taskDesc.textContent='Solicitor '+(taskState.progress+1)+' of 3: “'+pitch+'”';
+    ui.taskTip.textContent='Pick a firm response and keep them out of the factory.';
+    const opts=responses[taskState.progress % responses.length];
+    opts.forEach((label,i)=>mk(label,()=>{
+      if(i<2){
+        taskState.progress++;
+        ui.miniFill.style.width=(taskState.progress/3*100)+'%';
+        if(taskState.progress>=3){
+          ui.taskTip.textContent='Reception secured. No sales pitch survived.';
+          setTimeout(finishTask,300);
+        }else nextSolicitor();
+      }else{
+        ui.taskTip.textContent='Too friendly — they started another pitch. Try again.';
+      }
+    }));
+  };
+  nextSolicitor();
+}if(t.kind==='memory'){const seq=['INK','IMAGE','PRINT'];ui.taskTip.textContent='Sequence: INK → IMAGE → PRINT';['PRINT','INK','IMAGE'].forEach(x=>mk(x,()=>{if(x===seq[taskState.progress]){taskState.progress++;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}else{taskState.progress=0;ui.miniFill.style.width='0%'}}))}if(t.kind==='choice'){ui.taskTip.textContent='Inspect 5 pieces.';const next=()=>{ui.taskBtns.innerHTML='';const good=Math.random()>.3;ui.taskDesc.textContent=good?'Looks surprisingly normal.':'Yep. That is definitely a Chocolate Accident.';mk('APPROVE',()=>pick(true,good));mk('REJECT',()=>pick(false,good))};const pick=(a,g)=>{taskState.progress=a===g?taskState.progress+1:Math.max(0,taskState.progress-1);ui.miniFill.style.width=taskState.progress/5*100+'%';taskState.progress>=5?finishTask():next()};next()}if(t.kind==='timing'){
+taskState.pos=0;taskState.dir=1;taskState.low=45;taskState.high=65;taskState.progress=0;
+ui.miniBar.classList.add('scanning');
+ui.miniFill.style.width='5px';
+ui.miniFill.style.left='0%';
+ui.taskTip.textContent='Get 3 successful scans. Click STOP SCAN or press SPACE.';
+const stopScan=()=>{
+  if(!activeTask||!taskState||activeTask.kind!=='timing')return;
+  const pos=Number(taskState.pos);
+  const low=Number(taskState.low);
+  const high=Number(taskState.high);
+  if(pos>=low&&pos<=high){
+    taskState.progress++;
+    if(taskState.progress>=3){finishTask();return}
+    ui.taskTip.textContent=`Good scan — ${taskState.progress}/3.`;
+  }else{
+    ui.taskTip.textContent=`Missed — stop between LOW and HIGH. ${taskState.progress}/3`;
+  }
+};
+taskState.stopScan=stopScan;
+mk('STOP SCAN',stopScan);
+}if(t.kind==='hold'){
+taskState.temp=82;
+taskState.heat=false;
+taskState.progress=0;
+taskState.low=92;
+taskState.high=99;
+ui.heatGame.classList.add('active');
+ui.miniBar.style.display='none';
+ui.taskTip.textContent='Hold HEAT or hold SPACE to warm the chocolate. Release to let it cool naturally and stay in the PERFECT TEMP zone.';
+const heatBtn=mk('HEAT',()=>{});
+heatBtn.addEventListener('pointerdown',e=>{e.preventDefault();taskState.heat=true});
+['pointerup','pointerleave','pointercancel'].forEach(ev=>heatBtn.addEventListener(ev,()=>taskState.heat=false));
+}}
+function updateMini(dt){
+if(!activeTask||!taskState)return;
+if(activeTask.kind==='timing'){
+  taskState.pos+=taskState.dir*95*dt;
+  if(taskState.pos>100){taskState.pos=100;taskState.dir=-1}
+  if(taskState.pos<0){taskState.pos=0;taskState.dir=1}
+  ui.miniFill.style.left=`calc(${taskState.pos}% - 2px)`
+}
+if(activeTask.kind==='hold'){
+  if(taskState.heat)taskState.temp+=15*dt;
+  else taskState.temp-=2.2*dt;
+
+  taskState.temp=Math.max(75,Math.min(115,taskState.temp));
+
+  const pos=(taskState.temp-75)/40*100;
+  ui.heatNeedle.style.left=pos+'%';
+  ui.heatTemp.textContent=Math.round(taskState.temp)+'°F';
+
+  const good=taskState.temp>=taskState.low&&taskState.temp<=taskState.high;
+  if(good){
+    taskState.progress+=22*dt;
+    ui.heatHelp.textContent='Perfect! Hold it here…';
+  }else{
+    taskState.progress=Math.max(0,taskState.progress-6*dt);
+    ui.heatHelp.textContent=taskState.temp<taskState.low?'Too cold — hold HEAT or SPACE.':'Too hot — release HEAT/SPACE and let it cool.';
+  }
+
+  taskState.progress=Math.min(100,taskState.progress);
+  ui.temperFill.style.width=taskState.progress+'%';
+  ui.temperPct.textContent=Math.round(taskState.progress)+'%';
+
+  if(taskState.progress>=100)finishTask();
+}
+}
+function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by Renee';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
+function reset(){tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
 function drawDoor(c,d,minimap){c.save();c.translate(d.x,d.y);c.strokeStyle='#ffc35c';c.lineWidth=minimap?10:5;c.fillStyle='#2b1c14';if(d.o==='v'){c.fillRect(-WALL/2,-DOOR/2,WALL,DOOR);c.rotate(d.open*Math.PI/2);c.beginPath();c.moveTo(0,-DOOR/2);c.lineTo(0,DOOR/2);c.stroke()}else{c.fillRect(-DOOR/2,-WALL/2,DOOR,WALL);c.rotate(-d.open*Math.PI/2);c.beginPath();c.moveTo(-DOOR/2,0);c.lineTo(DOOR/2,0);c.stroke()}c.restore()}
-function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scale(s,s);c.fillStyle='#15100c';c.fillRect(0,0,WORLD.w,WORLD.h);rooms.forEach(r=>{c.fillStyle=r.c;c.fillRect(r.x,r.y,r.w,r.h);if(!minimap){c.fillStyle='#f7e7d5';c.font='800 18px system-ui';c.fillText(r.name,r.x+16,r.y+30)}});furniture.forEach(o=>{c.fillStyle='#2d2119';c.fillRect(o.x,o.y,o.w,o.h);c.strokeStyle='#8c6a50';c.lineWidth=2;c.strokeRect(o.x,o.y,o.w,o.h)});walls.forEach(w=>{c.fillStyle='#20150f';c.fillRect(w.x,w.y,w.w,w.h)});doors.forEach(d=>drawDoor(c,d,minimap));hides.forEach(h=>{c.beginPath();c.arc(h.x,h.y,11,0,Math.PI*2);c.fillStyle='#69d18f';c.fill()});tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}c.beginPath();c.arc(boss.x,boss.y,boss.r,0,Math.PI*2);c.fillStyle='#d84e45';c.fill();c.strokeStyle='#2d0f0c';c.lineWidth=3;c.stroke();if(!player.hidden||minimap){c.beginPath();c.arc(player.x,player.y,player.r,0,Math.PI*2);c.fillStyle=player.hidden?'#67a9ff88':'#67a9ff';c.fill();c.strokeStyle='#0e2a4c';c.lineWidth=3;c.stroke()}c.restore()}
+function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scale(s,s);c.fillStyle='#15100c';c.fillRect(0,0,WORLD.w,WORLD.h);rooms.forEach(r=>{
+  if(!minimap&&r.id==='break'&&breakRoomArt.complete&&breakRoomArt.naturalWidth){
+    c.drawImage(breakRoomArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='reception'&&receptionArt.complete&&receptionArt.naturalWidth){
+    c.drawImage(receptionArt,r.x,r.y,r.w,r.h);
+  }else{
+    c.fillStyle=r.c;c.fillRect(r.x,r.y,r.w,r.h);
+  }
+  if(!minimap){c.fillStyle='#f7e7d5';c.font='800 18px system-ui';c.fillText(r.name,r.x+16,r.y+30)}
+});furniture.forEach(o=>{if(o.draw===false)return;c.fillStyle='#2d2119';c.fillRect(o.x,o.y,o.w,o.h);c.strokeStyle='#8c6a50';c.lineWidth=2;c.strokeRect(o.x,o.y,o.w,o.h)});walls.forEach(w=>{c.fillStyle='#20150f';c.fillRect(w.x,w.y,w.w,w.h)});doors.forEach(d=>drawDoor(c,d,minimap));hides.forEach(rawH=>{
+  const h=normalizedHide(rawH);
+  if(minimap){
+    c.beginPath();
+    c.arc(h.approachX,h.approachY,8,0,Math.PI*2);
+    c.fillStyle='#69d18f';
+    c.fill();
+  }else if(hideHereArt.complete&&hideHereArt.naturalWidth){
+    const markerW=58;
+    const markerH=markerW*(hideHereArt.naturalHeight/hideHereArt.naturalWidth);
+    const isBreakRoomHide=(h.label||'').toLowerCase().includes('break room');
+    const markerOffsetX=isBreakRoomHide?20:0;
+    const markerOffsetY=isBreakRoomHide?-40:0;
+    c.drawImage(
+      hideHereArt,
+      h.approachX-markerW/2+markerOffsetX,
+      h.approachY-markerH+10+markerOffsetY,
+      markerW,
+      markerH
+    );
+  }else{
+    c.beginPath();
+    c.arc(h.approachX,h.approachY,10,0,Math.PI*2);
+    c.fillStyle='#69d18f';
+    c.fill();
+  }
+});tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawRenee(c,minimap);if(!player.hidden||minimap)drawChris(c,minimap);c.restore()}
 function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max(0,Math.min(WORLD.w-w,player.x-w/2));camera.y=Math.max(0,Math.min(WORLD.h-h,player.y-h/2));ctx.clearRect(0,0,w,h);drawWorld(ctx,-camera.x,-camera.y,1,false);if(player.hidden){ctx.fillStyle='#000a';ctx.fillRect(0,0,w,h);ctx.fillStyle='#fff';ctx.font='900 24px system-ui';ctx.textAlign='center';ctx.fillText('HIDING',w/2,44);ctx.textAlign='left'}}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
-addEventListener('keydown',e=>{keys[e.code]=true;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();if(e.code==='KeyE')interact();if(e.code==='Space')toggleHide();if(e.code==='KeyM')toggleMap()});addEventListener('keyup',e=>keys[e.code]=false);document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset()};document.getElementById('restartBtn').onclick=reset;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=()=>{activeTask=null;taskState=null;ui.taskOverlay.classList.remove('show')};const sprintBtn=document.getElementById('sprintBtn');sprintBtn.onpointerdown=()=>keys.ShiftLeft=true;sprintBtn.onpointerup=sprintBtn.onpointerleave=()=>keys.ShiftLeft=false;document.querySelectorAll('#mobilePad button').forEach(b=>{let code=b.dataset.key;b.onpointerdown=()=>keys[code]=true;b.onpointerup=b.onpointerleave=()=>keys[code]=false});updateUI();
+
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+addEventListener('keydown',e=>{
+  keys[e.code]=true;
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
+
+  if(e.code==='Escape'&&activeTask){
+    e.preventDefault();
+    if(!e.repeat)abandonTask();
+    return;
+  }
+
+  if(e.code==='KeyE')interact();
+
+  if(e.code==='Space'){
+    if(activeTask&&taskState&&activeTask.kind==='timing'){
+      if(!e.repeat&&taskState.stopScan)taskState.stopScan();
+    }else if(activeTask&&taskState&&activeTask.kind==='hold'){
+      taskState.heat=true;
+    }else if(!e.repeat){
+      toggleHide();
+    }
+  }
+
+  if(e.code==='KeyM')toggleMap();
+});
+addEventListener('keyup',e=>{
+  keys[e.code]=false;
+  if(e.code==='Space'&&activeTask&&taskState&&activeTask.kind==='hold'){
+    taskState.heat=false;
+  }
+});document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset();canvas.focus&&canvas.focus()};document.getElementById('restartBtn').onclick=reset;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;const sprintBtn=document.getElementById('sprintBtn');sprintBtn.onpointerdown=()=>keys.ShiftLeft=true;sprintBtn.onpointerup=sprintBtn.onpointerleave=()=>keys.ShiftLeft=false;document.querySelectorAll('#mobilePad button').forEach(b=>{let code=b.dataset.key;b.onpointerdown=()=>keys[code]=true;b.onpointerup=b.onpointerleave=()=>keys[code]=false});updateUI();
 })();
 </script></body></html>
