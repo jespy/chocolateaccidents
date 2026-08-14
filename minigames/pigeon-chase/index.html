@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Pigeon Chase — Little Alvaro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <section class="game-wrap">
+    <header class="topbar">
+      <div><h1>Pigeon Chase</h1><p>Help Little Alvaro catch 10 pigeons across Havana!</p></div>
+      <div class="hud">
+        <div><small>Pigeons</small><strong><span id="caught">0</span>/10</strong></div>
+        <div><small>Time</small><strong id="time">75</strong></div>
+        <div><small>Score</small><strong id="score">0</strong></div>
+      </div>
+    </header>
+
+    <div id="game" class="game" aria-label="Pigeon Chase game">
+      <div id="world" class="world">
+        <div class="level-background"></div>
+        <div id="finish" class="finish"><span>FINISH</span></div>
+        <div id="player" class="player" aria-label="Little Alvaro">
+          <div class="shadow"></div>
+          <img id="playerSprite" src="images/alvaro/run-1.png" alt="Little Alvaro">
+          <div class="catch-ring"></div>
+        </div>
+      </div>
+      <div id="message" class="message"></div>
+      <div id="start" class="overlay">
+        <div class="panel"><div class="big">🐦</div><h2>Ready, Little Alvaro?</h2>
+          <p>Explore the street, get close to pigeons, and catch them before time runs out.</p>
+          <p class="keys">Move: A/D or ←/→ &nbsp; • &nbsp; Jump: Space &nbsp; • &nbsp; Catch: E/Enter</p>
+          <button id="startBtn">Start Game</button></div>
+      </div>
+      <div id="end" class="overlay hidden"><div class="panel"><div id="endIcon" class="big">🎉</div>
+        <h2 id="endTitle">Great job!</h2><p id="endText"></p><p>Score: <strong id="finalScore">0</strong></p>
+        <button id="restartBtn">Play Again</button></div></div>
+    </div>
+
+    <div class="controls">
+      <div><button id="leftBtn">◀</button><button id="rightBtn">▶</button></div>
+      <div><button id="jumpBtn" class="jump">JUMP</button><button id="catchBtn" class="catch">CATCH</button></div>
+    </div>
+  </section>
+</main>
+<script src="game.js"></script>
+<script>
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && window.parent && window.parent !== window) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.parent.postMessage({ type: 'arcade-game-exit', game: 'pigeon-chase' }, '*');
+    }
+  }, true);
+</script>
+
+<script>
+(function(){
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' || e.code === 'Escape'){
+      if(window.parent && window.parent !== window){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.parent.postMessage({type:'arcade-game-exit'}, '*');
+      }
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>
