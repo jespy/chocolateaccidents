@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.11.20</title>
+<title>Chocolate Accidents — V3.12.1</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
-#app{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:auto 1fr}.topbar{grid-column:1/-1;min-height:64px;background:linear-gradient(#2c1d14,#1d130e);border-bottom:1px solid #5c3e2b;display:flex;align-items:center;gap:12px;padding:10px 14px;z-index:5}.brand{font-weight:900;white-space:nowrap}.brand span{color:var(--accent)}.progress-wrap{flex:1;display:flex;gap:9px;align-items:center;min-width:180px}.bar{height:16px;flex:1;border-radius:99px;overflow:hidden;background:#0e0a07;border:1px solid #674630}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffd779,#ff9d48)}.stat{font-size:12px;color:#decab2;white-space:nowrap}.pill{padding:6px 10px;border:1px solid #684733;border-radius:999px;font-size:12px;font-weight:900;min-width:118px;text-align:center}button{border:1px solid #765239;background:#38251a;color:#fff4e7;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}button:hover{background:#4b3222}button:disabled{opacity:.45}.stage{grid-column:1;grid-row:2;position:relative;min-height:0;background:#090705}canvas{display:block;width:100%;height:100%}.hint{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);background:#21150feF;border:1px solid #74513a;border-radius:12px;padding:10px 14px;font-weight:800;max-width:min(92vw,680px);text-align:center;pointer-events:none;box-shadow:0 8px 28px #0009}.controls{position:absolute;right:14px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.overlay{position:absolute;inset:0;background:#080605ca;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.overlay.show{display:flex}.card{width:min(720px,96vw);max-height:90vh;overflow:auto;background:linear-gradient(#2d1e15,#21160f);border:1px solid #78533a;border-radius:18px;padding:22px;box-shadow:0 24px 80px #000c}.card h1,.card h2{margin:0 0 8px}.sub{color:#d5bea6}.small{font-size:12px;color:#bfa88f}.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:120px}.taskArea{margin-top:14px;padding:16px;background:#160f0b;border:1px solid #60432f;border-radius:14px}.taskArea .bar{height:24px}.taskBtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.taskBtns button{min-width:92px}.taskList{grid-column:2;grid-row:2;background:#17100d;border-left:1px solid #5b3d2a;padding:16px 14px;overflow:auto;box-shadow:inset 8px 0 22px #0004}.taskList b{font-size:13px;letter-spacing:.04em}.taskList div{font-size:12px;color:#d9c2a9;margin-top:9px;line-height:1.25;padding-bottom:8px;border-bottom:1px solid #332319}.taskList .done{color:#76d89b;text-decoration:line-through}.roomToast{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#110c08dc;border:1px solid #6d4a34;font-weight:900;opacity:0;transition:opacity .18s;pointer-events:none}.roomToast.show{opacity:1}#mobilePad{position:absolute;left:14px;bottom:14px;display:none;grid-template-columns:46px 46px 46px;grid-template-rows:46px 46px;gap:4px}#mobilePad button{padding:0;font-size:18px;background:#2f2017dd}.up{grid-column:2}.left{grid-column:1;grid-row:2}.down{grid-column:2;grid-row:2}.right{grid-column:3;grid-row:2}@media(max-width:760px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.topbar{grid-column:1;grid-row:1;flex-wrap:wrap}.brand{width:100%}.progress-wrap{order:3;width:100%}.stage{grid-column:1;grid-row:2}.taskList{grid-column:1;grid-row:3;max-height:112px;border-left:0;border-top:1px solid #5b3d2a;padding:8px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 12px}.taskList b{grid-column:1/-1}.taskList div{font-size:10px;margin-top:2px;padding-bottom:2px;border-bottom:0}.controls{bottom:72px}.hint{bottom:126px}#mobilePad{display:grid}}
+#app{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 250px;grid-template-rows:auto 1fr}.topbar{grid-column:1/-1;min-height:64px;background:linear-gradient(#2c1d14,#1d130e);border-bottom:1px solid #5c3e2b;display:flex;align-items:center;gap:12px;padding:10px 14px;z-index:5}.brand{font-weight:900;white-space:nowrap}.brand span{color:var(--accent)}.progress-wrap{flex:1;display:flex;gap:9px;align-items:center;min-width:180px}.bar{height:16px;flex:1;border-radius:99px;overflow:hidden;background:#0e0a07;border:1px solid #674630}.fill{height:100%;width:0;background:linear-gradient(90deg,#ffd779,#ff9d48)}.stat{font-size:12px;color:#decab2;white-space:nowrap}.pill{padding:6px 10px;border:1px solid #684733;border-radius:999px;font-size:12px;font-weight:900;min-width:118px;text-align:center}button{border:1px solid #765239;background:#38251a;color:#fff4e7;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}button:hover{background:#4b3222}button:disabled{opacity:.45}.stage{grid-column:1;grid-row:2;position:relative;min-height:0;background:#090705}canvas{display:block;width:100%;height:100%}.hint{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);background:#21150feF;border:1px solid #74513a;border-radius:12px;padding:10px 14px;font-weight:800;max-width:min(92vw,680px);text-align:center;pointer-events:none;box-shadow:0 8px 28px #0009}.controls{position:absolute;right:14px;bottom:14px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.overlay{position:absolute;inset:0;background:#080605ca;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.overlay.show{display:flex}.card{width:min(720px,96vw);max-height:90vh;overflow:auto;background:linear-gradient(#2d1e15,#21160f);border:1px solid #78533a;border-radius:18px;padding:22px;box-shadow:0 24px 80px #000c}.card h1,.card h2{margin:0 0 8px}.sub{color:#d5bea6}.small{font-size:12px;color:#bfa88f}.row{display:flex;gap:10px;flex-wrap:wrap}.row>div{flex:1;min-width:120px}.taskArea{margin-top:14px;padding:16px;background:#160f0b;border:1px solid #60432f;border-radius:14px}.taskArea .bar{height:24px}.taskBtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}.taskBtns button{min-width:92px}.taskList{grid-column:2;grid-row:2;background:#17100d;border-left:1px solid #5b3d2a;padding:16px 14px;overflow:auto;box-shadow:inset 8px 0 22px #0004}.taskList b{font-size:13px;letter-spacing:.04em}.taskList div{font-size:12px;color:#d9c2a9;margin-top:9px;line-height:1.25;padding-bottom:8px;border-bottom:1px solid #332319}.taskList .done{color:#76d89b;text-decoration:line-through}.roomToast{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#110c08dc;border:1px solid #6d4a34;font-weight:900;opacity:0;transition:opacity .18s;pointer-events:none}.roomToast.show{opacity:1}@media(max-width:760px){#app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.topbar{grid-column:1;grid-row:1;flex-wrap:wrap}.brand{width:100%}.progress-wrap{order:3;width:100%}.stage{grid-column:1;grid-row:2}.taskList{grid-column:1;grid-row:3;max-height:112px;border-left:0;border-top:1px solid #5b3d2a;padding:8px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 12px}.taskList b{grid-column:1/-1}.taskList div{font-size:10px;margin-top:2px;padding-bottom:2px;border-bottom:0}.controls{bottom:72px}.hint{bottom:126px}#mobilePad{display:grid}}
 
 
 .miniBar{position:relative;overflow:visible!important;margin-top:22px}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.11.20 employee punch-in */
+/* V3.12.1 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.11.20 cool industrial UI */
+/* V3.12.1 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -67,19 +67,111 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .scanMark b,.scanBoundary span,.perfectZone span{background:#152236!important;border-color:#607895!important}.heatReadout,.temperLabel{color:#d8e3ef!important}.heatScale{color:#aebdce!important}
 .controls{background:#111b2be6!important;border-color:#536985!important;color:#dce6f2!important}#startBtn[disabled]{background:#475569!important;border-color:#64748b!important}
 
-/* V3.11.20 bathroom interaction */
+/* V3.12.1 bathroom interaction */
 #davidMessage{position:fixed;left:50%;top:20%;transform:translateX(-50%);z-index:40;
  display:none;padding:12px 18px;border-radius:12px;background:#111827ee;border:1px solid #71839a;
  color:#fff;font-weight:900;box-shadow:0 8px 28px #0008}
 #davidMessage.show{display:block;animation:davidPop .18s ease-out}
 @keyframes davidPop{from{transform:translateX(-50%) scale(.92);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 
+
+/* V3.12.1 mobile experience */
+#tasksToggleBtn{display:none}
+#mobileJoystick{display:none}
+.actionIcon{display:none}
+.actionLabel{display:inline}
+.stage button,#mobileJoystick,#mobileJoystick *,#actionControls,#actionControls *{
+  -webkit-user-select:none!important;user-select:none!important;
+  -webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important;
+}
+.stage button,#mobileJoystick{touch-action:none}
+
+@media(max-width:760px){
+  html,body,#app,.stage,canvas{overscroll-behavior:none}
+  #app{grid-template-columns:1fr!important;grid-template-rows:auto minmax(0,1fr)!important}
+  .topbar{grid-column:1!important;grid-row:1!important;min-height:52px!important;padding:6px 8px!important;gap:6px!important;flex-wrap:nowrap!important}
+  .brand{width:auto!important;flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis}
+  .brand small{display:none}
+  .progress-wrap{order:0!important;width:auto!important;min-width:72px!important;max-width:128px!important;gap:4px!important}
+  .progress-wrap .stat:first-child{display:none}
+  .bar{height:11px!important}
+  .stat{font-size:10px!important}
+  .pill,#restartBtn{display:none!important}
+  #mapBtn,#tasksToggleBtn{padding:7px 9px!important;border-radius:9px!important;font-size:11px!important;min-width:0!important;flex:none}
+  #tasksToggleBtn{display:block!important}
+
+  .stage{grid-column:1!important;grid-row:2!important;overflow:hidden!important}
+
+  .taskList{
+    position:fixed!important;z-index:25!important;top:58px!important;right:8px!important;
+    width:min(82vw,330px)!important;max-height:52vh!important;display:block!important;
+    padding:12px 14px!important;border:1px solid #536985!important;border-radius:14px!important;
+    box-shadow:0 14px 38px #000a!important;
+    transform:translateX(calc(100% + 22px));opacity:0;pointer-events:none;
+    transition:transform .18s ease,opacity .18s ease;
+  }
+  .taskList.mobileOpen{transform:translateX(0);opacity:1;pointer-events:auto}
+  .taskList b{display:block;font-size:12px;margin-bottom:5px}
+  .taskList div{font-size:11px!important;margin-top:5px!important;padding:5px 0!important;border-bottom:1px solid #304156!important}
+
+  #mobileJoystick{
+    display:block;position:absolute;left:14px;bottom:max(14px,env(safe-area-inset-bottom));
+    width:118px;height:118px;z-index:7;
+  }
+  .joystickRing{
+    position:absolute;inset:0;border-radius:50%;background:#111b2bb8;border:2px solid #6b819cbb;
+    box-shadow:inset 0 0 25px #0008,0 5px 20px #0007;
+  }
+  .joystickRing:before{content:'';position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#91a5bd;transform:translate(-50%,-50%);opacity:.7}
+  .joystickKnob{
+    position:absolute;width:52px;height:52px;left:50%;top:50%;border-radius:50%;
+    transform:translate(-50%,-50%);background:#3979a9e8;border:2px solid #84b8de;
+    box-shadow:0 5px 15px #0008,inset 0 1px 3px #ffffff44;pointer-events:none;
+  }
+
+  .controls{
+    right:14px!important;bottom:max(16px,env(safe-area-inset-bottom))!important;
+    display:grid!important;grid-template-columns:58px 58px!important;grid-template-rows:58px 58px!important;
+    gap:8px!important;width:auto!important;background:transparent!important;border:0!important;box-shadow:none!important;z-index:8;
+  }
+  .actionBtn{
+    width:58px!important;height:58px!important;min-width:0!important;padding:0!important;border-radius:50%!important;
+    display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:1px;opacity:.9;
+    box-shadow:0 5px 18px #0008!important;
+  }
+  .interactAction{grid-column:2;grid-row:1 / span 2;align-self:center;width:66px!important;height:66px!important;margin-left:-4px}
+  .hideAction{grid-column:1;grid-row:1}
+  .sprintAction{grid-column:1;grid-row:2}
+  .actionIcon{display:block;font-size:20px;line-height:20px}
+  .interactAction .actionIcon{font-size:23px}
+  .actionLabel{display:block;font-size:8px;line-height:9px;max-width:52px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .hint{
+    left:50%!important;bottom:max(94px,calc(env(safe-area-inset-bottom) + 94px))!important;
+    max-width:56vw!important;padding:7px 10px!important;font-size:10px!important;line-height:1.2!important;border-radius:10px!important;
+  }
+  .roomToast{top:10px!important;font-size:11px!important;padding:6px 11px!important}
+
+  .overlay{padding:8px!important}
+  .card{width:min(96vw,720px)!important;max-height:88dvh!important;padding:14px!important;border-radius:14px!important}
+  .card h1{font-size:22px}.card h2{font-size:19px}
+  .taskArea{padding:11px!important;margin-top:9px!important}
+  .taskBtns{margin-top:10px!important;gap:6px!important}
+  .taskBtns button{min-width:76px!important;padding:9px 10px!important}
+}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.11.20</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
-<div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.11.20</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.1</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
+<div class="controls" id="actionControls">
+  <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
+  <button id="hideBtn" class="actionBtn hideAction" aria-label="Hide"><span class="actionIcon">◉</span><span class="actionLabel">Hide</span></button>
+  <button id="sprintBtn" class="actionBtn sprintAction" aria-label="Sprint"><span class="actionIcon">⚡</span><span class="actionLabel">Sprint</span></button>
+</div>
+<div id="mobileJoystick" aria-label="Movement joystick"><div class="joystickRing"><div class="joystickKnob" id="joystickKnob"></div></div></div>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.1</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -193,7 +285,13 @@ const tasks=[
  {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A'},
  {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
 ];
-const hides=[{x:248,y:748,label:'Break Room couch',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790}];
+const hides=[
+{x:248,y:748,label:'Break Room couch',coolAction:'ACT NATURAL',coolDetail:'Pretend this coffee break is completely work-related.',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},
+{x:525,y:570,label:'Freezer shelving',coolAction:'CHECK INVENTORY',coolDetail:'Study the shelf like something important is definitely missing.'},
+{x:385,y:790,label:'Art desk',coolAction:'FAKE A DEADLINE',coolDetail:'Look intensely busy with an extremely urgent design.'},
+{x:1010,y:590,label:'Production machine',coolAction:'QUALITY CONTROL',coolDetail:'Inspect the machine like you know exactly what it does.'},
+{x:1490,y:790,label:'Warehouse boxes',coolAction:'CHECK THE SHELF',coolDetail:'Pretend to hunt for inventory.',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790}
+];
 const player={hasBathroomKey:false,characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
 const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1135,y:760},{x:1260,y:900},{x:1450,y:900}];
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
@@ -654,12 +752,14 @@ function updateHint(){
 function updateInteractButton(){
   const b=document.getElementById('interactBtn');
   if(!b)return;
+  const label=b.querySelector('.actionLabel');
+  if(!label)return;
   if(nearBathroomDoor()){
-    b.textContent=lockedBathroomDoor.locked
-      ? (player.hasBathroomKey?'Unlock Door (E)':'Try Door (E)')
-      : 'Open Door (E)';
+    label.textContent=lockedBathroomDoor.locked
+      ? (player.hasBathroomKey?'Unlock':'Try Door')
+      : 'Open';
   }else{
-    b.textContent='Interact (E)';
+    label.textContent='Interact';
   }
 }
 
@@ -680,7 +780,7 @@ function interact(){
     player.hidden=false;
     player.hideSpot=null;
     player.moving=false;
-    showHint('You left your hiding spot.');
+    showHint('Back to work. Renee can see you again.');
     return;
   }
 
@@ -701,7 +801,7 @@ function interact(){
     player.hidden=true;
     player.hideSpot=best;
     player.moving=false;
-    showHint('Hiding — press SPACE to leave.');
+    showHint(`LET’S PLAY IT COOL — ${best.coolAction||'LOOK BUSY'} · Press SPACE to stop.`);
   }
 }
 function abandonTask(){
@@ -911,27 +1011,39 @@ function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scal
     c.arc(h.approachX,h.approachY,8,0,Math.PI*2);
     c.fillStyle='#69d18f';
     c.fill();
-  }else if(hideHereArt.complete&&hideHereArt.naturalWidth){
-    const markerW=58;
-    const markerH=markerW*(hideHereArt.naturalHeight/hideHereArt.naturalWidth);
-    const isBreakRoomHide=(h.label||'').toLowerCase().includes('break room');
-    const markerOffsetX=isBreakRoomHide?20:0;
-    const markerOffsetY=isBreakRoomHide?-40:0;
-    c.drawImage(
-      hideHereArt,
-      h.approachX-markerW/2+markerOffsetX,
-      h.approachY-markerH+10+markerOffsetY,
-      markerW,
-      markerH
-    );
   }else{
+    const isBreakRoom=(h.label||'').toLowerCase().includes('break room');
+    const mx=h.approachX+(isBreakRoom?20:0);
+    const my=h.approachY+(isBreakRoom?-40:0);
+    const label=h.coolAction||'PLAY IT COOL';
+    c.save();
+    c.font='900 9px Arial';
+    const tw=Math.max(70,c.measureText(label).width+18);
+    c.fillStyle=player.hidden&&player.hideSpot&&player.hideSpot.label===h.label?'#1f7a4fdd':'#172235e8';
+    c.strokeStyle='#78d89a';
+    c.lineWidth=2;
     c.beginPath();
-    c.arc(h.approachX,h.approachY,10,0,Math.PI*2);
-    c.fillStyle='#69d18f';
-    c.fill();
+    c.roundRect(mx-tw/2,my-24,tw,22,7);
+    c.fill();c.stroke();
+    c.fillStyle='#ffffff';
+    c.textAlign='center';
+    c.fillText(label,mx,my-9);
+    c.restore();
   }
 });tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawBathroomApproach(c,minimap);
-drawRenee(c,minimap);if(!player.hidden||minimap)drawChris(c,minimap);c.restore()}
+drawRenee(c,minimap);drawChris(c,minimap);
+if(!minimap&&player.hidden&&player.hideSpot){
+  c.save();
+  c.font='900 10px Arial';
+  c.textAlign='center';
+  const txt=player.hideSpot.coolAction||'PLAY IT COOL';
+  const tw=c.measureText(txt).width+18;
+  c.fillStyle='#10281fdd';c.strokeStyle='#69d18f';c.lineWidth=2;
+  c.beginPath();c.roundRect(player.x-tw/2,player.y-92,tw,23,8);c.fill();c.stroke();
+  c.fillStyle='#9ff0b9';c.fillText(txt,player.x,player.y-77);
+  c.restore();
+}
+c.restore()}
 function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max(0,Math.min(WORLD.w-w,player.x-w/2));camera.y=Math.max(0,Math.min(WORLD.h-h,player.y-h/2));ctx.clearRect(0,0,w,h);drawWorld(ctx,-camera.x,-camera.y,1,false);if(player.hidden){ctx.fillStyle='#000a';ctx.fillRect(0,0,w,h);ctx.fillStyle='#fff';ctx.font='900 24px system-ui';ctx.textAlign='center';ctx.fillText('HIDING',w/2,44);ctx.textAlign='left'}}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
 function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
@@ -964,11 +1076,59 @@ addEventListener('keyup',e=>{
   if(e.code==='Space'&&activeTask&&taskState&&activeTask.kind==='hold'){
     taskState.heat=false;
   }
-});document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset();canvas.focus&&canvas.focus()};document.getElementById('restartBtn').onclick=reset;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;const sprintBtn=document.getElementById('sprintBtn');sprintBtn.onpointerdown=()=>keys.ShiftLeft=true;sprintBtn.onpointerup=sprintBtn.onpointerleave=()=>keys.ShiftLeft=false;document.querySelectorAll('#mobilePad button').forEach(b=>{let code=b.dataset.key;b.onpointerdown=()=>keys[code]=true;b.onpointerup=b.onpointerleave=()=>keys[code]=false});updateUI();
+});document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset();canvas.focus&&canvas.focus()};document.getElementById('restartBtn').onclick=reset;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;const sprintBtn=document.getElementById('sprintBtn');sprintBtn.onpointerdown=e=>{e.preventDefault();keys.ShiftLeft=true};sprintBtn.onpointerup=sprintBtn.onpointercancel=sprintBtn.onpointerleave=()=>keys.ShiftLeft=false;const tasksToggleBtn=document.getElementById('tasksToggleBtn');
+tasksToggleBtn.addEventListener('click',()=>{
+  const open=ui.taskList.classList.toggle('mobileOpen');
+  tasksToggleBtn.setAttribute('aria-expanded',open?'true':'false');
+  tasksToggleBtn.textContent=open?'Close':'Tasks';
+});
+document.getElementById('stage').addEventListener('pointerdown',e=>{
+  if(window.innerWidth<=760&&ui.taskList.classList.contains('mobileOpen')&&!e.target.closest('.taskList')){
+    ui.taskList.classList.remove('mobileOpen');
+    tasksToggleBtn.setAttribute('aria-expanded','false');
+    tasksToggleBtn.textContent='Tasks';
+  }
+});
+
+const joystick=document.getElementById('mobileJoystick');
+const joystickKnob=document.getElementById('joystickKnob');
+let joystickPointer=null;
+function clearJoystickKeys(){keys.ArrowUp=false;keys.ArrowDown=false;keys.ArrowLeft=false;keys.ArrowRight=false}
+function setJoystickFromPointer(e){
+  const rect=joystick.getBoundingClientRect(),cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+  let dx=e.clientX-cx,dy=e.clientY-cy;
+  const max=rect.width*.31,mag=Math.hypot(dx,dy);
+  if(mag>max){dx=dx/mag*max;dy=dy/mag*max}
+  joystickKnob.style.transform=`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px))`;
+  clearJoystickKeys();
+  const t=9;
+  if(dy<-t)keys.ArrowUp=true;
+  if(dy>t)keys.ArrowDown=true;
+  if(dx<-t)keys.ArrowLeft=true;
+  if(dx>t)keys.ArrowRight=true;
+}
+function releaseJoystick(){
+  joystickPointer=null;clearJoystickKeys();
+  joystickKnob.style.transform='translate(-50%,-50%)';
+}
+joystick.addEventListener('pointerdown',e=>{
+  e.preventDefault();joystickPointer=e.pointerId;
+  joystick.setPointerCapture&&joystick.setPointerCapture(e.pointerId);
+  setJoystickFromPointer(e);
+});
+joystick.addEventListener('pointermove',e=>{if(e.pointerId===joystickPointer){e.preventDefault();setJoystickFromPointer(e)}});
+joystick.addEventListener('pointerup',e=>{if(e.pointerId===joystickPointer)releaseJoystick()});
+joystick.addEventListener('pointercancel',e=>{if(e.pointerId===joystickPointer)releaseJoystick()});
+
+document.querySelectorAll('#actionControls button,#mobileJoystick').forEach(el=>{
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+  el.addEventListener('selectstart',e=>e.preventDefault());
+});
+updateUI();
 })();
 
 
-// V3.11.20 employee punch-in
+// V3.12.1 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
