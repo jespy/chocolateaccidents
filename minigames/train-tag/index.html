@@ -60,5 +60,19 @@ window.TrainTag={start:startGame,quit:quitToArcade,getState:()=>({score:Math.flo
 if(window.parent&&window.parent!==window){setTimeout(()=>{try{startGame()}catch(e){}},120);}
 })();
 </script>
+
+<script>
+(function(){
+  window.addEventListener('keydown', function(e){
+    if((e.key==='Escape'||e.code==='Escape') && window.parent && window.parent!==window){
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation)e.stopImmediatePropagation();
+      window.parent.postMessage({type:'train-tag-exit'}, '*');
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
