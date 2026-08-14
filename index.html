@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.12.10</title>
+<title>Chocolate Accidents — V3.12.14</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.12.10 employee punch-in */
+/* V3.12.14 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.12.10 cool industrial UI */
+/* V3.12.14 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -67,7 +67,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .scanMark b,.scanBoundary span,.perfectZone span{background:#152236!important;border-color:#607895!important}.heatReadout,.temperLabel{color:#d8e3ef!important}.heatScale{color:#aebdce!important}
 .controls{background:#111b2be6!important;border-color:#536985!important;color:#dce6f2!important}#startBtn[disabled]{background:#475569!important;border-color:#64748b!important}
 
-/* V3.12.10 bathroom interaction */
+/* V3.12.14 bathroom interaction */
 #davidMessage{position:fixed;left:50%;top:20%;transform:translateX(-50%);z-index:40;
  display:none;padding:12px 18px;border-radius:12px;background:#111827ee;border:1px solid #71839a;
  color:#fff;font-weight:900;box-shadow:0 8px 28px #0008}
@@ -75,7 +75,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 @keyframes davidPop{from{transform:translateX(-50%) scale(.92);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 
 
-/* V3.12.10 mobile experience */
+/* V3.12.14 mobile experience */
 #tasksToggleBtn{display:none}
 #mobileJoystick{display:none}
 .actionIcon{display:none}
@@ -161,7 +161,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 }
 
 
-/* V3.12.10 Shipping Computer Arcade Hub */
+/* V3.12.14 Shipping Computer Arcade Hub */
 .arcadeOverlay{position:absolute;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:12px;background:#07101df2}
 .arcadeOverlay.show{display:flex}
 .arcadeShell{width:min(100%,1060px);height:min(100%,730px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:2px solid #607894;border-radius:16px;background:#0b1220;box-shadow:0 24px 70px #000c}
@@ -190,10 +190,37 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
   .arcadeMenu{padding:12px}.arcadeMenu h2{font-size:21px}
 }
 
+
+/* V3.12.14 Shipping Scale */
+.shippingScaleGame{display:none;margin:0 auto 10px;max-width:860px}
+.shippingScaleGame.active{display:block}
+.shippingScaleCanvas{position:relative;width:100%;aspect-ratio:1197/815;overflow:hidden;border-radius:12px;background:#111}
+.shippingScaleCanvas>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-select:none;user-select:none}
+.scaleBg{z-index:1}
+.scaleNeedle{z-index:3;transform-origin:47.786% 65.399%;transform:rotate(-90deg);will-change:transform}
+.scaleCap{z-index:4}
+.scaleResetArt,.scaleLockArt{z-index:5}
+.scaleResetDownArt,.scaleLockDownArt{z-index:6;opacity:0;transition:opacity .045s linear}
+.scaleResetDownArt.pressed,.scaleLockDownArt.pressed{opacity:1}
+.scaleWeight{position:absolute;z-index:6;left:81.1%;top:50.7%;width:12.7%;height:11.7%;display:flex;align-items:center;justify-content:center;color:#8cff69;font-family:"Courier New",monospace;font-weight:900;font-size:clamp(18px,4.1vw,48px);letter-spacing:.04em;text-shadow:0 0 8px #55ff4488;pointer-events:none}
+.scaleResult{position:absolute;z-index:7;left:29.5%;top:77.8%;width:41%;height:13%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:clamp(11px,2vw,24px);letter-spacing:.03em;color:#a8e98f;text-shadow:0 2px 3px #000;pointer-events:none;padding:0 3%}
+.scaleHotspot{position:absolute;z-index:10;padding:0!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:8px!important;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.scaleResetHotspot{left:10%;top:79%;width:17%;height:14%}
+.scaleLockHotspot{left:73%;top:79%;width:17%;height:14%}
+.scaleHotspot:focus-visible{outline:3px solid #fff8b5;outline-offset:-3px}
+.scaleRoundStatus{text-align:center;font-weight:900;font-size:12px;letter-spacing:.08em;color:#c8d5e4;margin-top:7px}
+@media(max-width:760px){
+  .shippingScaleGame{max-width:96vw}
+  .shippingScaleCanvas{border-radius:8px}
+  .scaleWeight{font-size:clamp(15px,5vw,32px)}
+  .scaleResult{font-size:clamp(9px,2.8vw,16px)}
+  .scaleRoundStatus{font-size:10px;margin-top:4px}
+}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.10</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.14</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -240,7 +267,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.10</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.14</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -296,6 +323,24 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
   <p class="heatHelp" id="heatHelp">Hold HEAT or hold SPACE to warm the chocolate. Release to let it cool naturally.</p>
 </div>
 
+        
+<div id="shippingScaleGame" class="shippingScaleGame" aria-label="Shipping Scale task">
+  <div class="shippingScaleCanvas">
+    <img class="scaleBg" src="assets/tasks/shipping_scale/scale_background.png" alt="">
+    <img class="scaleNeedle" id="scaleNeedle" src="assets/tasks/shipping_scale/needle.png" alt="">
+    <img class="scaleCap" src="assets/tasks/shipping_scale/needle_cap.png" alt="">
+    <img class="scaleResetArt" src="assets/tasks/shipping_scale/reset_btn.png" alt="">
+    <img class="scaleResetDownArt" id="scaleResetDownArt" src="assets/tasks/shipping_scale/reset_btn_down.png" alt="">
+    <img class="scaleLockArt" src="assets/tasks/shipping_scale/lock_in_btn.png" alt="">
+    <img class="scaleLockDownArt" id="scaleLockDownArt" src="assets/tasks/shipping_scale/lock_in_btn_down.png" alt="">
+    <div class="scaleWeight" id="scaleWeight">000</div>
+    <div class="scaleResult" id="scaleResult"></div>
+    <button type="button" class="scaleHotspot scaleResetHotspot" id="scaleResetBtn" aria-label="Reset scale"></button>
+    <button type="button" class="scaleHotspot scaleLockHotspot" id="scaleLockBtn" aria-label="Lock in weight"></button>
+  </div>
+  <div class="scaleRoundStatus" id="scaleRoundStatus">CASE 1 OF 3</div>
+</div>
+
         <div class="taskBtns" id="taskBtns"></div>
       </div><p class="small" id="taskTip"></p><button id="leaveTaskBtn" style="width:100%;margin-top:10px">Abandon Task (Esc)</button></div></div>
 <div class="overlay" id="mapOverlay"><div class="card"><h2>Factory Map</h2><p class="sub">Yellow = task · Blue = you · Red = boss · Green = hiding spot · Gold gaps = doors</p><canvas id="mapCanvas" width="900" height="560" style="width:100%;height:auto;background:#120e0b;border-radius:12px;border:1px solid #5f412e"></canvas><button id="closeMapBtn" style="width:100%;margin-top:12px">Close Map</button></div></div>
@@ -306,7 +351,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 <script>
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
-const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
+const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In / Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
@@ -356,7 +401,7 @@ const tasks=[
  {name:'Fix Accounting Office',desc:'Enter the printer reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Accounting Office'},
  {name:'Production Quality Check',desc:'Approve the good chocolates and reject the accidents.',x:1180,y:520,kind:'choice',done:false,room:'Production'},
  {name:'Restart Tempering Line',desc:'Restart the production line in the proper order.',x:980,y:300,kind:'sequence',done:false,room:'Production'},
- {name:'Find Shipping Cases',desc:'Scan three cases hidden in Chocolate Storage.',x:1100,y:920,kind:'timing',done:false,room:'Chocolate Storage'},
+ {name:'Find Shipping Cases',desc:'Use the package scale to find three cases in the acceptable weight range.',x:350,y:145,kind:'shippingScale',done:false,room:'Shipping'},
  {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A'},
  {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
 ];
@@ -976,14 +1021,15 @@ function abandonTask(){
   activeTask=null;
   taskState=null;
   ui.heatGame.classList.remove('active');
+  ui.shippingScaleGame.classList.remove('active');
   ui.miniBar.style.display='block';
   ui.miniBar.classList.remove('scanning');
   ui.taskOverlay.classList.remove('show');
   showHint('Task abandoned.');
 }
-function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===tasks.length)winGame()}
+function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===tasks.length)winGame()}
 function mk(txt,fn){const b=document.createElement('button');b.textContent=txt;b.onclick=fn;ui.taskBtns.appendChild(b);return b}function buildMini(t){
-ui.taskBtns.innerHTML='';ui.heatGame.classList.remove('active');ui.miniBar.style.display='block';
+ui.taskBtns.innerHTML='';ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';
 ui.miniBar.classList.remove('scanning');
 ui.miniFill.style.position='';
 ui.miniFill.style.left='';
@@ -1054,7 +1100,88 @@ ui.taskTip.textContent='';if(t.kind==='sequence'){['STEP 1','STEP 2','STEP 3'].f
     }));
   };
   nextSolicitor();
-}if(t.kind==='memory'){const seq=['INK','IMAGE','PRINT'];ui.taskTip.textContent='Sequence: INK → IMAGE → PRINT';['PRINT','INK','IMAGE'].forEach(x=>mk(x,()=>{if(x===seq[taskState.progress]){taskState.progress++;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}else{taskState.progress=0;ui.miniFill.style.width='0%'}}))}if(t.kind==='choice'){ui.taskTip.textContent='Inspect 5 pieces.';const next=()=>{ui.taskBtns.innerHTML='';const good=Math.random()>.3;ui.taskDesc.textContent=good?'Looks surprisingly normal.':'Yep. That is definitely a Chocolate Accident.';mk('APPROVE',()=>pick(true,good));mk('REJECT',()=>pick(false,good))};const pick=(a,g)=>{taskState.progress=a===g?taskState.progress+1:Math.max(0,taskState.progress-1);ui.miniFill.style.width=taskState.progress/5*100+'%';taskState.progress>=5?finishTask():next()};next()}if(t.kind==='timing'){
+}if(t.kind==='memory'){const seq=['INK','IMAGE','PRINT'];ui.taskTip.textContent='Sequence: INK → IMAGE → PRINT';['PRINT','INK','IMAGE'].forEach(x=>mk(x,()=>{if(x===seq[taskState.progress]){taskState.progress++;ui.miniFill.style.width=taskState.progress/3*100+'%';if(taskState.progress===3)setTimeout(finishTask,220)}else{taskState.progress=0;ui.miniFill.style.width='0%'}}))}if(t.kind==='choice'){ui.taskTip.textContent='Inspect 5 pieces.';const next=()=>{ui.taskBtns.innerHTML='';const good=Math.random()>.3;ui.taskDesc.textContent=good?'Looks surprisingly normal.':'Yep. That is definitely a Chocolate Accident.';mk('APPROVE',()=>pick(true,good));mk('REJECT',()=>pick(false,good))};const pick=(a,g)=>{taskState.progress=a===g?taskState.progress+1:Math.max(0,taskState.progress-1);ui.miniFill.style.width=taskState.progress/5*100+'%';taskState.progress>=5?finishTask():next()};next()}
+if(t.kind==='shippingScale'){
+  ui.miniBar.style.display='none';
+  ui.shippingScaleGame.classList.add('active');
+  ui.taskBtns.innerHTML='';
+  ui.taskTip.textContent='Stop the needle in the green zone. Tap LOCK IN or press SPACE.';
+  taskState={progress:0,value:12,dir:1,moving:true,minGood:47,maxGood:103};
+
+  const renderShippingScale=()=>{
+    const value=Math.max(0,Math.min(150,taskState.value));
+    const angle=-90+(value/150)*180;
+    ui.scaleNeedle.style.transform=`rotate(${angle}deg)`;
+    ui.scaleWeight.textContent=String(Math.round(value)).padStart(3,'0');
+    ui.scaleRoundStatus.textContent=`CASE ${Math.min(taskState.progress+1,3)} OF 3`;
+  };
+
+  const resetScaleAttempt=()=>{
+    taskState.value=8+Math.random()*24;
+    taskState.dir=1;
+    taskState.moving=true;
+    ui.scaleResult.textContent='';
+    ui.scaleResult.style.color='#a8e98f';
+    renderShippingScale();
+  };
+
+  const lockShippingScale=()=>{
+    if(!activeTask||activeTask.kind!=='shippingScale'||!taskState||!taskState.moving)return;
+    taskState.moving=false;
+    const weight=Math.round(taskState.value);
+    const good=weight>=taskState.minGood&&weight<=taskState.maxGood;
+
+    if(good){
+      taskState.progress++;
+      ui.scaleResult.textContent='✓ GOOD WEIGHT! CASE ACCEPTED.';
+      ui.scaleResult.style.color='#9eea83';
+
+      if(taskState.progress>=3){
+        ui.scaleRoundStatus.textContent='3 OF 3 CASES ACCEPTED';
+        setTimeout(()=>{if(activeTask&&activeTask.kind==='shippingScale')finishTask()},700);
+      }else{
+        ui.scaleRoundStatus.textContent=`${taskState.progress} OF 3 CASES ACCEPTED`;
+        setTimeout(()=>{if(activeTask&&activeTask.kind==='shippingScale'&&taskState)resetScaleAttempt()},650);
+      }
+    }else{
+      ui.scaleResult.textContent=weight<taskState.minGood?'✕ TOO LIGHT — RESET':'✕ TOO HEAVY — RESET';
+      ui.scaleResult.style.color='#ff8b78';
+    }
+  };
+
+  const resetShippingScale=()=>{
+    if(!activeTask||activeTask.kind!=='shippingScale'||!taskState)return;
+    resetScaleAttempt();
+  };
+
+  taskState.renderShippingScale=renderShippingScale;
+  taskState.lockShippingScale=lockShippingScale;
+  taskState.resetShippingScale=resetShippingScale;
+
+  const bindPressedArt=(button,art,action)=>{
+    const press=e=>{
+      if(e)e.preventDefault();
+      art.classList.add('pressed');
+    };
+    const release=e=>{
+      if(e)e.preventDefault();
+      art.classList.remove('pressed');
+    };
+    button.onpointerdown=press;
+    button.onpointerup=e=>{
+      release(e);
+      action();
+    };
+    button.onpointercancel=release;
+    button.onpointerleave=release;
+  };
+
+  bindPressedArt(ui.scaleLockBtn,ui.scaleLockDownArt,lockShippingScale);
+  bindPressedArt(ui.scaleResetBtn,ui.scaleResetDownArt,resetShippingScale);
+
+  resetScaleAttempt();
+}
+if(t.kind==='timing'){
 taskState.pos=0;taskState.dir=1;taskState.low=45;taskState.high=65;taskState.progress=0;
 ui.miniBar.classList.add('scanning');
 ui.miniFill.style.width='5px';
@@ -1090,6 +1217,14 @@ heatBtn.addEventListener('pointerdown',e=>{e.preventDefault();taskState.heat=tru
 }}
 function updateMini(dt){
 if(!activeTask||!taskState)return;
+if(activeTask.kind==='shippingScale'){
+  if(taskState.moving){
+    taskState.value+=taskState.dir*92*dt;
+    if(taskState.value>=150){taskState.value=150;taskState.dir=-1}
+    if(taskState.value<=0){taskState.value=0;taskState.dir=1}
+    if(taskState.renderShippingScale)taskState.renderShippingScale();
+  }
+}
 if(activeTask.kind==='timing'){
   taskState.pos+=taskState.dir*95*dt;
   if(taskState.pos>100){taskState.pos=100;taskState.dir=-1}
@@ -1209,7 +1344,18 @@ if(!minimap){
   c.lineTo(4,-15);c.lineTo(4,-2);c.lineTo(11,-2);c.closePath();
   c.fill();c.stroke();c.restore();
 }
-tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawBathroomApproach(c,minimap);
+tasks.forEach(t=>{
+  if(t.done)return;
+  const markerX=t.x;
+  const markerY=t.kind==='shippingScale'?t.y+38:t.y;
+  c.beginPath();
+  c.arc(markerX,markerY,13,0,Math.PI*2);
+  c.fillStyle='#ffd15c';
+  c.fill();
+  c.strokeStyle='#4a2d14';
+  c.lineWidth=3;
+  c.stroke();
+});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawBathroomApproach(c,minimap);
 drawRenee(c,minimap);drawChris(c,minimap);
 if(!minimap&&player.hidden&&player.hideSpot){
   c.save();
@@ -1244,7 +1390,7 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
 
 function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
-  // V3.12.10: keyboard support for employee clock-in.
+  // V3.12.14: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
     if(/^Digit[0-9]$/.test(e.code)||/^Numpad[0-9]$/.test(e.code)){
       e.preventDefault();
@@ -1298,7 +1444,12 @@ addEventListener('keydown',e=>{
   if(e.code==='KeyE')interact();
 
   if(e.code==='Space'){
-    if(activeTask&&taskState&&activeTask.kind==='timing'){
+    if(activeTask&&taskState&&activeTask.kind==='shippingScale'){
+      if(!e.repeat&&taskState.lockShippingScale){
+        if(ui.scaleLockDownArt)ui.scaleLockDownArt.classList.add('pressed');
+        taskState.lockShippingScale();
+      }
+    }else if(activeTask&&taskState&&activeTask.kind==='timing'){
       if(!e.repeat&&taskState.stopScan)taskState.stopScan();
     }else if(activeTask&&taskState&&activeTask.kind==='hold'){
       taskState.heat=true;
@@ -1311,6 +1462,9 @@ addEventListener('keydown',e=>{
 });
 addEventListener('keyup',e=>{
   keys[e.code]=false;
+  if(e.code==='Space'&&activeTask&&taskState&&activeTask.kind==='shippingScale'){
+    if(ui.scaleLockDownArt)ui.scaleLockDownArt.classList.remove('pressed');
+  }
   if(e.code==='Space'&&activeTask&&taskState&&activeTask.kind==='hold'){
     taskState.heat=false;
   }
@@ -1388,7 +1542,7 @@ updateUI();
 })();
 
 
-// V3.12.10 employee punch-in
+// V3.12.14 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
