@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.12.9</title>
+<title>Chocolate Accidents — V3.12.10</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.12.9 employee punch-in */
+/* V3.12.10 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.12.9 cool industrial UI */
+/* V3.12.10 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -67,7 +67,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .scanMark b,.scanBoundary span,.perfectZone span{background:#152236!important;border-color:#607895!important}.heatReadout,.temperLabel{color:#d8e3ef!important}.heatScale{color:#aebdce!important}
 .controls{background:#111b2be6!important;border-color:#536985!important;color:#dce6f2!important}#startBtn[disabled]{background:#475569!important;border-color:#64748b!important}
 
-/* V3.12.9 bathroom interaction */
+/* V3.12.10 bathroom interaction */
 #davidMessage{position:fixed;left:50%;top:20%;transform:translateX(-50%);z-index:40;
  display:none;padding:12px 18px;border-radius:12px;background:#111827ee;border:1px solid #71839a;
  color:#fff;font-weight:900;box-shadow:0 8px 28px #0008}
@@ -75,7 +75,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 @keyframes davidPop{from{transform:translateX(-50%) scale(.92);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 
 
-/* V3.12.9 mobile experience */
+/* V3.12.10 mobile experience */
 #tasksToggleBtn{display:none}
 #mobileJoystick{display:none}
 .actionIcon{display:none}
@@ -161,7 +161,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 }
 
 
-/* V3.12.9 Shipping Computer Arcade Hub */
+/* V3.12.10 Shipping Computer Arcade Hub */
 .arcadeOverlay{position:absolute;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:12px;background:#07101df2}
 .arcadeOverlay.show{display:flex}
 .arcadeShell{width:min(100%,1060px);height:min(100%,730px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:2px solid #607894;border-radius:16px;background:#0b1220;box-shadow:0 24px 70px #000c}
@@ -193,7 +193,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.9</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.10</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -240,7 +240,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.9</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.10</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -1244,7 +1244,7 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
 
 function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
-  // V3.12.9: keyboard support for employee clock-in.
+  // V3.12.10: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
     if(/^Digit[0-9]$/.test(e.code)||/^Numpad[0-9]$/.test(e.code)){
       e.preventDefault();
@@ -1388,7 +1388,7 @@ updateUI();
 })();
 
 
-// V3.12.9 employee punch-in
+// V3.12.10 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };

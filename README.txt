@@ -82,3 +82,8 @@ V3.12.9 — LOCAL MINI-GAME BUNDLE + ESC FIX
 - ESC from Train Tag, Fredo Skates, or Pigeon Chase returns to SELECT A GAME.
 - ESC on SELECT A GAME exits the arcade and returns to Chocolate Accidents.
 - No internet/GitHub page is required for the three arcade games.
+
+
+V3.12.10
+- Train Tag ESC now works from the Game Over screen as well as during gameplay.
+- ESC from Train Tag always returns to the Chocolate Accidents SELECT A GAME screen.
