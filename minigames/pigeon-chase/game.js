@@ -1,0 +1,35 @@
+const $=id=>document.getElementById(id);
+const game=$('game'),world=$('world'),playerEl=$('player'),sprite=$('playerSprite');
+const caughtEl=$('caught'),timeEl=$('time'),scoreEl=$('score'),message=$('message');
+const start=$('start'),end=$('end');
+const WORLD_SCREENS=3,TARGET=10,GAME_TIME=75,SPEED=420,JUMP=760,GRAVITY=1900,CATCH_RANGE=135;
+let running=false,last=0,timerAcc=0,spawnAcc=0,time=GAME_TIME,score=0,caught=0,cameraX=0,worldWidth=0,msgTimer;
+let pigeons=[]; const keys={left:false,right:false};
+const player={x:100,y:0,vy:0,w:104,h:150,grounded:true,facing:1,cooldown:0,anim:0,frame:0};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function ground(){return game.clientHeight*.155}
+function resize(){worldWidth=game.clientWidth*WORLD_SCREENS;world.style.width=worldWidth+'px';player.x=clamp(player.x,0,worldWidth-player.w);render();}
+function hud(){caughtEl.textContent=caught;timeEl.textContent=time;scoreEl.textContent=score}
+function reset(){running=false;last=0;timerAcc=spawnAcc=0;time=GAME_TIME;score=caught=0;cameraX=0;keys.left=keys.right=false;pigeons.forEach(p=>p.el.remove());pigeons=[];player.x=game.clientWidth*.12;player.y=0;player.vy=0;player.grounded=true;player.facing=1;player.cooldown=0;player.frame=0;sprite.src='images/alvaro/run-1.png';playerEl.className='player';hud();render()}
+function begin(){reset();start.classList.add('hidden');end.classList.add('hidden');running=true;for(let i=0;i<5;i++)spawn(game.clientWidth*.55+i*game.clientWidth*.42);requestAnimationFrame(loop)}
+function pigeonEl(){let e=document.createElement('div');e.className='pigeon walk';e.innerHTML='<div class="pb"><div class="pn"></div><div class="pw"></div></div><div class="ph"><div class="pe"></div><div class="pk"></div></div>';world.appendChild(e);return e}
+function spawn(x=null){if(!running||pigeons.length>=8)return;const e=pigeonEl();let px=x??clamp(cameraX+game.clientWidth*(.8+Math.random()*1.15),40,worldWidth-80);const p={el:e,x:px,y:0,vx:(25+Math.random()*45)*(Math.random()>.5?1:-1),vy:0,w:54,h:43,state:'walk',wander:.5+Math.random()*1.6,flee:0,active:true};pigeons.push(p);renderP(p)}
+function renderP(p){p.el.style.left=p.x+'px';p.el.style.bottom=(ground()+p.y)+'px';p.el.style.transform=`scaleX(${p.vx>=0?1:-1})`}
+function centers(p){return{x:p.x+p.w/2,y:ground()+p.y+p.h/2}}
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+function pcenter(){return{x:player.x+player.w/2,y:ground()+player.y+player.h/2}}
+function jump(){if(!running||!player.grounded)return;player.vy=JUMP;player.grounded=false;playerEl.classList.add('jumping')}
+function tryCatch(){if(!running||player.cooldown>0)return;player.cooldown=.36;playerEl.classList.add('catching');setTimeout(()=>playerEl.classList.remove('catching'),170);let best=null,bd=Infinity,pc=pcenter();for(const p of pigeons){if(!p.active)continue;let d=dist(pc,centers(p));let front=player.facing>0?p.x>player.x-20:p.x<player.x+player.w+20;if(front&&d<bd){best=p;bd=d}}if(best&&bd<CATCH_RANGE)catchP(best);else say('Missed!',500)}
+function catchP(p){p.active=false;caught++;score+=p.state==='fly'?150:100;hud();p.el.style.transition='.18s';p.el.style.opacity=0;p.el.style.scale=.25;setTimeout(()=>{p.el.remove();pigeons=pigeons.filter(q=>q!==p)},190);say(p.state==='fly'?'+150 flying catch!':'+100 caught!',700);if(caught>=TARGET)finish(true)}
+function say(t,d=700){clearTimeout(msgTimer);message.textContent=t;message.classList.add('show');msgTimer=setTimeout(()=>message.classList.remove('show'),d)}
+function finish(win){if(!running)return;running=false;$('endIcon').textContent=win?'🎉':'⏰';$('endTitle').textContent=win?'Little Alvaro did it!':"Time's up!";$('endText').textContent=win?`You caught all ${TARGET} pigeons across Havana.`:`You caught ${caught} of ${TARGET} pigeons.`;$('finalScore').textContent=score;end.classList.remove('hidden')}
+function updatePlayer(dt){let dir=(keys.right?1:0)-(keys.left?1:0);if(dir){player.facing=dir;player.x+=dir*SPEED*dt;player.anim+=dt;if(player.anim>.085){player.anim=0;player.frame=(player.frame+1)%8;sprite.src=`images/alvaro/run-${player.frame+1}.png`}}else{player.frame=0;sprite.src='images/alvaro/run-1.png'}player.x=clamp(player.x,0,worldWidth-player.w);if(!player.grounded){player.vy-=GRAVITY*dt;player.y+=player.vy*dt;if(player.y<=0){player.y=0;player.vy=0;player.grounded=true;playerEl.classList.remove('jumping')}}if(player.cooldown>0)player.cooldown-=dt;
+// Keep Little Alvaro around one-third from the left, except at level edges.
+const desired=game.clientWidth*.32;cameraX=clamp(player.x-desired,0,worldWidth-game.clientWidth);render()}
+function render(){world.style.transform=`translate3d(${-cameraX}px,0,0)`;playerEl.style.left=player.x+'px';playerEl.style.bottom=(ground()+player.y)+'px';playerEl.style.transform=`scaleX(${player.facing})`}
+function scare(){let pc=pcenter();for(const p of pigeons){if(!p.active||p.state==='fly')continue;if(dist(pc,centers(p))<175){p.state='fly';p.flee=2+Math.random();p.vx=(p.x<player.x?-1:1)*(220+Math.random()*90);p.vy=250+Math.random()*100;p.el.className='pigeon fly'}}}
+function updateP(dt){for(const p of [...pigeons]){if(!p.active)continue;if(p.state==='walk'){p.wander-=dt;if(p.wander<=0){p.vx=(25+Math.random()*45)*(Math.random()>.5?1:-1);p.wander=.5+Math.random()*1.6}p.x+=p.vx*dt;if(p.x<5||p.x>worldWidth-p.w-5){p.vx*=-1;p.x=clamp(p.x,5,worldWidth-p.w-5)}}else{p.flee-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=60*dt;if(p.flee<=0||p.x<-100||p.x>worldWidth+100||p.y>game.clientHeight){p.active=false;p.el.remove();pigeons=pigeons.filter(q=>q!==p);continue}}renderP(p)}}
+function loop(ts){if(!running)return;if(!last)last=ts;let dt=Math.min((ts-last)/1000,.034);last=ts;updatePlayer(dt);scare();updateP(dt);timerAcc+=dt;spawnAcc+=dt;if(timerAcc>=1){timerAcc-=1;time--;hud();if(time<=0){finish(false);return}}if(spawnAcc>1.4){spawnAcc=0;spawn()}if(player.x>worldWidth-player.w-80&&caught<TARGET)say(`Catch ${TARGET-caught} more pigeon${TARGET-caught===1?'':'s'}!`,900);requestAnimationFrame(loop)}
+function hold(btn,key){const on=e=>{e.preventDefault();keys[key]=true;btn.classList.add('pressed')},off=e=>{e.preventDefault();keys[key]=false;btn.classList.remove('pressed')};btn.addEventListener('pointerdown',on);['pointerup','pointercancel','pointerleave'].forEach(x=>btn.addEventListener(x,off))}
+hold($('leftBtn'),'left');hold($('rightBtn'),'right');$('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();jump()});$('catchBtn').addEventListener('pointerdown',e=>{e.preventDefault();tryCatch()});
+addEventListener('keydown',e=>{let k=e.key.toLowerCase();if(['arrowleft','arrowright',' ','enter'].includes(k))e.preventDefault();if(k==='a'||k==='arrowleft')keys.left=true;if(k==='d'||k==='arrowright')keys.right=true;if(k==='w'||k==='arrowup'||k===' ')jump();if(k==='e'||k==='enter')tryCatch()});addEventListener('keyup',e=>{let k=e.key.toLowerCase();if(k==='a'||k==='arrowleft')keys.left=false;if(k==='d'||k==='arrowright')keys.right=false});addEventListener('blur',()=>keys.left=keys.right=false);addEventListener('resize',resize);$('startBtn').onclick=begin;$('restartBtn').onclick=begin;resize();reset();

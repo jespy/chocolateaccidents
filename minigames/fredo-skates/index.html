@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Fredo Skates</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div id="game-container">
+
+      <!-- Scoreboard -->
+
+      <section id="scoreboard">
+
+        <div class="score-item">
+          <span class="score-label">Score</span>
+          <span id="score" class="score-value">0</span>
+        </div>
+
+        <div class="score-item coin-score">
+
+          <img
+            class="score-coin"
+            src="images/coin.png"
+            alt=""
+            draggable="false"
+          >
+
+          <span class="score-label">Coins</span>
+          <span id="coin-count" class="score-value">0</span>
+
+        </div>
+
+        <div class="score-item">
+          <span class="score-label">High Score</span>
+          <span id="high-score" class="score-value">0</span>
+        </div>
+
+      </section>
+
+      <!-- Game -->
+
+      <section
+        id="game-area"
+        class="game-paused"
+        tabindex="0"
+        aria-label="Fredo Skates game"
+      >
+
+        <!-- Parallax background: distant skyline -->
+
+        <div
+          id="far-city-scroll"
+          class="scroll-layer far-city-scroll"
+          aria-hidden="true"
+        >
+          <div class="scroll-copy far-background-copy"></div>
+          <div class="scroll-copy far-background-copy"></div>
+        </div>
+
+        <!-- Parallax background: neighborhood storefronts -->
+
+        <div
+          id="city-scroll"
+          class="city-scroll building-layer"
+          aria-hidden="true"
+        ></div>
+
+        <!-- Reserved extra parallax layer -->
+
+        <div
+          id="street-scroll"
+          class="scroll-layer street-scroll"
+          aria-hidden="true"
+        >
+          <div class="scroll-copy"></div>
+          <div class="scroll-copy"></div>
+        </div>
+
+        <!-- Scrolling sidewalk and road -->
+
+        <div
+          id="foreground-scroll"
+          class="scroll-layer foreground-scroll"
+          aria-hidden="true"
+        >
+          <div class="scroll-copy sidewalk-copy"></div>
+          <div class="scroll-copy sidewalk-copy"></div>
+        </div>
+
+        <!-- Obstacles created by JavaScript -->
+
+        <div id="obstacles"></div>
+
+        <!-- Player -->
+
+        <div id="player">
+
+          <div class="player-shadow"></div>
+
+<img
+  id="player-sprite"
+  class="player-sprite"
+  src="images/player/idle-0.png"
+  alt="Skateboarder"
+  draggable="false"
+>
+
+        </div>
+
+        <!-- Coin reward -->
+
+        <div id="coin-effect" aria-hidden="true">
+
+          <img
+            src="images/coin.png"
+            alt=""
+            draggable="false"
+          >
+
+          <span>+1</span>
+
+        </div>
+
+        <!-- Start and game-over screen -->
+
+        <div id="start-screen">
+
+          <div class="start-card">
+
+            <p class="start-eyebrow">
+              Endless Skate Challenge
+            </p>
+
+            <h1 id="screen-title">
+              Ready to Ride?
+            </h1>
+
+            <p id="screen-message">
+              Jump over obstacles and ride up ramps.
+            </p>
+
+            <button
+              id="start-button"
+              type="button"
+            >
+              Start Riding
+            </button>
+
+            <div class="controls">
+
+              <span>
+                <kbd>Space</kbd>
+                Jump
+              </span>
+
+              <span>
+                <kbd>↑</kbd>
+                Jump
+              </span>
+
+              <span>
+                Click or tap to jump
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <footer id="game-footer">
+        Jump obstacles, collect coins and launch from ramps.
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && window.parent && window.parent !== window) {
+        event.preventDefault();
+        event.stopPropagation();
+        window.parent.postMessage({ type: 'arcade-game-exit', game: 'fredo-skates' }, '*');
+      }
+    }, true);
+  </script>
+
+
+<script>
+(function(){
+  window.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' || e.code === 'Escape'){
+      if(window.parent && window.parent !== window){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        window.parent.postMessage({type:'arcade-game-exit'}, '*');
+      }
+    }
+  }, true);
+})();
+</script>
+
+</body>
+</html>
