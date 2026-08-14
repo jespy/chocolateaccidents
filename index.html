@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.11.2</title>
+<title>Chocolate Accidents — V3.11.20</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.11.2 employee punch-in */
+/* V3.11.20 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.11.2 cool industrial UI */
+/* V3.11.20 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -66,12 +66,20 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .scanHelp,.scanInstruction,.heatHelp{color:#c5d2e1!important}.meter,.miniBar{background:#0d1726!important;border-color:#536985!important}.scanMark,.scanBoundary{background:#f8dc72!important}
 .scanMark b,.scanBoundary span,.perfectZone span{background:#152236!important;border-color:#607895!important}.heatReadout,.temperLabel{color:#d8e3ef!important}.heatScale{color:#aebdce!important}
 .controls{background:#111b2be6!important;border-color:#536985!important;color:#dce6f2!important}#startBtn[disabled]{background:#475569!important;border-color:#64748b!important}
+
+/* V3.11.20 bathroom interaction */
+#davidMessage{position:fixed;left:50%;top:20%;transform:translateX(-50%);z-index:40;
+ display:none;padding:12px 18px;border-radius:12px;background:#111827ee;border:1px solid #71839a;
+ color:#fff;font-weight:900;box-shadow:0 8px 28px #0008}
+#davidMessage.show{display:block;animation:davidPop .18s ease-out}
+@keyframes davidPop{from{transform:translateX(-50%) scale(.92);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.11.2</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.11.20</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="mapBtn">Map (M)</button><button id="restartBtn">Restart</button></div>
 <div class="stage" id="stage"><canvas id="game"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div><div class="controls"><button id="interactBtn">Interact (E)</button><button id="hideBtn">Hide (Space)</button><button id="sprintBtn">Sprint (Shift)</button></div><div id="mobilePad"><button class="up" data-key="ArrowUp">▲</button><button class="left" data-key="ArrowLeft">◀</button><button class="down" data-key="ArrowDown">▼</button><button class="right" data-key="ArrowRight">▶</button></div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.11.2</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.11.20</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Hide</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -132,6 +140,8 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 <div class="overlay" id="mapOverlay"><div class="card"><h2>Factory Map</h2><p class="sub">Yellow = task · Blue = you · Red = boss · Green = hiding spot · Gold gaps = doors</p><canvas id="mapCanvas" width="900" height="560" style="width:100%;height:auto;background:#120e0b;border-radius:12px;border:1px solid #5f412e"></canvas><button id="closeMapBtn" style="width:100%;margin-top:12px">Close Map</button></div></div>
 <div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
 </div><div class="taskList" id="taskList"><b>SHIFT TASKS</b><div>Clock in to load tasks…</div></div></div>
+<div id="davidMessage">David: “Just a Minute...”</div>
+
 <script>
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
@@ -140,54 +150,33 @@ const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In / Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
  {id:'break',name:'Break Room',x:40,y:620,w:300,h:240,c:'#67513e'},{id:'reception',name:'Reception',x:40,y:860,w:420,h:180,c:'#604839'},{id:'art',name:'Art Department',x:340,y:620,w:360,h:220,c:'#704d54'},{id:'mainboss',name:"Boss's Office",x:460,y:840,w:240,h:200,c:'#5a3c3c'},
- {id:'white',name:'White Room',x:700,y:620,w:260,h:220,c:'#88735f'},{id:'edible',name:'Accounting Office',x:700,y:840,w:260,h:200,c:'#68547b'},{id:'storage',name:'Chocolate Storage',x:960,y:620,w:380,h:420,c:'#675646'},
- {id:'whA',name:'Warehouse A',x:1340,y:40,w:420,h:360,c:'#615848'},{id:'whB',name:'Warehouse B',x:1340,y:400,w:420,h:340,c:'#615848'},{id:'sales',name:'Sales Office',x:1340,y:740,w:280,h:300,c:'#5d4b3e'},{id:'boss',name:"Control Room",x:1620,y:740,w:140,h:300,c:'#5a3c3c'}
-];
+ {id:'white',name:'White Room',x:700,y:620,w:260,h:220,c:'#88735f'},{id:'edible',name:'Accounting Office',x:700,y:840,w:260,h:200,c:'#68547b'},{id:'storage',name:'Chocolate Storage',x:960,y:620,w:380,h:220,c:'#675646'},
+ {id:'storage_lower',name:'The AEP Room',x:960,y:840,w:220,h:200,c:'#675646'},
+ {id:'bathroom_storage',name:'Bathroom',x:1180,y:840,w:160,h:200,c:'#667085'},
+ {id:'whA',name:'Warehouse A',x:1340,y:40,w:420,h:360,c:'#615848'},{id:'whB',name:'Warehouse B',x:1340,y:400,w:420,h:340,c:'#615848'},{id:'sales',name:'Sales Office',x:1340,y:740,w:280,h:300,c:'#5d4b3e'},{id:'boss',name:"Control Room",x:1620,y:740,w:140,h:300,c:'#5a3c3c'}];
 const roomBy=id=>rooms.find(r=>r.id===id);
 const doors=[
  {a:'shipping',b:'fancy',o:'h',x:210,y:320},{a:'shipping',b:'walkin',o:'h',x:565,y:320},{a:'shipping',b:'production',o:'v',x:700,y:185},
  {a:'fancy',b:'walkin',o:'v',x:460,y:475},{a:'fancy',b:'break',o:'h',x:185,y:620},{a:'walkin',b:'production',o:'v',x:700,y:480},
- {a:'break',b:'art',o:'v',x:340,y:730},{a:'break',b:'reception',o:'h',x:230,y:860},{a:'art',b:'white',o:'v',x:700,y:730},{a:'art',b:'mainboss',o:'h',x:575,y:840},{a:'reception',b:'mainboss',o:'v',x:460,y:945},
+ {a:'break',b:'art',o:'v',x:340,y:730},{a:'break',b:'reception',o:'h',x:230,y:860},{a:'art',b:'mainboss',o:'h',x:575,y:840},{a:'reception',b:'mainboss',o:'v',x:460,y:945},
  {a:'production',b:'white',o:'h',x:825,y:620},{a:'production',b:'storage',o:'h',x:1135,y:620},{a:'production',b:'whA',o:'v',x:1340,y:220},
- {a:'white',b:'edible',o:'h',x:825,y:840},{a:'white',b:'storage',o:'v',x:960,y:730},{a:'edible',b:'storage',o:'v',x:960,y:940},
- {a:'storage',b:'whB',o:'v',x:1340,y:660},{a:'storage',b:'sales',o:'v',x:1340,y:900},{a:'whA',b:'whB',o:'h',x:1520,y:400},{a:'whB',b:'sales',o:'h',x:1480,y:740},{a:'sales',b:'boss',o:'v',x:1620,y:900}
+ {a:'white',b:'edible',o:'h',x:825,y:840},{a:'white',b:'storage',o:'v',x:960,y:730},{a:'edible',b:'storage_lower',o:'v',x:960,y:940},
+ {a:'storage',b:'whB',o:'v',x:1340,y:660},{a:'storage',b:'sales',o:'v',x:1340,y:800},{a:'whA',b:'whB',o:'h',x:1520,y:400},{a:'whB',b:'sales',o:'h',x:1480,y:740},{a:'sales',b:'boss',o:'v',x:1620,y:900},{a:'storage',b:'storage_lower',o:'h',x:1070,y:840},{a:'bathroom_storage',b:'sales',o:'v',x:1340,y:940,locked:true,isBathroom:true}
 ].map((d,i)=>({...d,id:i,open:0}));
+const lockedBathroomDoor=doors.find(d=>d.isBathroom);
 function gapsFor(room,edge){const out=[];for(const d of doors){if(d.a!==room.id&&d.b!==room.id)continue;if(edge==='top'&&d.o==='h'&&Math.abs(d.y-room.y)<2)out.push([d.x-DOOR/2,d.x+DOOR/2]);if(edge==='bottom'&&d.o==='h'&&Math.abs(d.y-(room.y+room.h))<2)out.push([d.x-DOOR/2,d.x+DOOR/2]);if(edge==='left'&&d.o==='v'&&Math.abs(d.x-room.x)<2)out.push([d.y-DOOR/2,d.y+DOOR/2]);if(edge==='right'&&d.o==='v'&&Math.abs(d.x-(room.x+room.w))<2)out.push([d.y-DOOR/2,d.y+DOOR/2]);}return out.sort((a,b)=>a[0]-b[0])}
 const walls=[];function addEdge(room,edge){const horiz=edge==='top'||edge==='bottom',start=horiz?room.x:room.y,end=horiz?room.x+room.w:room.y+room.h,gaps=gapsFor(room,edge);let cur=start;for(const g of gaps){if(g[0]>cur){if(horiz)walls.push({x:cur,y:edge==='top'?room.y-WALL/2:room.y+room.h-WALL/2,w:g[0]-cur,h:WALL});else walls.push({x:edge==='left'?room.x-WALL/2:room.x+room.w-WALL/2,y:cur,w:WALL,h:g[0]-cur})}cur=Math.max(cur,g[1])}if(cur<end){if(horiz)walls.push({x:cur,y:edge==='top'?room.y-WALL/2:room.y+room.h-WALL/2,w:end-cur,h:WALL});else walls.push({x:edge==='left'?room.x-WALL/2:room.x+room.w-WALL/2,y:cur,w:WALL,h:end-cur})}}
 rooms.forEach(r=>['top','bottom','left','right'].forEach(e=>addEdge(r,e)));
 // Furniture is intentionally pushed toward room edges so every department has a clear route through it.
 // The `solid` flag lets small decorative pieces remain visible without turning them into movement traps.
 const furniture=[
- {x:85,y:85,w:105,h:48,solid:true},{x:275,y:85,w:125,h:44,solid:true},{x:510,y:88,w:95,h:48,solid:true},
- {x:80,y:365,w:95,h:48,solid:true},{x:245,y:375,w:120,h:42,solid:true},{x:490,y:365,w:95,h:42,solid:true},
- // Production equipment: two open north/south lanes and a broad center crossing lane.
- {x:755,y:100,w:58,h:145,solid:true},{x:880,y:100,w:58,h:145,solid:true},{x:1065,y:100,w:58,h:145,solid:true},{x:1190,y:100,w:58,h:145,solid:true},
- {x:775,y:400,w:120,h:46,solid:true},{x:1130,y:395,w:120,h:46,solid:true},
- // Warehouse A/B shelving stays against the perimeter.
- {x:1380,y:80,w:64,h:180,solid:true},{x:1515,y:82,w:150,h:46,solid:true},{x:1515,y:285,w:150,h:46,solid:true},
- {x:1380,y:445,w:70,h:145,solid:true},{x:1540,y:450,w:135,h:46,solid:true},{x:1540,y:645,w:135,h:46,solid:true},
- // Chocolate Storage V3.11.2: perimeter racks leave a broad cross-shaped travel lane through every doorway.
- {x:985,y:785,w:48,h:165,solid:true},
- {x:1215,y:690,w:78,h:42,solid:true},{x:1215,y:790,w:78,h:42,solid:true},{x:1215,y:970,w:78,h:42,solid:true},
- {x:1080,y:970,w:78,h:42,solid:true},
- // Break Room V3.11.2 artwork collisions. These are invisible and aligned to the finished room art.
- // Left kitchenette / microwave / fridge stack.
  {x:43,y:637,w:58,h:205,solid:true,draw:false,room:'break'},
- // Couch in the upper-right. It stays above the right-side doorway lane.
  {x:208,y:656,w:110,h:58,solid:true,draw:false,room:'break'},
- // Small plant beside couch.
  {x:312,y:658,w:20,h:42,solid:true,draw:false,room:'break'},
- // Trash can in lower-right corner.
  {x:303,y:817,w:28,h:28,solid:true,draw:false,room:'break'},
- // Reception V3.11.2 artwork collisions.
- {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'}, // reception desk
- {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'}, // long narrow couch
- {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}, // sign-in table
- // Office / art furniture reduced to perimeter pieces.
- {x:365,y:665,w:80,h:40,solid:true},{x:555,y:665,w:85,h:40,solid:true},{x:730,y:875,w:78,h:55,solid:true},{x:875,y:875,w:52,h:52,solid:true},
- {x:1370,y:785,w:72,h:45,solid:true},{x:1515,y:785,w:65,h:45,solid:true},
- // Boss office desk is decorative only, leaving a guaranteed exit path.
- {x:1660,y:790,w:70,h:42,solid:false}
+ {x:72,y:885,w:105,h:82,solid:true,draw:false,room:'reception'},
+ {x:285,y:878,w:140,h:38,solid:true,draw:false,room:'reception'},
+ {x:328,y:986,w:70,h:30,solid:true,draw:false,room:'reception'}
 ];
 const solidFurniture=furniture.filter(o=>o.solid!==false);
 const tasks=[
@@ -200,12 +189,12 @@ const tasks=[
  {name:'Fix Accounting Office',desc:'Enter the printer reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Accounting Office'},
  {name:'Production Quality Check',desc:'Approve the good chocolates and reject the accidents.',x:1180,y:520,kind:'choice',done:false,room:'Production'},
  {name:'Restart Tempering Line',desc:'Restart the production line in the proper order.',x:980,y:300,kind:'sequence',done:false,room:'Production'},
- {name:'Find Shipping Cases',desc:'Scan three cases hidden in central storage.',x:1245,y:875,kind:'timing',done:false,room:'Chocolate Storage'},
+ {name:'Find Shipping Cases',desc:'Scan three cases hidden in Chocolate Storage.',x:1100,y:920,kind:'timing',done:false,room:'Chocolate Storage'},
  {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A'},
  {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
 ];
-const hides=[{x:248,y:748,label:'Break Room couch',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1190,y:920,label:'Storage rack',approachX:1155,approachY:920,hideX:1190,hideY:920,exitX:1150,exitY:920}];
-const player={characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
+const hides=[{x:248,y:748,label:'Break Room couch',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},{x:525,y:570,label:'Freezer shelving'},{x:385,y:790,label:'Art desk'},{x:1010,y:590,label:'Production machine'},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790},{x:1490,y:790,label:'Warehouse boxes',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790}];
+const player={hasBathroomKey:false,characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
 const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1135,y:760},{x:1260,y:900},{x:1450,y:900}];
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
 
@@ -214,6 +203,14 @@ const breakRoomArt=new Image();
 breakRoomArt.src='assets/rooms/break_room.png';
 const receptionArt=new Image();
 receptionArt.src='assets/rooms/reception.png';
+const artDepartmentArt=new Image();
+artDepartmentArt.src='assets/rooms/art_department.png';
+const bigBossOfficeArt=new Image();
+bigBossOfficeArt.src='assets/rooms/big_boss_office.png';
+const controlRoomArt=new Image();
+controlRoomArt.src='assets/rooms/control_room.png';
+const salesOfficeArt=new Image();
+salesOfficeArt.src='assets/rooms/sales_office.png';
 const hideHereArt=new Image();
 hideHereArt.src='assets/ui/hide_here.png';
 
@@ -320,7 +317,14 @@ function drawRenee(c,minimap=false){
 }
 
 function resize(){const dpr=Math.min(devicePixelRatio||1,2),r=stage.getBoundingClientRect();canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',resize);resize();
-function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}function collides(x,y,r){if(x-r<40||y-r<40||x+r>1760||y+r>1040)return true;return walls.some(w=>rectHit(w,x,y,r))||solidFurniture.some(o=>rectHit(o,x,y,r))}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){
+function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}function collides(x,y,r){
+ if(x-r<40||y-r<40||x+r>1760||y+r>1040)return true;
+ if(lockedBathroomDoor.locked){
+   if(lockedBathroomDoor.o==='h'&&Math.abs(x-lockedBathroomDoor.x)<r+42&&Math.abs(y-lockedBathroomDoor.y)<r+10)return true;
+   if(lockedBathroomDoor.o==='v'&&Math.abs(x-lockedBathroomDoor.x)<r+10&&Math.abs(y-lockedBathroomDoor.y)<r+42)return true;
+ }
+ return walls.some(w=>rectHit(w,x,y,r))||solidFurniture.some(o=>rectHit(o,x,y,r))
+}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){
   let best=null,bd=Infinity;
   for(const raw of hides){
     const h=normalizedHide(raw);
@@ -394,86 +398,170 @@ function findPath(from,to){
   }
   return path.reverse();
 }
-function recoverBoss(){
+function recoverBoss(target){
   const base=nearestWalkableCell(boss);
-  const candidates=[
-    base,
-    {c:base.c+1,r:base.r},{c:base.c-1,r:base.r},
-    {c:base.c,r:base.r+1},{c:base.c,r:base.r-1},
-    {c:base.c+2,r:base.r},{c:base.c-2,r:base.r},
-    {c:base.c,r:base.r+2},{c:base.c,r:base.r-2}
-  ].filter(q=>q.c>0&&q.r>0&&q.c<COLS-1&&q.r<ROWS-1&&walkCell(q.c,q.r));
-  if(candidates.length){
-    candidates.sort((a,b)=>{
-      const pa=cellPos(a.c,a.r),pb=cellPos(b.c,b.r);
-      return Math.hypot(pa.x-boss.x,pa.y-boss.y)-Math.hypot(pb.x-boss.x,pb.y-boss.y)
-    });
-    const p=cellPos(candidates[0].c,candidates[0].r);
-    boss.x=p.x;boss.y=p.y;
+  const candidates=[];
+  for(let rad=0;rad<=5;rad++){
+    for(let dc=-rad;dc<=rad;dc++){
+      for(let dr=-rad;dr<=rad;dr++){
+        if(rad>0&&Math.abs(dc)!==rad&&Math.abs(dr)!==rad)continue;
+        const c=base.c+dc,r=base.r+dr;
+        if(c<1||r<1||c>=COLS-1||r>=ROWS-1||!walkCell(c,r))continue;
+        const p=cellPos(c,r);
+        candidates.push({x:p.x,y:p.y,d:target?Math.hypot(p.x-target.x,p.y-target.y):0});
+      }
+    }
+    if(candidates.length)break;
   }
+
+  if(candidates.length){
+    candidates.sort((a,b)=>a.d-b.d);
+    boss.x=candidates[0].x;
+    boss.y=candidates[0].y;
+  }
+
   boss.path=[];
   boss.pathTimer=0;
   boss.stuckTimer=0;
-  boss.lastX=boss.x;boss.lastY=boss.y
+  boss.lastX=boss.x;
+  boss.lastY=boss.y;
+
+  if(boss.state==='PATROLLING'&&target&&Math.hypot(boss.x-target.x,boss.y-target.y)>180){
+    boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+  }
 }
 function updateBoss(dt){
-if(!running)return;
-bossWasMoving=false;
-if(canSee()){
-  boss.state='CHASING';boss.lastSeen={x:player.x,y:player.y};boss.searchTimer=2.5
-}else if(boss.state==='CHASING'){
-  boss.state='SEARCHING';boss.searchTimer=3.5
-}else if(boss.state==='SEARCHING'){
-  boss.searchTimer-=dt;
-  if(boss.searchTimer<=0){boss.state='PATROLLING';boss.lastSeen=null}
-}
-let target=boss.state==='CHASING'?player:boss.state==='SEARCHING'&&boss.lastSeen?boss.lastSeen:patrol[boss.patrolIndex];
+  if(!running)return;
 
-const moved=Math.hypot(boss.x-boss.lastX,boss.y-boss.lastY);
-if(moved<0.45)boss.stuckTimer+=dt;else boss.stuckTimer=Math.max(0,boss.stuckTimer-dt*2);
-boss.lastX=boss.x;boss.lastY=boss.y;
+  if(canSee()){
+    boss.state='CHASING';
+    boss.lastSeen={x:player.x,y:player.y};
+    boss.searchTimer=2.5;
+  }else if(boss.state==='CHASING'){
+    boss.state='SEARCHING';
+    boss.searchTimer=3.5;
+  }else if(boss.state==='SEARCHING'){
+    boss.searchTimer-=dt;
+    if(boss.searchTimer<=0){
+      boss.state='PATROLLING';
+      boss.lastSeen=null;
+    }
+  }
 
-if(boss.stuckTimer>1.15){
-  recoverBoss();
-}
+  let target=boss.state==='CHASING'
+    ? player
+    : boss.state==='SEARCHING'&&boss.lastSeen
+      ? boss.lastSeen
+      : patrol[boss.patrolIndex];
 
-boss.pathTimer-=dt;
-if(boss.pathTimer<=0){
-  boss.path=findPath(boss,target);
-  boss.pathTimer=boss.state==='CHASING'?.24:.65;
-}
-let wp=boss.path[0];
-if(!wp){
-  if(boss.state==='PATROLLING'&&dist(boss,target)<28){
+  const moved=Math.hypot(boss.x-boss.lastX,boss.y-boss.lastY);
+  if(moved>0.75){
+    boss.stuckTimer=Math.max(0,boss.stuckTimer-dt*3);
+  }else{
+    boss.stuckTimer+=dt;
+  }
+  boss.lastX=boss.x;
+  boss.lastY=boss.y;
+
+  if(boss.stuckTimer>0.9){
+    recoverBoss(target);
+    target=boss.state==='CHASING'
+      ? player
+      : boss.state==='SEARCHING'&&boss.lastSeen
+        ? boss.lastSeen
+        : patrol[boss.patrolIndex];
+  }
+
+  boss.pathTimer-=dt;
+  if(boss.pathTimer<=0||boss.path.length===0){
+    boss.path=findPath(boss,target);
+    boss.pathTimer=boss.state==='CHASING'?.22:.55;
+
+    if(!boss.path.length&&boss.state==='PATROLLING'&&Math.hypot(boss.x-target.x,boss.y-target.y)>36){
+      boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+      target=patrol[boss.patrolIndex];
+      boss.path=findPath(boss,target);
+      boss.pathTimer=.35;
+    }
+  }
+
+  const wp=boss.path[0];
+  if(!wp){
+    if(boss.state==='PATROLLING'&&Math.hypot(boss.x-target.x,boss.y-target.y)<34){
+      boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+      boss.pathTimer=0;
+    }
+    if(!player.hidden&&dist(player,boss)<34)loseGame();
+    return;
+  }
+
+  let dx=wp.x-boss.x,dy=wp.y-boss.y,d=Math.hypot(dx,dy);
+  if(d<14){
+    boss.path.shift();
+  }else if(d>1){
+    dx/=d;
+    dy/=d;
+    boss.angle=Math.atan2(dy,dx);
+    const beforeX=boss.x,beforeY=boss.y;
+    moveEntity(
+      boss,
+      dx*(boss.state==='CHASING'?175:boss.speed)*dt,
+      dy*(boss.state==='CHASING'?175:boss.speed)*dt
+    );
+    if(Math.hypot(boss.x-beforeX,boss.y-beforeY)<0.08){
+      boss.pathTimer=0;
+    }
+  }
+
+  if(boss.state==='PATROLLING'&&dist(boss,target)<30){
     boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+    boss.path=[];
     boss.pathTimer=0;
   }
+
   if(!player.hidden&&dist(player,boss)<34)loseGame();
-  return;
-}
-let dx=wp.x-boss.x,dy=wp.y-boss.y,d=Math.hypot(dx,dy);
-
-if(d<13&&boss.path.length){
-  boss.path.shift();
-}else if(d>1){
-  dx/=d;dy/=d;boss.angle=Math.atan2(dy,dx);
-  const beforeX=boss.x,beforeY=boss.y;
-  moveEntity(boss,dx*(boss.state==='CHASING'?175:boss.speed)*dt,dy*(boss.state==='CHASING'?175:boss.speed)*dt);
-  const bossStep=Math.hypot(boss.x-beforeX,boss.y-beforeY);
-  bossWasMoving=bossStep>0.05;
-  if(bossStep<0.05){
-    boss.pathTimer=0;
-  }
 }
 
-if(boss.state==='PATROLLING'&&dist(boss,target)<28){
-  boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
-  boss.path=[];
-  boss.pathTimer=0
+const bathroomDoorApproach={x:1385,y:940};
+function nearBathroomDoor(){
+  return Math.hypot(player.x-bathroomDoorApproach.x,player.y-bathroomDoorApproach.y)<105;
 }
-if(!player.hidden&&dist(player,boss)<34)loseGame()
+let davidMessageTimer=0;
+function showDavidMessage(){
+ const el=document.getElementById('davidMessage');
+ if(el){
+   el.textContent='David: “Just a Minute...”';
+   el.classList.add('show');
+   clearTimeout(davidMessageTimer);
+   davidMessageTimer=setTimeout(()=>el.classList.remove('show'),2200);
+ }
+ showHint('David: "Just a Minute..."');
 }
-function updateDoors(dt){for(const d of doors){const p={x:d.x,y:d.y},near=Math.min(dist(player,p),dist(boss,p))<82;d.open+=(near?1:-1)*dt*4;d.open=Math.max(0,Math.min(1,d.open))}}
+function tryBathroomDoor(force=false){
+ if(!force&&!nearBathroomDoor())return false;
+ if(lockedBathroomDoor.locked){
+   if(player.hasBathroomKey){
+     lockedBathroomDoor.locked=false;
+     lockedBathroomDoor.open=1;
+     showHint('You unlocked the bathroom.');
+   }else{
+     showDavidMessage();
+   }
+   return true;
+ }
+ lockedBathroomDoor.open=1;
+ return true;
+}
+
+
+function updateDoors(dt){
+ for(const d of doors){
+   if(d.isBathroom&&d.locked){d.open=0;continue}
+   const p={x:d.x,y:d.y},near=Math.min(dist(player,p),dist(boss,p))<82;
+   d.open+=(near?1:-1)*dt*4;
+   d.open=Math.max(0,Math.min(1,d.open));
+ }
+}
 
 function showHint(msg){
   if(ui.hint){
@@ -547,9 +635,44 @@ function updatePlayer(dt){
   if(r&&r.id!==lastRoom){lastRoom=r.id;ui.roomToast.textContent=r.name;ui.roomToast.classList.add('show');toastTimer=1.4}
   if(toastTimer>0){toastTimer-=dt;if(toastTimer<=0)ui.roomToast.classList.remove('show')}
 }
-function updateHint(){if(player.hidden){ui.hint.textContent='Hiding — press SPACE to come out.';return}let t=nearTask();if(t){ui.hint.textContent=`Press E — ${t.name}`;return}let h=nearHide();if(h){ui.hint.textContent=`Press SPACE — hide at ${h.label}`;return}let d=doors.find(d=>Math.hypot(player.x-d.x,player.y-d.y)<90);if(d){const a=roomBy(d.a),b=roomBy(d.b);ui.hint.textContent=`Doorway: ${a.name} ↔ ${b.name}`;return}ui.hint.textContent=boss.state==='CHASING'?'THE BOSS SAW YOU! Get through a door and break line of sight.':'Move through the doorways to reach your tasks. M opens the map.'}
+function updateHint(){
+  if(player.hidden){ui.hint.textContent='Hiding — press SPACE to come out.';return}
+  if(nearBathroomDoor()){
+    ui.hint.textContent=lockedBathroomDoor.locked
+      ? (player.hasBathroomKey?'Press E — UNLOCK BATHROOM':'Press E — TRY BATHROOM DOOR')
+      : 'Press E — OPEN BATHROOM';
+    return;
+  }
+  let t=nearTask();if(t){ui.hint.textContent=`Press E — ${t.name}`;return}
+  let h=nearHide();if(h){ui.hint.textContent=`Press SPACE — hide at ${h.label}`;return}
+  let d=doors.find(d=>Math.hypot(player.x-d.x,player.y-d.y)<90);
+  if(d){const a=roomBy(d.a),b=roomBy(d.b);ui.hint.textContent=`Doorway: ${a.name} ↔ ${b.name}`;return}
+  ui.hint.textContent=boss.state==='CHASING'
+    ?'THE BOSS SAW YOU! Get through a door and break line of sight.'
+    :'Move through the doorways to reach your tasks. M opens the map.';
+}
+function updateInteractButton(){
+  const b=document.getElementById('interactBtn');
+  if(!b)return;
+  if(nearBathroomDoor()){
+    b.textContent=lockedBathroomDoor.locked
+      ? (player.hasBathroomKey?'Unlock Door (E)':'Try Door (E)')
+      : 'Open Door (E)';
+  }else{
+    b.textContent='Interact (E)';
+  }
+}
+
 function updateUI(){let n=completed();ui.shiftFill.style.width=n/tasks.length*100+'%';ui.taskCount.textContent=n+'/'+tasks.length;ui.bossStatus.textContent='THE BIG BOSS: '+boss.state;ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733';ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+tasks.length+'</b>'+tasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+'</div>').join('')}
-function interact(){if(!running||activeTask)return;const t=nearTask();if(t)startTask(t)}function toggleHide(){
+function interact(){
+  if(!running||activeTask)return;
+  if(nearBathroomDoor()){
+    tryBathroomDoor(true);
+    return;
+  }
+  const t=nearTask();
+  if(t)startTask(t);
+}function toggleHide(){
   if(!running || activeTask)return;
 
   if(player.hidden){
@@ -735,13 +858,48 @@ if(activeTask.kind==='hold'){
 }
 }
 function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
-function reset(){tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
-function drawDoor(c,d,minimap){c.save();c.translate(d.x,d.y);c.strokeStyle='#ffc35c';c.lineWidth=minimap?10:5;c.fillStyle='#2b1c14';if(d.o==='v'){c.fillRect(-WALL/2,-DOOR/2,WALL,DOOR);c.rotate(d.open*Math.PI/2);c.beginPath();c.moveTo(0,-DOOR/2);c.lineTo(0,DOOR/2);c.stroke()}else{c.fillRect(-DOOR/2,-WALL/2,DOOR,WALL);c.rotate(-d.open*Math.PI/2);c.beginPath();c.moveTo(-DOOR/2,0);c.lineTo(DOOR/2,0);c.stroke()}c.restore()}
+function reset(){lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
+
+function drawBathroomApproach(c,minimap){
+ if(minimap)return;
+ c.save();
+ c.translate(bathroomDoorApproach.x,bathroomDoorApproach.y);
+ c.beginPath();
+ c.arc(0,0,10,0,Math.PI*2);
+ c.fillStyle=lockedBathroomDoor.locked?'#ffd15c66':'#74e29a55';
+ c.fill();
+ c.strokeStyle=lockedBathroomDoor.locked?'#ffd15c':'#74e29a';
+ c.lineWidth=2;
+ c.stroke();
+ c.font='bold 9px Arial';
+ c.textAlign='center';
+ c.fillStyle='#ffffff';
+ 
+ c.restore();
+}
+
+function drawDoor(c,d,minimap){
+ c.save();c.translate(d.x,d.y);
+ c.strokeStyle=d.isBathroom&&d.locked?'#ef6464':'#ffc35c';
+ c.lineWidth=minimap?10:5;c.fillStyle='#2b1c14';
+ if(d.o==='v'){c.fillRect(-WALL/2,-DOOR/2,WALL,DOOR);c.rotate(d.open*Math.PI/2);c.beginPath();c.moveTo(0,-DOOR/2);c.lineTo(0,DOOR/2);c.stroke()}
+ else{c.fillRect(-DOOR/2,-WALL/2,DOOR,WALL);c.rotate(-d.open*Math.PI/2);c.beginPath();c.moveTo(-DOOR/2,0);c.lineTo(DOOR/2,0);c.stroke()}
+ if(d.isBathroom&&!minimap){c.fillStyle=d.locked?'#ffd15c':'#74e29a';c.beginPath();c.arc(0,0,5,0,Math.PI*2);c.fill()}
+ c.restore()
+}
 function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scale(s,s);c.fillStyle='#15100c';c.fillRect(0,0,WORLD.w,WORLD.h);rooms.forEach(r=>{
   if(!minimap&&r.id==='break'&&breakRoomArt.complete&&breakRoomArt.naturalWidth){
     c.drawImage(breakRoomArt,r.x,r.y,r.w,r.h);
   }else if(!minimap&&r.id==='reception'&&receptionArt.complete&&receptionArt.naturalWidth){
     c.drawImage(receptionArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='art'&&artDepartmentArt.complete&&artDepartmentArt.naturalWidth){
+    c.drawImage(artDepartmentArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='mainboss'&&bigBossOfficeArt.complete&&bigBossOfficeArt.naturalWidth){
+    c.drawImage(bigBossOfficeArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='boss'&&controlRoomArt.complete&&controlRoomArt.naturalWidth){
+    c.drawImage(controlRoomArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='sales'&&salesOfficeArt.complete&&salesOfficeArt.naturalWidth){
+    c.drawImage(salesOfficeArt,r.x,r.y,r.w,r.h);
   }else{
     c.fillStyle=r.c;c.fillRect(r.x,r.y,r.w,r.h);
   }
@@ -772,10 +930,11 @@ function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scal
     c.fillStyle='#69d18f';
     c.fill();
   }
-});tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawRenee(c,minimap);if(!player.hidden||minimap)drawChris(c,minimap);c.restore()}
+});tasks.forEach(t=>{if(!t.done){c.beginPath();c.arc(t.x,t.y,13,0,Math.PI*2);c.fillStyle='#ffd15c';c.fill();c.strokeStyle='#4a2d14';c.lineWidth=3;c.stroke()}});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawBathroomApproach(c,minimap);
+drawRenee(c,minimap);if(!player.hidden||minimap)drawChris(c,minimap);c.restore()}
 function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max(0,Math.min(WORLD.w-w,player.x-w/2));camera.y=Math.max(0,Math.min(WORLD.h-h,player.y-h/2));ctx.clearRect(0,0,w,h);drawWorld(ctx,-camera.x,-camera.y,1,false);if(player.hidden){ctx.fillStyle='#000a';ctx.fillRect(0,0,w,h);ctx.fillStyle='#fff';ctx.font='900 24px system-ui';ctx.textAlign='center';ctx.fillText('HIDING',w/2,44);ctx.textAlign='left'}}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
   keys[e.code]=true;
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
@@ -809,7 +968,7 @@ addEventListener('keyup',e=>{
 })();
 
 
-// V3.11.2 employee punch-in
+// V3.11.20 employee punch-in
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
@@ -878,48 +1037,6 @@ if(pinBackBtn)pinBackBtn.addEventListener('click',()=>{
   punchEmployeeStatus.className='empStatus';
   refreshPunch();
 });
-window.addEventListener('keydown',e=>{
-  const startOverlay=document.getElementById('startOverlay');
-  if(!startOverlay || !startOverlay.classList.contains('show'))return;
-  if(/^[0-9]$/.test(e.key)){
-    if(enteredPin.length<4){
-      enteredPin+=e.key;
-      refreshPunch();
-      if(enteredPin.length===4)validatePunchPin();
-    }
-    e.preventDefault();
-  }else if(e.key==='Backspace'){
-    enteredPin=enteredPin.slice(0,-1);
-    selectedEmployee=null;
-    punchStartBtn.disabled=true;
-    punchEmployeeName.textContent='NO EMPLOYEE SELECTED';
-    punchEmployeeRole.textContent='Enter your 4-digit employee PIN.';
-    punchEmployeeStatus.textContent='Waiting for PIN…';
-    punchEmployeeStatus.className='empStatus';
-    refreshPunch();
-    e.preventDefault();
-  }else if(e.key==='Escape'){
-    resetPunch();
-    e.preventDefault();
-  }
-});
-refreshPunch();
+</script>
 
-
-
-const punchClockInGuard=document.getElementById('startBtn');
-if(punchClockInGuard){
-  punchClockInGuard.addEventListener('click',e=>{
-    if(!selectedEmployee){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      return;
-    }
-    if(typeof player!=='undefined'){
-      player.characterId=selectedEmployee.id;
-      player.characterName=selectedEmployee.name;
-    }
-  },true);
-}
-
-</script></body></html>
+</body></html>
