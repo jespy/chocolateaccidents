@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.12.14</title>
+<title>Chocolate Accidents — V3.14.0</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -36,7 +36,7 @@
 .heatHelp{text-align:center;color:#d9c3a8;font-size:11px;margin:10px 0 0}
 
 
-/* V3.12.14 employee punch-in */
+/* V3.14.0 employee punch-in */
 .punchWrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start;margin-top:16px}
 .punchPanel{background:#21150f;border:1px solid #6b4933;border-radius:14px;padding:14px}
 .punchPanel h3{margin:0 0 8px;font-size:14px;letter-spacing:.08em}
@@ -53,7 +53,7 @@
 @media(max-width:700px){.punchWrap{grid-template-columns:1fr}.punchPanel{max-width:330px;margin:auto;width:100%}}
 
 
-/* V3.12.14 cool industrial UI */
+/* V3.14.0 cool industrial UI */
 html,body{background:#0b1220!important;color:#f4f7fb!important}
 .topbar{background:#111827!important;border-color:#41536a!important;color:#f4f7fb!important}
 .brand,.brand span{color:#f4f7fb!important}.progress-wrap,.progress,.bar,.temperTrack{background:#0b1322!important;border-color:#4b6079!important}
@@ -67,7 +67,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .scanMark b,.scanBoundary span,.perfectZone span{background:#152236!important;border-color:#607895!important}.heatReadout,.temperLabel{color:#d8e3ef!important}.heatScale{color:#aebdce!important}
 .controls{background:#111b2be6!important;border-color:#536985!important;color:#dce6f2!important}#startBtn[disabled]{background:#475569!important;border-color:#64748b!important}
 
-/* V3.12.14 bathroom interaction */
+/* V3.14.0 bathroom interaction */
 #davidMessage{position:fixed;left:50%;top:20%;transform:translateX(-50%);z-index:40;
  display:none;padding:12px 18px;border-radius:12px;background:#111827ee;border:1px solid #71839a;
  color:#fff;font-weight:900;box-shadow:0 8px 28px #0008}
@@ -75,7 +75,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 @keyframes davidPop{from{transform:translateX(-50%) scale(.92);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
 
 
-/* V3.12.14 mobile experience */
+/* V3.14.0 mobile experience */
 #tasksToggleBtn{display:none}
 #mobileJoystick{display:none}
 .actionIcon{display:none}
@@ -161,7 +161,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 }
 
 
-/* V3.12.14 Shipping Computer Arcade Hub */
+/* V3.14.0 Shipping Computer Arcade Hub */
 .arcadeOverlay{position:absolute;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:12px;background:#07101df2}
 .arcadeOverlay.show{display:flex}
 .arcadeShell{width:min(100%,1060px);height:min(100%,730px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:2px solid #607894;border-radius:16px;background:#0b1220;box-shadow:0 24px 70px #000c}
@@ -191,7 +191,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 }
 
 
-/* V3.12.14 Shipping Scale */
+/* V3.14.0 Shipping Scale */
 .shippingScaleGame{display:none;margin:0 auto 10px;max-width:860px}
 .shippingScaleGame.active{display:block}
 .shippingScaleCanvas{position:relative;width:100%;aspect-ratio:1197/815;overflow:hidden;border-radius:12px;background:#111}
@@ -217,10 +217,33 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
   .scaleRoundStatus{font-size:10px;margin-top:4px}
 }
 
+
+/* V3.14.0: no hover/focus visual on Shipping Scale hit areas */
+.scaleHotspot,.scaleHotspot:hover,.scaleHotspot:focus,.scaleHotspot:focus-visible,.scaleHotspot:active{
+appearance:none!important;-webkit-appearance:none!important;background:transparent!important;
+background-color:transparent!important;background-image:none!important;border:0!important;
+outline:0!important;box-shadow:none!important;filter:none!important;
+-webkit-tap-highlight-color:transparent!important}
+.scaleHotspot:hover{transform:none!important}
+.scaleHotspot:focus-visible{outline:none!important;outline-offset:0!important}
+
+
+/* V3.14.0 difficulty selector */
+.difficultyPanel{margin-top:12px;padding:12px;background:#202d40;border:1px solid #536985;border-radius:12px}
+.difficultyTitle{font-size:12px;font-weight:900;letter-spacing:.08em;color:#dce8f5;margin-bottom:8px}
+.difficultyChoices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.difficultyBtn{padding:10px!important;text-align:left!important;background:#25364c!important;border-color:#536985!important}
+.difficultyBtn strong{display:block;font-size:12px}
+.difficultyBtn span{display:block;font-size:10px;color:#bdc9d8;margin-top:3px;font-weight:600}
+.difficultyBtn.selected{background:#2563a6!important;border-color:#7dd3fc!important;box-shadow:inset 0 0 0 1px #7dd3fc66}
+.difficultyBtn[data-difficulty="hard"].selected{background:#7a294a!important;border-color:#e381a9!important;box-shadow:inset 0 0 0 1px #e381a966}
+.difficultyNote{font-size:10px;color:#bdc9d8;margin-top:8px}.difficultyConfirm{font-size:12px!important;font-weight:900;color:#f4f7fb!important;padding:7px 9px;border:1px solid #536985;border-radius:8px;text-align:center}
+@media(max-width:700px){.difficultyChoices{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.12.14</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/11</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.14.0</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -267,13 +290,28 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.12.14</h1><p class="sub">Eleven jobs are scattered around the factory. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. Renee keeps roaming while you work, so hiding or abandoning a task may save you.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.14.0</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
       <div class="empName" id="employeeName">NO EMPLOYEE SELECTED</div>
       <div class="empRole" id="employeeRole">Enter your 4-digit employee PIN.</div>
       <div class="empStatus" id="employeeStatus">Waiting for PIN…</div>
+    </div>
+
+    <div class="difficultyPanel">
+      <div class="difficultyTitle">SHIFT DIFFICULTY</div>
+      <div class="difficultyChoices">
+        <button type="button" class="difficultyBtn selected" data-difficulty="easy" aria-pressed="true">
+          <strong>LEVEL 1 — EASY</strong>
+          <span>Normal directional vision</span>
+        </button>
+        <button type="button" class="difficultyBtn" data-difficulty="hard" aria-pressed="false">
+          <strong>LEVEL 2 — HARD</strong>
+          <span>180/160 px visible 360° circles</span>
+        </button>
+      </div>
+      <div class="difficultyNote difficultyConfirm" id="difficultyNote">LEVEL 1 EASY SELECTED — directional vision cones.</div>
     </div>
   </div>
   <div class="punchPanel">
@@ -351,7 +389,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 <script>
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
-const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
+const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),almeriaStatus:document.getElementById('almeriaStatus'),difficultyStatus:document.getElementById('difficultyStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In / Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
@@ -392,19 +430,35 @@ const furniture=[
 ];
 const solidFurniture=furniture.filter(o=>o.solid!==false);
 const tasks=[
- {name:'Ward Off Solicitors',desc:'Send away three solicitors before they make it past Reception.',x:205,y:925,kind:'solicitors',done:false,room:'Reception'},
- {name:'Make Coffee',desc:'Make a fresh cup of break-room coffee.',x:114,y:657,kind:'coffee',done:false,room:'Break Room'},
- {name:'Pack Rush Order',desc:'Pack three boxes before the order gets any later.',x:585,y:245,kind:'sequence',done:false,room:'Shipping'},
- {name:'Build Fancy Gift Box',desc:'Assemble a gift box in the correct order.',x:385,y:560,kind:'sequence',done:false,room:'Fancy Packaging'},
- {name:'Freezer Inventory',desc:'Scan three mystery cases before your fingers freeze.',x:560,y:530,kind:'timing',done:false,room:'Walk-In / Freezer'},
- {name:'Temper White Chocolate',desc:'Keep the temperature in the sweet spot.',x:820,y:785,kind:'hold',done:false,room:'White Room'},
- {name:'Fix Accounting Office',desc:'Enter the printer reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Accounting Office'},
- {name:'Production Quality Check',desc:'Approve the good chocolates and reject the accidents.',x:1180,y:520,kind:'choice',done:false,room:'Production'},
- {name:'Restart Tempering Line',desc:'Restart the production line in the proper order.',x:980,y:300,kind:'sequence',done:false,room:'Production'},
- {name:'Find Shipping Cases',desc:'Use the package scale to find three cases in the acceptable weight range.',x:350,y:145,kind:'shippingScale',done:false,room:'Shipping'},
- {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A'},
- {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office'}
+ {name:'Ward Off Solicitors',desc:'Send away three solicitors before they make it past Reception.',x:205,y:925,kind:'solicitors',done:false,room:'Reception',active:true},
+ {name:'Make Coffee',desc:'Make a fresh cup of break-room coffee.',x:114,y:657,kind:'coffee',done:false,room:'Break Room',active:true},
+ {name:'Pack Rush Order',desc:'Pack three boxes before the order gets any later.',x:585,y:245,kind:'sequence',done:false,room:'Shipping',active:true},
+ {name:'Build Fancy Gift Box',desc:'Assemble a gift box in the correct order.',x:385,y:560,kind:'sequence',done:false,room:'Fancy Packaging',active:true},
+ {name:'Freezer Inventory',desc:'Scan three mystery cases before your fingers freeze.',x:560,y:530,kind:'timing',done:false,room:'Walk-In / Freezer',active:true},
+ {name:'Temper White Chocolate',desc:'Keep the temperature in the sweet spot.',x:820,y:785,kind:'hold',done:false,room:'White Room',active:true},
+ {name:'Fix Accounting Office',desc:'Enter the printer reset sequence.',x:900,y:980,kind:'memory',done:false,room:'Accounting Office',active:true},
+ {name:'Production Quality Check',desc:'Approve the good chocolates and reject the accidents.',x:1180,y:520,kind:'choice',done:false,room:'Production',active:true},
+ {name:'Restart Tempering Line',desc:'Restart the production line in the proper order.',x:980,y:300,kind:'sequence',done:false,room:'Production',active:true},
+ {name:'Find Shipping Cases',desc:'Use the package scale to find three cases in the acceptable weight range.',x:350,y:145,kind:'shippingScale',done:false,room:'Shipping',active:true},
+ {name:'Warehouse Stock Check',desc:'Inspect five cases and flag the questionable ones.',x:1580,y:330,kind:'choice',done:false,room:'Warehouse A',active:false},
+ {name:'Process Sales Order',desc:'Enter the order into the system in the correct sequence.',x:1510,y:930,kind:'memory',done:false,room:'Sales Office',active:false}
 ];
+const BASE_TASK_COUNT=12;
+const STARTING_TASK_COUNT=10;
+let extraTaskSerial=0;
+function activeTaskCount(){return tasks.filter(t=>t.active).length}
+function addAlmeriaTask(){
+  let added=tasks.find(t=>!t.active);
+  if(added){
+    added.active=true;
+    added.done=false;
+    return added;
+  }
+  const source=tasks[Math.floor(Math.random()*BASE_TASK_COUNT)];
+  added={...source,name:`${source.name} — Extra ${++extraTaskSerial}`,done:false,active:true,assignedBy:'Almeria'};
+  tasks.push(added);
+  return added;
+}
 const hides=[
 {x:248,y:748,label:'Break Room couch',coolAction:'ACT NATURAL',coolDetail:'Sits on the couch holding a coffee like he is supposed to be there.',approachX:230,approachY:758,hideX:268,hideY:688,exitX:218,exitY:772},
 {x:525,y:570,label:'Freezer shelving',coolAction:'CHECK INVENTORY',coolDetail:'Checks boxes on the freezer shelf and pretends to verify inventory.'},
@@ -412,8 +466,56 @@ const hides=[
 {x:1010,y:590,label:'Production machine',coolAction:'QUALITY CONTROL',coolDetail:'Stands at the machine inspecting chocolate like quality control depends on him.'},
 {x:1490,y:790,label:'Warehouse boxes',coolAction:'CHECK THE SHELF',coolDetail:'Looks through the warehouse shelves like he is searching for a very specific case.',approachX:1460,approachY:790,hideX:1490,hideY:790,exitX:1455,exitY:790}
 ];
-const player={hasBathroomKey:false,characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
-const patrol=[{x:1690,y:930},{x:1545,y:900},{x:1455,y:680},{x:1500,y:570},{x:1510,y:220},{x:1290,y:220},{x:1150,y:520},{x:900,y:500},{x:820,y:220},{x:650,y:190},{x:300,y:190},{x:250,y:500},{x:540,y:500},{x:820,y:720},{x:1135,y:760},{x:1260,y:900},{x:1450,y:900}];
+const player={hasBathroomKey:false,characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};
+const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
+let gameDifficulty='easy';
+const productionHome={x:1040,y:220};
+const almeria={x:1040,y:220,r:14,speed:142,chaseSpeed:180,angle:0,state:'PATROLLING',patrolIndex:0,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1040,lastY:220,cooldown:0};
+// Roaming routes intentionally enter every major department, including the west-side offices.
+const almeriaPatrol=[
+ {x:1040,y:220},        // Production
+ {x:820,y:220},         // Production west
+ {x:620,y:190},         // Shipping east
+ {x:300,y:190},         // Shipping
+ {x:280,y:500},         // Fancy Packaging
+ {x:170,y:760},         // Break Room
+ {x:225,y:975},         // Reception
+ {x:575,y:930},         // Boss's Office
+ {x:520,y:745},         // Art Department
+ {x:565,y:520},         // Walk-In / Freezer
+ {x:820,y:735},         // White Room
+ {x:840,y:930},         // Accounting Office
+ {x:1060,y:930},        // AEP Room
+ {x:1135,y:735},        // Chocolate Storage
+ {x:1475,y:650},        // Warehouse B
+ {x:1510,y:220},        // Warehouse A
+ {x:1510,y:900},        // Sales
+ {x:1040,y:220}         // back to Production
+];
+const patrol=[
+ {x:1690,y:930},        // Control Room
+ {x:1510,y:900},        // Sales
+ {x:1475,y:650},        // Warehouse B
+ {x:1510,y:220},        // Warehouse A
+ {x:1220,y:220},        // Production east
+ {x:900,y:300},         // Production
+ {x:650,y:190},         // Shipping doorway side
+ {x:300,y:190},         // Shipping
+ {x:280,y:500},         // Fancy Packaging
+ {x:170,y:760},         // Break Room
+ {x:225,y:975},         // Reception
+ {x:575,y:930},         // Boss's Office
+ {x:520,y:745},         // Art Department
+ {x:170,y:760},         // Break Room again
+ {x:565,y:520},         // Walk-In / Freezer
+ {x:820,y:735},         // White Room
+ {x:840,y:930},         // Accounting Office
+ {x:1060,y:930},        // AEP Room
+ {x:1135,y:735},        // Chocolate Storage
+ {x:1475,y:650},        // Warehouse B
+ {x:1510,y:900},        // Sales
+ {x:1690,y:930}         // Control Room
+];
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
 let arcadeActive=false;
 const shippingComputer={x:190,y:136,r:82};
@@ -425,6 +527,8 @@ function nearShippingComputer(){
 
 const shippingArt=new Image();
 shippingArt.src='assets/rooms/shipping.png';
+const fancyPackagingArt=new Image();
+fancyPackagingArt.src='assets/rooms/fancy_packaging.png';
 
 // Illustrated Break Room layer (designed at 4x, rendered into the existing 300x240 game room).
 const breakRoomArt=new Image();
@@ -442,13 +546,14 @@ salesOfficeArt.src='assets/rooms/sales_office.png';
 const hideHereArt=new Image();
 hideHereArt.src='assets/ui/hide_here.png';
 
-// Chris default-worker sprites. His physics point stays at his feet, matching the old player circle.
+// Chris replacement sprite set. Only the supplied replacement images are used.
 const chrisSprites={};
 const chrisFiles={
-  idleDown:'assets/chris/idle_front.png',
-  idleUp:'assets/chris/idle_back.png',
-  idleLeft:'assets/chris/idle_left.png',
-  idleRight:'assets/chris/idle_right.png',
+  idle:'assets/chris/idle.png',
+  down1:'assets/chris/fwd1.png',
+  down2:'assets/chris/fwd2.png',
+  up1:'assets/chris/away1.png',
+  up2:'assets/chris/away2.png',
   left1:'assets/chris/walk_left_1.png',
   left2:'assets/chris/walk_left_2.png',
   left3:'assets/chris/walk_left_3.png',
@@ -465,12 +570,21 @@ for(const [key,url] of Object.entries(chrisFiles)){
 }
 let playerAnimClock=0;
 function playerSpriteKey(){
-  if(!player.moving)return 'idle'+player.facing[0].toUpperCase()+player.facing.slice(1);
-  const walkFrame=(Math.floor(playerAnimClock*10)%4)+1;
-  if(player.facing==='left')return 'left'+walkFrame;
-  if(player.facing==='right')return 'right'+walkFrame;
-  // Chris still uses the existing directional poses for up/down movement.
-  return player.facing==='up'?'idleUp':'idleDown';
+  // Only the new Chris replacement sprites are used.
+  if(!player.moving)return 'idle';
+
+  if(player.facing==='left'){
+    const frame=(Math.floor(playerAnimClock*10)%4)+1;
+    return 'left'+frame;
+  }
+  if(player.facing==='right'){
+    const frame=(Math.floor(playerAnimClock*10)%4)+1;
+    return 'right'+frame;
+  }
+
+  // Forward/away have two-frame walking animations.
+  const verticalFrame=(Math.floor(playerAnimClock*7)%2)+1;
+  return player.facing==='up'?'up'+verticalFrame:'down'+verticalFrame;
 }
 function drawChris(c,minimap=false){
   if(minimap){
@@ -544,6 +658,47 @@ function drawRenee(c,minimap=false){
   }
 }
 
+
+// Almeria — Production Manager sprites.
+const almeriaSprites={};
+const almeriaFiles={
+  down1:'assets/almeria/fwd1.png',down2:'assets/almeria/fwd2.png',
+  up1:'assets/almeria/away1.png',up2:'assets/almeria/away2.png',
+  left1:'assets/almeria/left1.png',left2:'assets/almeria/left2.png',left3:'assets/almeria/left3.png',left4:'assets/almeria/left4.png',
+  right1:'assets/almeria/right1.png',right2:'assets/almeria/right2.png',right3:'assets/almeria/right3.png',right4:'assets/almeria/right4.png'
+};
+for(const [key,url] of Object.entries(almeriaFiles)){
+  const img=new Image();img.src=url;almeriaSprites[key]=img;
+}
+let almeriaAnimClock=0;
+function almeriaSpriteKey(){
+  const a=Math.atan2(Math.sin(almeria.angle),Math.cos(almeria.angle));
+  let dir;
+  if(a>=-Math.PI/4&&a<Math.PI/4)dir='right';
+  else if(a>=Math.PI/4&&a<3*Math.PI/4)dir='down';
+  else if(a<=-Math.PI/4&&a>-3*Math.PI/4)dir='up';
+  else dir='left';
+  const moving=almeria.state!=='COOLDOWN';
+  if(!moving)return dir+'1';
+  const frameCount=(dir==='left'||dir==='right')?4:2;
+  return dir+((Math.floor(almeriaAnimClock*8)%frameCount)+1);
+}
+function drawAlmeria(c,minimap=false){
+  if(minimap){
+    c.beginPath();c.arc(almeria.x,almeria.y,almeria.r,0,Math.PI*2);
+    c.fillStyle=almeria.state==='COOLDOWN'?'#9a7cc1':'#b36de0';c.fill();
+    return;
+  }
+  const img=almeriaSprites[almeriaSpriteKey()];
+  if(img&&img.complete&&img.naturalWidth){
+    const h=72,w=h*(img.naturalWidth/img.naturalHeight);
+    c.drawImage(img,almeria.x-w/2,almeria.y-h+13,w,h);
+  }else{
+    c.beginPath();c.arc(almeria.x,almeria.y,almeria.r,0,Math.PI*2);
+    c.fillStyle='#b36de0';c.fill();
+  }
+}
+
 function resize(){const dpr=Math.min(devicePixelRatio||1,2),r=stage.getBoundingClientRect();canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}addEventListener('resize',resize);resize();
 function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}function collides(x,y,r){
  if(x-r<40||y-r<40||x+r>1760||y+r>1040)return true;
@@ -552,7 +707,7 @@ function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}func
    if(lockedBathroomDoor.o==='v'&&Math.abs(x-lockedBathroomDoor.x)<r+10&&Math.abs(y-lockedBathroomDoor.y)<r+42)return true;
  }
  return walls.some(w=>rectHit(w,x,y,r))||solidFurniture.some(o=>rectHit(o,x,y,r))
-}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){
+}function moveEntity(e,dx,dy){let nx=e.x+dx;if(!collides(nx,e.y,e.r))e.x=nx;let ny=e.y+dy;if(!collides(e.x,ny,e.r))e.y=ny}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}function roomAt(x,y){return rooms.find(r=>x>r.x&&x<r.x+r.w&&y>r.y&&y<r.y+r.h)}function nearTask(){return tasks.find(t=>t.active&&!t.done&&Math.hypot(player.x-t.x,player.y-t.y)<48)}function nearHide(){
   let best=null,bd=Infinity;
   for(const raw of hides){
     const h=normalizedHide(raw);
@@ -560,10 +715,22 @@ function rectHit(o,x,y,r){return x+r>o.x&&x-r<o.x+o.w&&y+r>o.y&&y-r<o.y+o.h}func
     if(d<72&&d<bd&&!collides(h.approachX,h.approachY,player.r+2)){bd=d;best=h}
   }
   return best;
-}function completed(){return tasks.filter(t=>t.done).length}
+}function completed(){return tasks.filter(t=>t.active&&t.done).length}
 function lineBlocked(a,b){const steps=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/18);for(let i=1;i<steps;i++){const x=a.x+(b.x-a.x)*i/steps,y=a.y+(b.y-a.y)*i/steps;if(walls.some(w=>rectHit(w,x,y,3))||solidFurniture.some(o=>rectHit(o,x,y,3)))return true}return false}
-function canSee(){if(player.hidden)return false;const dx=player.x-boss.x,dy=player.y-boss.y,d=Math.hypot(dx,dy),max=(keys.ShiftLeft||keys.ShiftRight)?310:245;if(d>max)return false;const ang=Math.atan2(dy,dx),diff=Math.atan2(Math.sin(ang-boss.angle),Math.cos(ang-boss.angle));return Math.abs(diff)<.62&&!lineBlocked(boss,player)}
-const GS=20,COLS=Math.ceil(WORLD.w/GS),ROWS=Math.ceil(WORLD.h/GS);function keyCell(c,r){return c+','+r}
+function canSee(){
+  if(player.hidden)return false;
+  const d=Math.hypot(player.x-boss.x,player.y-boss.y);
+  if(gameDifficulty==='hard'){
+    return d<=180;
+  }
+  const max=(keys.ShiftLeft||keys.ShiftRight)?310:245;
+  if(d>max||lineBlocked(boss,player))return false;
+  const ang=Math.atan2(player.y-boss.y,player.x-boss.x);
+  const diff=Math.atan2(Math.sin(ang-boss.angle),Math.cos(ang-boss.angle));
+  return Math.abs(diff)<.62;
+}
+const GS=20,COLS=Math.ceil(WORLD.w/GS),ROWS=Math.ceil(WORLD.h/GS);
+function keyCell(c,r){return c+','+r}
 function cellPos(c,r){return{x:c*GS+GS/2,y:r*GS+GS/2}}
 function rawCell(p){return{
   c:Math.max(1,Math.min(COLS-2,Math.floor(p.x/GS))),
@@ -571,12 +738,12 @@ function rawCell(p){return{
 }}
 function walkCell(c,r){
   const p=cellPos(c,r);
-  return !collides(p.x,p.y,boss.r+1)
+  return !collides(p.x,p.y,15);
 }
 function nearestWalkableCell(p){
   const base=rawCell(p);
   if(walkCell(base.c,base.r))return base;
-  for(let rad=1;rad<=7;rad++){
+  for(let rad=1;rad<=8;rad++){
     let best=null,bestD=Infinity;
     for(let dc=-rad;dc<=rad;dc++){
       for(let dr=-rad;dr<=rad;dr++){
@@ -591,70 +758,97 @@ function nearestWalkableCell(p){
   }
   return base
 }
+function navSegmentClear(a,b,r=15){
+  const d=Math.hypot(b.x-a.x,b.y-a.y);
+  const steps=Math.max(1,Math.ceil(d/8));
+  for(let i=1;i<=steps;i++){
+    const t=i/steps;
+    if(collides(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,r))return false;
+  }
+  return true;
+}
+function smoothPath(from,path){
+  if(path.length<2)return path;
+  const out=[];
+  let anchor={x:from.x,y:from.y};
+  let i=0;
+  while(i<path.length){
+    let furthest=i;
+    for(let j=path.length-1;j>=i;j--){
+      if(navSegmentClear(anchor,path[j],15)){furthest=j;break}
+    }
+    out.push(path[furthest]);
+    anchor=path[furthest];
+    i=furthest+1;
+  }
+  return out;
+}
 function findPath(from,to){
   const sCell=nearestWalkableCell(from),g=nearestWalkableCell(to);
   const sk=keyCell(sCell.c,sCell.r),gk=keyCell(g.c,g.r);
   if(sk===gk)return[];
-  const queue=[sCell];
-  let qi=0;
+
+  const open=[sCell];
+  const openSet=new Set([sk]);
   const came=new Map();
-  const seen=new Set([sk]);
+  const gScore=new Map([[sk,0]]);
+  const fScore=new Map([[sk,Math.hypot(g.c-sCell.c,g.r-sCell.r)]]);
+  const dirs=[[1,0,1],[-1,0,1],[0,1,1],[0,-1,1],[1,1,1.414],[1,-1,1.414],[-1,1,1.414],[-1,-1,1.414]];
   let found=null;
 
-  while(qi<queue.length){
-    const cur=queue[qi++];
-    for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){
+  while(open.length){
+    let bestIdx=0,bestF=Infinity;
+    for(let i=0;i<open.length;i++){
+      const k=keyCell(open[i].c,open[i].r),f=fScore.get(k)??Infinity;
+      if(f<bestF){bestF=f;bestIdx=i}
+    }
+    const cur=open.splice(bestIdx,1)[0];
+    const ck=keyCell(cur.c,cur.r);
+    openSet.delete(ck);
+    if(ck===gk){found=cur;break}
+
+    for(const [dc,dr,cost] of dirs){
       const nc=cur.c+dc,nr=cur.r+dr;
       if(nc<1||nr<1||nc>=COLS-1||nr>=ROWS-1||!walkCell(nc,nr))continue;
+
+      // Do not cut diagonally through wall/furniture corners.
+      if(dc!==0&&dr!==0&&(!walkCell(cur.c+dc,cur.r)||!walkCell(cur.c,cur.r+dr)))continue;
+
       const nk=keyCell(nc,nr);
-      if(seen.has(nk))continue;
-      seen.add(nk);
+      const tentative=(gScore.get(ck)??Infinity)+cost;
+      if(tentative>=(gScore.get(nk)??Infinity))continue;
+
       came.set(nk,{c:cur.c,r:cur.r});
-      if(nk===gk){found={c:nc,r:nr};qi=queue.length;break}
-      queue.push({c:nc,r:nr});
+      gScore.set(nk,tentative);
+      fScore.set(nk,tentative+Math.hypot(g.c-nc,g.r-nr));
+      if(!openSet.has(nk)){
+        open.push({c:nc,r:nr});
+        openSet.add(nk);
+      }
     }
   }
-  if(!found)return[];
 
-  const path=[];
+  if(!found)return[];
+  const raw=[];
   let node=found,k=gk;
   while(k!==sk){
-    path.push(cellPos(node.c,node.r));
+    raw.push(cellPos(node.c,node.r));
     node=came.get(k);
     if(!node)break;
     k=keyCell(node.c,node.r);
   }
-  return path.reverse();
+  raw.reverse();
+  return smoothPath(from,raw);
 }
 function recoverBoss(target){
-  const base=nearestWalkableCell(boss);
-  const candidates=[];
-  for(let rad=0;rad<=5;rad++){
-    for(let dc=-rad;dc<=rad;dc++){
-      for(let dr=-rad;dr<=rad;dr++){
-        if(rad>0&&Math.abs(dc)!==rad&&Math.abs(dr)!==rad)continue;
-        const c=base.c+dc,r=base.r+dr;
-        if(c<1||r<1||c>=COLS-1||r>=ROWS-1||!walkCell(c,r))continue;
-        const p=cellPos(c,r);
-        candidates.push({x:p.x,y:p.y,d:target?Math.hypot(p.x-target.x,p.y-target.y):0});
-      }
-    }
-    if(candidates.length)break;
-  }
-
-  if(candidates.length){
-    candidates.sort((a,b)=>a.d-b.d);
-    boss.x=candidates[0].x;
-    boss.y=candidates[0].y;
-  }
-
+  // Never teleport the boss. Drop the troublesome waypoint and request a fresh route.
+  if(boss.path.length)boss.path.shift();
   boss.path=[];
   boss.pathTimer=0;
   boss.stuckTimer=0;
   boss.lastX=boss.x;
   boss.lastY=boss.y;
-
-  if(boss.state==='PATROLLING'&&target&&Math.hypot(boss.x-target.x,boss.y-target.y)>180){
+  if(boss.state==='PATROLLING'&&target&&Math.hypot(boss.x-target.x,boss.y-target.y)>220){
     boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
   }
 }
@@ -691,7 +885,7 @@ function updateBoss(dt){
   boss.lastX=boss.x;
   boss.lastY=boss.y;
 
-  if(boss.stuckTimer>0.9){
+  if(boss.stuckTimer>1.6){
     recoverBoss(target);
     target=boss.state==='CHASING'
       ? player
@@ -703,7 +897,7 @@ function updateBoss(dt){
   boss.pathTimer-=dt;
   if(boss.pathTimer<=0||boss.path.length===0){
     boss.path=findPath(boss,target);
-    boss.pathTimer=boss.state==='CHASING'?.22:.55;
+    boss.pathTimer=boss.state==='CHASING'?.20:.85;
 
     if(!boss.path.length&&boss.state==='PATROLLING'&&Math.hypot(boss.x-target.x,boss.y-target.y)>36){
       boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
@@ -750,6 +944,143 @@ function updateBoss(dt){
   if(!player.hidden&&dist(player,boss)<34)loseGame();
 }
 
+function canAlmeriaSee(){
+  if(player.hidden||almeria.state==='RETURNING'||almeria.state==='COOLDOWN')return false;
+  const d=Math.hypot(player.x-almeria.x,player.y-almeria.y);
+  if(gameDifficulty==='hard'){
+    return d<=160;
+  }
+  const max=(keys.ShiftLeft||keys.ShiftRight)?285:225;
+  if(d>max||lineBlocked(almeria,player))return false;
+  const ang=Math.atan2(player.y-almeria.y,player.x-almeria.x);
+  const diff=Math.atan2(Math.sin(ang-almeria.angle),Math.cos(ang-almeria.angle));
+  return Math.abs(diff)<.7;
+}
+function recoverAlmeria(target){
+  // Never teleport Almeria. Clear the bad route and let A* choose another.
+  if(almeria.path.length)almeria.path.shift();
+  almeria.path=[];
+  almeria.pathTimer=0;
+  almeria.stuckTimer=0;
+  almeria.lastX=almeria.x;
+  almeria.lastY=almeria.y;
+  if(almeria.state==='PATROLLING'&&target&&Math.hypot(almeria.x-target.x,almeria.y-target.y)>220){
+    almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+  }
+}
+function almeriaAssignTask(){
+  const added=addAlmeriaTask();
+  ui.roomToast.textContent=`ALMERIA ADDED A TASK: ${added.name}`;
+  ui.roomToast.classList.add('show');
+  toastTimer=2.6;
+  showHint(`Almeria caught you — +1 shift task: ${added.name}`);
+  almeria.state='RETURNING';
+  almeria.lastSeen=null;
+  almeria.path=[];
+  almeria.pathTimer=0;
+  almeria.stuckTimer=0;
+  updateUI();
+}
+function updateAlmeria(dt){
+  if(!running||arcadeActive)return;
+
+  if(almeria.state==='COOLDOWN'){
+    almeria.cooldown=Math.max(0,almeria.cooldown-dt);
+    if(almeria.cooldown<=0){
+      almeria.state='PATROLLING';
+      almeria.patrolIndex=0;
+      almeria.path=[];
+      almeria.pathTimer=0;
+    }
+    return;
+  }
+
+  if(almeria.state==='RETURNING'){
+    const target=productionHome;
+    if(Math.hypot(almeria.x-target.x,almeria.y-target.y)<28){
+      almeria.x=target.x;almeria.y=target.y;
+      almeria.state='COOLDOWN';
+      almeria.cooldown=30;
+      almeria.path=[];
+      almeria.pathTimer=0;
+      return;
+    }
+    almeria.pathTimer-=dt;
+    if(almeria.pathTimer<=0||almeria.path.length===0){
+      almeria.path=findPath(almeria,target);
+      almeria.pathTimer=.35;
+    }
+    const wp=almeria.path[0];
+    if(wp){
+      let dx=wp.x-almeria.x,dy=wp.y-almeria.y,d=Math.hypot(dx,dy);
+      if(d<14)almeria.path.shift();
+      else if(d>1){
+        dx/=d;dy/=d;almeria.angle=Math.atan2(dy,dx);
+        moveEntity(almeria,dx*almeria.speed*dt,dy*almeria.speed*dt);
+      }
+    }
+    return;
+  }
+
+  if(canAlmeriaSee()){
+    almeria.state='CHASING';
+    almeria.lastSeen={x:player.x,y:player.y};
+    almeria.searchTimer=2.2;
+  }else if(almeria.state==='CHASING'){
+    almeria.state='SEARCHING';
+    almeria.searchTimer=2.8;
+  }else if(almeria.state==='SEARCHING'){
+    almeria.searchTimer-=dt;
+    if(almeria.searchTimer<=0){
+      almeria.state='PATROLLING';
+      almeria.lastSeen=null;
+    }
+  }
+
+  let target=almeria.state==='CHASING'
+    ?player
+    :almeria.state==='SEARCHING'&&almeria.lastSeen
+      ?almeria.lastSeen
+      :almeriaPatrol[almeria.patrolIndex];
+
+  const moved=Math.hypot(almeria.x-almeria.lastX,almeria.y-almeria.lastY);
+  almeria.stuckTimer=moved>.75?Math.max(0,almeria.stuckTimer-dt*3):almeria.stuckTimer+dt;
+  almeria.lastX=almeria.x;almeria.lastY=almeria.y;
+  if(almeria.stuckTimer>1.6){recoverAlmeria(target)}
+
+  almeria.pathTimer-=dt;
+  if(almeria.pathTimer<=0||almeria.path.length===0){
+    almeria.path=findPath(almeria,target);
+    almeria.pathTimer=almeria.state==='CHASING'?.20:.85;
+    if(!almeria.path.length&&almeria.state==='PATROLLING'){
+      almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+      target=almeriaPatrol[almeria.patrolIndex];
+      almeria.path=findPath(almeria,target);
+    }
+  }
+
+  const wp=almeria.path[0];
+  if(wp){
+    let dx=wp.x-almeria.x,dy=wp.y-almeria.y,d=Math.hypot(dx,dy);
+    if(d<14)almeria.path.shift();
+    else if(d>1){
+      dx/=d;dy/=d;almeria.angle=Math.atan2(dy,dx);
+      const beforeX=almeria.x,beforeY=almeria.y;
+      moveEntity(almeria,dx*(almeria.state==='CHASING'?almeria.chaseSpeed:almeria.speed)*dt,dy*(almeria.state==='CHASING'?almeria.chaseSpeed:almeria.speed)*dt);
+      if(Math.hypot(almeria.x-beforeX,almeria.y-beforeY)<.08)almeria.pathTimer=0;
+    }
+  }
+
+  if(almeria.state==='PATROLLING'&&Math.hypot(almeria.x-target.x,almeria.y-target.y)<30){
+    almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+    almeria.path=[];almeria.pathTimer=0;
+  }
+
+  if(almeria.state==='CHASING'&&!player.hidden&&dist(player,almeria)<34){
+    almeriaAssignTask();
+  }
+}
+
 const bathroomDoorApproach={x:1385,y:940};
 function nearBathroomDoor(){
   return Math.hypot(player.x-bathroomDoorApproach.x,player.y-bathroomDoorApproach.y)<105;
@@ -785,7 +1116,7 @@ function tryBathroomDoor(force=false){
 function updateDoors(dt){
  for(const d of doors){
    if(d.isBathroom&&d.locked){d.open=0;continue}
-   const p={x:d.x,y:d.y},near=Math.min(dist(player,p),dist(boss,p))<82;
+   const p={x:d.x,y:d.y},near=Math.min(dist(player,p),dist(boss,p),dist(almeria,p))<82;
    d.open+=(near?1:-1)*dt*4;
    d.open=Math.max(0,Math.min(1,d.open));
  }
@@ -896,7 +1227,24 @@ function updateInteractButton(){
   }
 }
 
-function updateUI(){let n=completed();ui.shiftFill.style.width=n/tasks.length*100+'%';ui.taskCount.textContent=n+'/'+tasks.length;ui.bossStatus.textContent='THE BIG BOSS: '+boss.state;ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733';ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+tasks.length+'</b>'+tasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+'</div>').join('')}
+function updateUI(){
+  const n=completed(),total=activeTaskCount();
+  ui.shiftFill.style.width=(total?n/total*100:0)+'%';
+  ui.taskCount.textContent=n+'/'+total;
+  if(ui.difficultyStatus){
+    ui.difficultyStatus.textContent=gameDifficulty==='hard'?'LEVEL 2 • HARD • 360°':'LEVEL 1 • EASY';
+    ui.difficultyStatus.style.borderColor=gameDifficulty==='hard'?'#e381a9':'#536985';
+  }
+  ui.bossStatus.textContent='THE BIG BOSS: '+boss.state+(gameDifficulty==='hard'?' • 360°':'');
+  ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733';
+  if(ui.almeriaStatus){
+    const label=almeria.state==='COOLDOWN'?`COOLDOWN ${Math.ceil(almeria.cooldown)}s`:almeria.state;
+    ui.almeriaStatus.textContent='ALMERIA: '+label+(gameDifficulty==='hard'&&almeria.state!=='COOLDOWN'?' • 360°':'');
+    ui.almeriaStatus.style.borderColor=almeria.state==='CHASING'?'#b36de0':almeria.state==='COOLDOWN'?'#6f6085':'#684733';
+  }
+  const activeTasks=tasks.filter(t=>t.active);
+  ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+total+'</b>'+activeTasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+'</div>').join('');
+}
 const arcadeGames={
   'train-tag':{title:'TRAIN TAG',src:'minigames/train-tag/index.html'},
   'fredo-skates':{title:'FREDO SKATES',src:'minigames/fredo-skates/index.html'},
@@ -1027,7 +1375,7 @@ function abandonTask(){
   ui.taskOverlay.classList.remove('show');
   showHint('Task abandoned.');
 }
-function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===tasks.length)winGame()}
+function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===activeTaskCount())winGame()}
 function mk(txt,fn){const b=document.createElement('button');b.textContent=txt;b.onclick=fn;ui.taskBtns.appendChild(b);return b}function buildMini(t){
 ui.taskBtns.innerHTML='';ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';
 ui.miniBar.classList.remove('scanning');
@@ -1258,7 +1606,20 @@ if(activeTask.kind==='hold'){
 }
 }
 function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
-function reset(){arcadeActive=false;if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;tasks.forEach(t=>t.done=false);player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;activeTask=null;lastRoom='';ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');running=true;updateUI()}
+function reset(){
+  arcadeActive=false;
+  if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
+  lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;
+  if(tasks.length>BASE_TASK_COUNT)tasks.splice(BASE_TASK_COUNT);
+  extraTaskSerial=0;
+  tasks.forEach((t,i)=>{t.done=false;t.active=i<STARTING_TASK_COUNT});
+  player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;
+  boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;
+  almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.state='PATROLLING';almeria.patrolIndex=0;almeria.path=[];almeria.pathTimer=0;almeria.lastSeen=null;almeria.stuckTimer=0;almeria.cooldown=0;almeria.lastX=almeria.x;almeria.lastY=almeria.y;
+  activeTask=null;lastRoom='';
+  ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');
+  running=true;updateUI();
+}
 
 function drawBathroomApproach(c,minimap){
  if(minimap)return;
@@ -1290,6 +1651,8 @@ function drawDoor(c,d,minimap){
 function drawWorld(c,ox,oy,s=1,minimap=false){c.save();c.translate(ox,oy);c.scale(s,s);c.fillStyle='#15100c';c.fillRect(0,0,WORLD.w,WORLD.h);rooms.forEach(r=>{
   if(!minimap&&r.id==='shipping'&&shippingArt.complete&&shippingArt.naturalWidth){
     c.drawImage(shippingArt,r.x,r.y,r.w,r.h);
+  }else if(!minimap&&r.id==='fancy'&&fancyPackagingArt.complete&&fancyPackagingArt.naturalWidth){
+    c.drawImage(fancyPackagingArt,r.x,r.y,r.w,r.h);
   }else if(!minimap&&r.id==='break'&&breakRoomArt.complete&&breakRoomArt.naturalWidth){
     c.drawImage(breakRoomArt,r.x,r.y,r.w,r.h);
   }else if(!minimap&&r.id==='reception'&&receptionArt.complete&&receptionArt.naturalWidth){
@@ -1345,7 +1708,7 @@ if(!minimap){
   c.fill();c.stroke();c.restore();
 }
 tasks.forEach(t=>{
-  if(t.done)return;
+  if(!t.active||t.done)return;
   const markerX=t.x;
   const markerY=t.kind==='shippingScale'?t.y+38:t.y;
   c.beginPath();
@@ -1355,8 +1718,34 @@ tasks.forEach(t=>{
   c.strokeStyle='#4a2d14';
   c.lineWidth=3;
   c.stroke();
-});if(!minimap){c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore()}drawBathroomApproach(c,minimap);
-drawRenee(c,minimap);drawChris(c,minimap);
+});if(!minimap){
+  if(gameDifficulty==='hard'){
+    // HARD MODE: always show the exact 360-degree detection areas.
+    c.save();
+    c.beginPath();c.arc(boss.x,boss.y,180,0,Math.PI*2);
+    c.fillStyle=boss.state==='CHASING'?'rgba(255,60,50,.28)':'rgba(255,60,50,.11)';c.fill();
+    c.beginPath();c.arc(boss.x,boss.y,8,0,Math.PI*2);c.fillStyle='#ff5f56';c.fill();
+    c.font='900 14px Arial';c.textAlign='center';c.fillStyle='#fff';
+    c.fillText('BIG BOSS — 360°',boss.x,boss.y-150);
+    c.restore();
+
+    if(almeria.state!=='COOLDOWN'&&almeria.state!=='RETURNING'){
+      c.save();
+      c.beginPath();c.arc(almeria.x,almeria.y,160,0,Math.PI*2);
+      c.fillStyle=almeria.state==='CHASING'?'rgba(179,109,224,.28)':'rgba(179,109,224,.11)';c.fill();
+      c.beginPath();c.arc(almeria.x,almeria.y,8,0,Math.PI*2);c.fillStyle='#d497ff';c.fill();
+      c.font='900 14px Arial';c.textAlign='center';c.fillStyle='#fff';
+      c.fillText('ALMERIA — 360°',almeria.x,almeria.y-130);
+      c.restore();
+    }
+  }else{
+    c.save();c.translate(boss.x,boss.y);c.rotate(boss.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,boss.state==='CHASING'?310:245,-.62,.62);c.closePath();c.fillStyle=boss.state==='CHASING'?'#ff3d3340':'#ff6b5c26';c.fill();c.restore();
+    if(almeria.state!=='COOLDOWN'&&almeria.state!=='RETURNING'){
+      c.save();c.translate(almeria.x,almeria.y);c.rotate(almeria.angle);c.beginPath();c.moveTo(0,0);c.arc(0,0,almeria.state==='CHASING'?285:225,-.7,.7);c.closePath();c.fillStyle=almeria.state==='CHASING'?'#b36de040':'#b36de022';c.fill();c.restore();
+    }
+  }
+}drawBathroomApproach(c,minimap);
+drawRenee(c,minimap);drawAlmeria(c,minimap);drawChris(c,minimap);
 if(!minimap&&player.hidden&&player.hideSpot){
   c.save();
   c.font='900 10px Arial';
@@ -1388,9 +1777,9 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
   ctx.textAlign='left';
 }}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
-  // V3.12.14: keyboard support for employee clock-in.
+  // V3.14.0: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
     if(/^Digit[0-9]$/.test(e.code)||/^Numpad[0-9]$/.test(e.code)){
       e.preventDefault();
@@ -1468,7 +1857,20 @@ addEventListener('keyup',e=>{
   if(e.code==='Space'&&activeTask&&taskState&&activeTask.kind==='hold'){
     taskState.heat=false;
   }
-});document.getElementById('startBtn').onclick=()=>{ui.startOverlay.classList.remove('show');reset();canvas.focus&&canvas.focus()};
+});document.getElementById('startBtn').onclick=()=>{
+  const chosen=commitDifficulty();
+  ui.startOverlay.classList.remove('show');
+  reset();
+  gameDifficulty=chosen;
+  document.documentElement.dataset.difficulty=chosen;
+  updateUI();
+  ui.roomToast.textContent=chosen==='hard'
+    ? 'LEVEL 2 — HARD: 360° DETECTION ACTIVE'
+    : 'LEVEL 1 — EASY';
+  ui.roomToast.classList.add('show');
+  toastTimer=2.5;
+  canvas.focus&&canvas.focus();
+};
 function clockOut(){
   // End the current shift and return to the employee punch-in screen.
   arcadeActive=false;
@@ -1542,7 +1944,44 @@ updateUI();
 })();
 
 
-// V3.12.14 employee punch-in
+// V3.14.0 employee punch-in
+
+// V3.14.0 difficulty selection
+const difficultyButtons=[...document.querySelectorAll('.difficultyBtn')];
+const difficultyNote=document.getElementById('difficultyNote');
+function setDifficulty(level){
+  const chosen=level==='hard'?'hard':'easy';
+  const startButton=document.getElementById('startBtn');
+  if(startButton)startButton.dataset.difficulty=chosen;
+  document.documentElement.dataset.selectedDifficulty=chosen;
+  difficultyButtons.forEach(btn=>{
+    const isSelected=btn.dataset.difficulty===chosen;
+    btn.classList.toggle('selected',isSelected);
+    btn.setAttribute('aria-pressed',isSelected?'true':'false');
+  });
+  if(difficultyNote){
+    difficultyNote.textContent=chosen==='hard'
+      ? 'LEVEL 2 HARD SELECTED — Clock In will use 360° detection.'
+      : 'LEVEL 1 EASY SELECTED — directional vision cones.';
+  }
+}
+function commitDifficulty(){
+  const selectedButton=document.querySelector('.difficultyBtn.selected');
+  const startButton=document.getElementById('startBtn');
+  const chosen=(selectedButton&&selectedButton.dataset.difficulty)
+    ||(startButton&&startButton.dataset.difficulty)
+    ||'easy';
+  gameDifficulty=chosen==='hard'?'hard':'easy';
+  document.documentElement.dataset.difficulty=gameDifficulty;
+  return gameDifficulty;
+}
+difficultyButtons.forEach(btn=>btn.addEventListener('click',e=>{
+  e.preventDefault();
+  e.stopPropagation();
+  setDifficulty(btn.dataset.difficulty);
+}));
+setDifficulty('easy');
+
 const employeePins={
   '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
