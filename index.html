@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.15.4</title>
+<title>Chocolate Accidents — V3.15.7</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -173,7 +173,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .arcadeMenu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;overflow:auto;background:radial-gradient(circle at 50% 20%,#1b2d46 0,#0b1220 60%)}
 .arcadeMenu h2{margin:0;font-size:28px;letter-spacing:.08em;color:#f5cf62}
 .arcadeMenu p{margin:0;color:#b8c7d8;text-align:center}
-.arcadeGames{width:min(900px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .arcadeGameCard{min-height:190px;border:2px solid #526a86;border-radius:16px;background:#17243a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left}
 .arcadeGameCard:hover{border-color:#78a9d8;background:#1d304d}
 .arcadeGameCard h3{margin:0;color:#fff;font-size:20px}
@@ -243,7 +243,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.15.4</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.15.7</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -282,15 +282,21 @@ outline:0!important;box-shadow:none!important;filter:none!important;
           <p>Take Little Alvaro out for another completely normal pigeon chase.</p>
           <button type="button" data-arcade-game="pigeon-chase">Play Pigeon Chase</button>
         </div>
+        <div class="arcadeGameCard">
+          <div class="gameIcon">🦌</div>
+          <h3>Reindeer Roundup</h3>
+          <p>Lead five escaped reindeer into their North Pole stable before time runs out.</p>
+          <button type="button" data-arcade-game="reindeer-roundup">Play Reindeer Roundup</button>
+        </div>
       </div>
-      <div class="arcadeNote">Train Tag, Fredo Skates, and Pigeon Chase are all included directly in this package.</div>
+      <div class="arcadeNote">Train Tag, Fredo Skates, Pigeon Chase, and Reindeer Roundup are included directly in this package.</div>
     </div>
     <div class="arcadeGameView" id="arcadeGameView">
       <iframe id="arcadeFrame" src="about:blank" title="Chocolate Accidents arcade game" allow="autoplay"></iframe>
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.15.4</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.15.7</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -385,11 +391,16 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 <div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
 </div><div class="taskList" id="taskList"><b>SHIFT TASKS</b><div>Clock in to load tasks…</div></div></div>
 <div id="davidMessage">David: “Just a Minute...”</div>
+<audio id="themeMusic" src="assets/audio/cocoa-conveyor-caper.mp3" preload="auto" loop></audio>
+<audio id="chaseMusic" src="assets/audio/sugar-alarm.mp3" preload="auto" loop></audio>
 
 <script>
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
 const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),almeriaStatus:document.getElementById('almeriaStatus'),difficultyStatus:document.getElementById('difficultyStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
+const themeMusic=document.getElementById('themeMusic'),chaseMusic=document.getElementById('chaseMusic'),musicBtn=document.getElementById('musicBtn');let musicEnabled=true,activeMusicMode='none';themeMusic.volume=.32;chaseMusic.volume=.42;
+function updateMusicButton(){musicBtn.textContent=musicEnabled?'♫ Music: On':'♫ Music: Off';musicBtn.setAttribute('aria-pressed',musicEnabled?'true':'false')}
+function syncThemeMusic(){const chasing=boss.state==='CHASING'||almeria.state==='CHASING',wanted=musicEnabled&&running&&!arcadeActive?(chasing?'chase':'theme'):'none';if(wanted===activeMusicMode){updateMusicButton();return}themeMusic.pause();chaseMusic.pause();if(wanted==='theme'){const playback=themeMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}else if(wanted==='chase'){chaseMusic.currentTime=0;const playback=chaseMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}activeMusicMode=wanted;updateMusicButton()}
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
@@ -1220,7 +1231,7 @@ function updateHint(){
       : 'Press E — OPEN BATHROOM';
     return;
   }
-  if(nearShippingComputer()){ui.hint.textContent='Press E — USE SHIPPING COMPUTER (Train Tag)';return}
+  if(nearShippingComputer()){ui.hint.textContent='Press E — USE SHIPPING COMPUTER (Arcade Games)';return}
   let t=nearTask();if(t){ui.hint.textContent=`Press E — ${t.name}`;return}
   let h=nearHide();if(h){ui.hint.textContent=`Press SPACE — hide at ${h.label}`;return}
   let d=doors.find(d=>Math.hypot(player.x-d.x,player.y-d.y)<90);
@@ -1266,7 +1277,8 @@ function updateUI(){
 const arcadeGames={
   'train-tag':{title:'TRAIN TAG',src:'minigames/train-tag/index.html'},
   'fredo-skates':{title:'FREDO SKATES',src:'minigames/fredo-skates/index.html'},
-  'pigeon-chase':{title:'PIGEON CHASE',src:'minigames/pigeon-chase/index.html'}
+  'pigeon-chase':{title:'PIGEON CHASE',src:'minigames/pigeon-chase/index.html'},
+  'reindeer-roundup':{title:'REINDEER ROUNDUP',src:'minigames/reindeer-roundup/index.html'}
 };
 let currentArcadeGame=null;
 
@@ -1299,6 +1311,7 @@ function launchArcadeGame(id){
 function openShippingComputer(){
   if(!running||activeTask||arcadeActive)return;
   arcadeActive=true;
+  syncThemeMusic();
   player.moving=false;
   keys={};
   ui.arcadeOverlay.classList.add('show');
@@ -1327,6 +1340,7 @@ function closeShippingComputer(){
   ui.arcadeMenu.style.display='flex';
   ui.backToArcadeBtn.style.display='none';
   restoreGameFocus();
+  syncThemeMusic();
   showHint('Shipping computer closed. Back to work.');
 }
 
@@ -1636,7 +1650,7 @@ function reset(){
   almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.state='PATROLLING';almeria.patrolIndex=0;almeria.path=[];almeria.pathTimer=0;almeria.lastSeen=null;almeria.stuckTimer=0;almeria.cooldown=0;almeria.lastX=almeria.x;almeria.lastY=almeria.y;
   activeTask=null;lastRoom='';
   ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');
-  running=true;updateUI();
+  running=true;updateUI();syncThemeMusic();
 }
 
 function drawBathroomApproach(c,minimap){
@@ -1813,7 +1827,7 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
   ctx.textAlign='left';
 }}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);syncThemeMusic();updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
   // V3.15.4: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
@@ -1917,6 +1931,7 @@ function clockOut(){
   player.moving=false;
   keys={};
   running=false;
+  themeMusic.pause();themeMusic.currentTime=0;chaseMusic.pause();chaseMusic.currentTime=0;activeMusicMode='none';updateMusicButton();
   try{if(ui.arcadeFrame)ui.arcadeFrame.src='about:blank';}catch(e){}
   ui.mapOverlay.classList.remove('show');
   ui.endOverlay.classList.remove('show');
@@ -1925,6 +1940,7 @@ function clockOut(){
   ui.hint.textContent='Clock in to begin your shift.';
 }
 document.getElementById('restartBtn').onclick=clockOut;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;document.getElementById('exitArcadeBtn').onclick=closeShippingComputer;
+musicBtn.onclick=()=>{musicEnabled=!musicEnabled;syncThemeMusic()};updateMusicButton();
 ui.backToArcadeBtn.onclick=showArcadeMenu;
 document.querySelectorAll('[data-arcade-game]').forEach(btn=>{
   btn.addEventListener('click',()=>launchArcadeGame(btn.dataset.arcadeGame));

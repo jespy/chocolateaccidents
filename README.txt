@@ -87,3 +87,26 @@ V3.12.9 — LOCAL MINI-GAME BUNDLE + ESC FIX
 V3.12.10
 - Train Tag ESC now works from the Game Over screen as well as during gameplay.
 - ESC from Train Tag always returns to the Chocolate Accidents SELECT A GAME screen.
+
+
+V3.15.5 — REINDEER ROUNDUP
+- Adds Reindeer Roundup as the fourth Shipping Computer arcade game.
+- Includes the complete North Pole wilderness background, circular stable, elf sprites, deer sprites, and falling-snow animation locally.
+- ESC from Reindeer Roundup returns to the SELECT A GAME screen.
+- Existing Train Tag, Fredo Skates, and Pigeon Chase games remain unchanged.
+
+
+V3.15.6 — MAIN THEME MUSIC
+- Adds Cocoa Conveyor Caper as the looping Chocolate Accidents main theme.
+- Music starts after Clock In to comply with browser autoplay requirements.
+- The main theme pauses while a Shipping Computer arcade game is open and resumes after returning to the factory.
+- Added a Music On/Off control to the top bar.
+- Clock Out stops the theme and resets it to the beginning.
+
+
+V3.15.7 — BOSS CHASE MUSIC
+- Adds Sugar Alarm as the looping chase theme.
+- Sugar Alarm starts when either The Big Boss or Almeria spots the player and enters CHASING state.
+- Cocoa Conveyor Caper is muted while Sugar Alarm is playing.
+- The main theme resumes from its previous position when neither boss is chasing.
+- The Music On/Off control affects both tracks.
