@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Reindeer Roundup V1</title>
+  <style>
+    :root{color-scheme:dark;--red:#b92e36;--gold:#ffd66b;--cream:#fff8df;--ink:#18251e}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:#071711;font-family:Trebuchet MS,system-ui,sans-serif;overflow:hidden;touch-action:none;user-select:none}
+    body{display:grid;place-items:center;color:var(--cream)}
+    #shell{position:relative;width:min(100vw,885px);height:min(100vh,570px);overflow:hidden;background:#dff4f7;border:clamp(0px,1vw,7px) solid #f5ead0;box-shadow:0 0 0 4px #8d232a,0 15px 60px #0009}
+    canvas{display:block;width:100%;height:100%;background:#dff4f7}
+    #snowfall{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+    .snowflake{position:absolute;top:-30px;color:#fff;line-height:1;text-shadow:0 1px 3px #5b8298aa;animation:snowfallFall linear infinite;will-change:top,transform}
+    @keyframes snowfallFall{to{top:calc(100% + 30px);transform:translateX(var(--drift)) rotate(360deg)}}
+    #hud{position:absolute;left:16px;right:16px;top:14px;display:flex;gap:10px;justify-content:space-between;pointer-events:none;z-index:4}
+    .badge{min-width:116px;padding:8px 13px;background:#11291fd9;border:2px solid #f8df9a;border-radius:12px;box-shadow:0 4px 12px #0005;font-weight:900;text-align:center;letter-spacing:.03em}
+    .badge span{color:var(--gold);font-size:1.25rem}
+    #message{position:absolute;top:76px;left:50%;transform:translateX(-50%);padding:7px 15px;border-radius:999px;background:#12271ee8;border:2px solid #fff5;color:#fff;font-weight:900;opacity:0;transition:opacity .2s;white-space:nowrap;pointer-events:none;z-index:5}
+    #message.show{opacity:1}
+    .screen{position:absolute;inset:0;display:grid;place-items:center;padding:24px;background:linear-gradient(#092219d9,#06120feb);text-align:center;z-index:6}
+    .panel{width:min(610px,94%);padding:clamp(20px,5vw,38px);border:4px solid #f8e4a8;border-radius:24px;background:linear-gradient(150deg,#a82431,#721a25);box-shadow:0 18px 50px #000a,inset 0 0 0 5px #ffffff17}
+    h1{margin:0;color:#fff6d4;font-size:clamp(2.4rem,8vw,5rem);line-height:.84;text-transform:uppercase;letter-spacing:-.055em;text-shadow:0 5px 0 #4b1118} h1 em{display:block;color:#ffd96f;font-style:normal;font-size:.58em;letter-spacing:.02em;margin-top:10px}
+    .lead{font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.45;margin:22px auto;max-width:470px}
+    button{border:0;border-radius:13px;padding:13px 24px;background:#ffe185;color:#351719;font:900 1.08rem Trebuchet MS,system-ui;box-shadow:0 5px 0 #9f6e24;cursor:pointer}button:hover{filter:brightness(1.08);transform:translateY(-1px)}button:active{transform:translateY(4px);box-shadow:0 1px 0 #9f6e24}
+    .controls{font-size:.9rem;opacity:.85;margin:18px 0 0}.hidden{display:none!important}
+    #touch{position:absolute;inset:auto 0 12px 0;display:none;justify-content:space-between;align-items:end;padding:0 16px;pointer-events:none;z-index:5}
+    #pad{display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:repeat(3,58px);gap:4px;pointer-events:auto}.dir{padding:0;border-radius:50%;font-size:1.4rem;background:#10271ddd;color:#fff;box-shadow:none;border:2px solid #fff8}.dir[data-k="up"]{grid-column:2}.dir[data-k="left"]{grid-row:2;grid-column:1}.dir[data-k="down"]{grid-row:2;grid-column:2}.dir[data-k="right"]{grid-row:2;grid-column:3}
+    #boost{pointer-events:auto;width:84px;height:84px;border-radius:50%;padding:4px;background:#bb2d38dd;color:white;border:3px solid #fff9;box-shadow:none;font-size:.8rem}
+    @media(pointer:coarse),(max-width:800px){#touch{display:flex}.badge{min-width:90px;padding:7px;font-size:.78rem}.badge span{font-size:1.05rem}#hud{top:8px;left:8px;right:8px}.panel{margin-bottom:64px}}
+  </style>
+</head>
+<body>
+<main id="shell" aria-label="Reindeer Roundup game">
+  <canvas id="game" width="1160" height="740"></canvas>
+  <div id="snowfall" aria-hidden="true"></div>
+  <div id="hud" class="hidden"><div class="badge">TIME<br><span id="time">60</span></div><div class="badge">IN PEN<br><span id="score">0 / 5</span></div><div class="badge">FOLLOWING<br><span id="following">0</span></div></div>
+  <div id="message"></div>
+  <section id="start" class="screen"><div class="panel"><h1>Reindeer<em>Roundup</em></h1><p class="lead">The reindeer pets escaped! Catch all five and lead them into the stable pen before Santa notices.</p><button id="startBtn">START ROUNDUP</button><p class="controls">Move: WASD or Arrow Keys &nbsp; • &nbsp; Sprint: Space &nbsp; • &nbsp; Exit: ESC</p></div></section>
+  <section id="finish" class="screen hidden"><div class="panel"><h1 id="endTitle">Roundup<em>Complete!</em></h1><p class="lead" id="endText"></p><button id="againBtn">PLAY AGAIN</button><p class="controls">Press ESC to return to game selection</p></div></section>
+  <div id="touch"><div id="pad"><button class="dir" data-k="up">▲</button><button class="dir" data-k="left">◀</button><button class="dir" data-k="down">▼</button><button class="dir" data-k="right">▶</button></div><button id="boost">SPRINT</button></div>
+</main>
+<script>
+(()=>{
+const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d'),W=canvas.width,H=canvas.height;
+const $=s=>document.querySelector(s), hud=$('#hud'),start=$('#start'),finish=$('#finish'),msg=$('#message');
+const backgroundImage=new Image();backgroundImage.src='assets/north-pole-wilderness.png';backgroundImage.onload=draw;
+function createSnowflakes(){const snowfall=$('#snowfall'),count=28;for(let i=0;i<count;i++){const flake=document.createElement('span'),duration=6+Math.random()*10;flake.className='snowflake';flake.textContent='❄';flake.style.left=Math.random()*100+'%';flake.style.animationDuration=duration+'s';flake.style.animationDelay=-Math.random()*duration+'s';flake.style.fontSize=(.6+Math.random()*1.1)+'rem';flake.style.opacity=.4+Math.random()*.5;flake.style.setProperty('--drift',(-35+Math.random()*70)+'px');snowfall.appendChild(flake)}}
+function loadDeerFrame(name){const image=new Image();image.src=`deer_walking/${name}.png`;image.onload=draw;return image}
+const deerFrames={
+  down:['fwd1','fwd2'].map(loadDeerFrame),
+  left:['left1','left2'].map(loadDeerFrame),
+  right:['right1','right2'].map(loadDeerFrame),
+  up:['away1','away2'].map(loadDeerFrame)
+};
+function loadElfFrame(name){const image=new Image();image.src=`elf_walking/${name}.png`;image.onload=draw;return image}
+const elfIdle=loadElfFrame('idle');
+const elfFrames={
+  down:['fwd1','fwd2'].map(loadElfFrame),
+  left:['left1','left2','left3','left4'].map(loadElfFrame),
+  right:['right1','right2','right3','right4'].map(loadElfFrame),
+  up:['away1','away2'].map(loadElfFrame)
+};
+const stableImage=new Image();stableImage.src='stable_pen.png';stableImage.onload=draw;
+const keys={}, names=['Nibbles','Zippy','Bashful','Tumbles','Trouble']; let state='title',last=0,timeLeft=60,delivered=0,raf,messageTimer=0;
+const pen={x:750,y:18,size:348,cx:924,cy:205,rx:122,ry:108};
+const ice=[{x:255,y:225,rx:112,ry:70}];
+let player,reindeer,particles;
+function reset(){player={x:130,y:350,r:20,vx:0,vy:0,sprint:100,facing:'down',moving:false};delivered=0;timeLeft=60;particles=[];reindeer=names.map((n,i)=>({name:n,x:[380,680,1060,560,930][i],y:[610,355,660,95,355][i],r:14,dir:Math.random()*6.28,speed:38+i*5,wander:0,following:false,home:false,homeTargetX:null,homeTargetY:null,trail:i+1,facing:'down',moving:false}));updateHud()}
+function begin(){reset();state='play';start.classList.add('hidden');finish.classList.add('hidden');hud.classList.remove('hidden');last=performance.now();cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+function end(win){state='end';hud.classList.add('hidden');finish.classList.remove('hidden');$('#endTitle').innerHTML=win?'Roundup<em>Complete!</em>':'Time’s Up!<em>Oh Deer.</em>';$('#endText').textContent=win?`All five are safe! You finished with ${Math.ceil(timeLeft)} seconds left.`:`You penned ${delivered} of 5. The others discovered the wrapping paper.`}
+function exitGame(){keys.boost=false;if(window.parent!==window){window.parent.postMessage({type:'arcade-game-exit',game:'reindeer-roundup'},'*');return}state='title';cancelAnimationFrame(raf);hud.classList.add('hidden');finish.classList.add('hidden');start.classList.remove('hidden');reset();draw()}
+function updateHud(){$('#time').textContent=Math.max(0,Math.ceil(timeLeft));$('#score').textContent=`${delivered} / 5`;$('#following').textContent=reindeer?reindeer.filter(r=>r.following&&!r.home).length:0}
+function flash(t){msg.textContent=t;msg.classList.add('show');clearTimeout(messageTimer);messageTimer=setTimeout(()=>msg.classList.remove('show'),1300)}
+function blocked(c){return c.x<c.r||c.x>W-c.r||c.y<c.r||c.y>H-c.r}
+function insidePen(c,padding=0){return ((c.x-pen.cx)/(pen.rx-padding))**2+((c.y-pen.cy)/(pen.ry-padding))**2<=1}
+function moveSafelyInsidePen(r,padding=r.r+7){const dx=r.x-pen.cx,dy=r.y-pen.cy,rx=pen.rx-padding,ry=pen.ry-padding,distance=Math.hypot(dx/rx,dy/ry);if(distance>1){r.x=pen.cx+dx/distance*.94;r.y=pen.cy+dy/distance*.94}}
+function chooseHomeTarget(r){const angle=Math.random()*Math.PI*2,distance=Math.sqrt(Math.random())*.82;r.homeTargetX=pen.cx+Math.cos(angle)*(pen.rx-r.r-18)*distance;r.homeTargetY=pen.cy+Math.sin(angle)*(pen.ry-r.r-18)*distance}
+function onIce(x,y){return ice.some(i=>((x-i.x)/i.rx)**2+((y-i.y)/i.ry)**2<1)}
+function update(dt){timeLeft-=dt;if(timeLeft<=0)return end(false);let dx=(keys.ArrowRight||keys.d?1:0)-(keys.ArrowLeft||keys.a?1:0),dy=(keys.ArrowDown||keys.s?1:0)-(keys.ArrowUp||keys.w?1:0),len=Math.hypot(dx,dy)||1;
+ const sprint=(keys[' ']||keys.boost)&&player.sprint>0;if(sprint)player.sprint=Math.max(0,player.sprint-dt*34);else player.sprint=Math.min(100,player.sprint+dt*16);let sp=sprint?255:175;if(onIce(player.x,player.y)){player.vx=player.vx*.93+dx/len*sp*.07;player.vy=player.vy*.93+dy/len*sp*.07}else{player.vx=dx/len*sp;player.vy=dy/len*sp}if(!dx&&!dy&&!onIce(player.x,player.y))player.vx=player.vy=0;
+ let ox=player.x,oy=player.y;player.x+=player.vx*dt;if(blocked(player))player.x=ox;player.y+=player.vy*dt;if(blocked(player))player.y=oy;let pmx=player.x-ox,pmy=player.y-oy;player.moving=Math.hypot(pmx,pmy)>.05;if(player.moving){if(Math.abs(pmx)>Math.abs(pmy))player.facing=pmx<0?'left':'right';else player.facing=pmy<0?'up':'down'}
+ const followers=reindeer.filter(r=>r.following&&!r.home);reindeer.forEach((r,i)=>{let prevX=r.x,prevY=r.y;if(r.home){moveSafelyInsidePen(r);prevX=r.x;prevY=r.y;if(r.homeTargetX===null||Math.hypot(r.homeTargetX-r.x,r.homeTargetY-r.y)<7)chooseHomeTarget(r);let angle=Math.atan2(r.homeTargetY-r.y,r.homeTargetX-r.x),homeSpeed=Math.max(28,r.speed*.72);r.x+=Math.cos(angle)*homeSpeed*dt;r.y+=Math.sin(angle)*homeSpeed*dt;if(!insidePen(r,r.r+7)){moveSafelyInsidePen(r);chooseHomeTarget(r)}let hmx=r.x-prevX,hmy=r.y-prevY;r.moving=Math.hypot(hmx,hmy)>.05;if(r.moving){if(Math.abs(hmx)>Math.abs(hmy))r.facing=hmx<0?'left':'right';else r.facing=hmy<0?'up':'down'}return}if(r.following){let target=i===reindeer.indexOf(followers[0])?player:followers[Math.max(0,followers.indexOf(r)-1)]||player;let a=Math.atan2(target.y-r.y,target.x-r.x),d=Math.hypot(target.x-r.x,target.y-r.y);if(d>45){r.x+=Math.cos(a)*155*dt;r.y+=Math.sin(a)*155*dt}}else{r.wander-=dt;if(r.wander<=0){r.dir+=(-1+Math.random()*2)*2.2;r.wander=.5+Math.random()*1.4}let old={x:r.x,y:r.y};r.x+=Math.cos(r.dir)*r.speed*dt;r.y+=Math.sin(r.dir)*r.speed*dt;if(blocked(r)){r.x=old.x;r.y=old.y;r.dir+=Math.PI*(.65+Math.random()*.7)}if(Math.hypot(player.x-r.x,player.y-r.y)<45){r.following=true;flash(`${r.name} is following you!`)}}
+   let mx=r.x-prevX,my=r.y-prevY;r.moving=Math.hypot(mx,my)>.05;if(r.moving){if(Math.abs(mx)>Math.abs(my))r.facing=mx<0?'left':'right';else r.facing=my<0?'up':'down'}
+   if(r.following&&insidePen(r,r.r+4)){r.home=true;r.following=false;moveSafelyInsidePen(r);chooseHomeTarget(r);delivered++;for(let p=0;p<18;p++)particles.push({x:r.x,y:r.y,vx:(Math.random()-.5)*150,vy:-30-Math.random()*100,life:1,c:p%2?'#ffe071':'#fff'});flash(`${r.name} is safe and roaming in the stable!`);if(delivered===reindeer.length)setTimeout(()=>end(true),500)}});particles.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=120*dt;p.life-=dt});particles=particles.filter(p=>p.life>0);updateHud()}
+function snow(){if(backgroundImage.complete&&backgroundImage.naturalWidth)ctx.drawImage(backgroundImage,0,0,W,H);else{ctx.fillStyle='#dff3f5';ctx.fillRect(0,0,W,H)}}
+function drawIce(i){}
+function drawPen(){if(stableImage.complete&&stableImage.naturalWidth)ctx.drawImage(stableImage,pen.x,pen.y,pen.size,pen.size)}
+function elfFallback(p){ctx.fillStyle='#bd3039';ctx.beginPath();ctx.ellipse(0,5,17,24,0,0,7);ctx.fill();ctx.fillStyle='#f4c99b';ctx.beginPath();ctx.arc(0,-15,13,0,7);ctx.fill();ctx.fillStyle='#23784b';ctx.beginPath();ctx.moveTo(-17,-18);ctx.lineTo(0,-50);ctx.lineTo(18,-18);ctx.fill();ctx.fillStyle='#ffe068';ctx.beginPath();ctx.arc(0,-48,5,0,7);ctx.fill()}
+function elf(p){ctx.save();ctx.translate(p.x,p.y);ctx.fillStyle='#07171144';ctx.beginPath();ctx.ellipse(0,18,22,10,0,0,7);ctx.fill();const frames=elfFrames[p.facing]||elfFrames.down;const image=!p.moving&&p.facing==='down'?elfIdle:frames[p.moving?Math.floor(performance.now()/125)%frames.length:0];if(image.complete&&image.naturalWidth)ctx.drawImage(image,-36,-54,72,72);else elfFallback(p);ctx.restore()}
+function deerFallback(r){ctx.strokeStyle='#6e3c25';ctx.lineWidth=4;ctx.lineCap='round';[[-8,-15],[8,-15]].forEach(([x,y])=>{ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x*1.8,y-13);ctx.lineTo(x*2.5,y-19);ctx.moveTo(x*1.8,y-13);ctx.lineTo(x*.9,y-22);ctx.stroke()});ctx.fillStyle='#9b5d37';ctx.beginPath();ctx.ellipse(0,4,17,23,0,0,7);ctx.fill();ctx.beginPath();ctx.arc(0,-13,15,0,7);ctx.fill()}
+function deer(r){ctx.save();ctx.translate(r.x,r.y);if(r.following&&!r.home){ctx.fillStyle='#ffe06e55';ctx.beginPath();ctx.ellipse(0,13,27,14,0,0,7);ctx.fill();ctx.strokeStyle='#ffe06e';ctx.lineWidth=2;ctx.stroke()}const frames=deerFrames[r.facing]||deerFrames.down;const frame=r.moving?Math.floor(performance.now()/150+r.trail)%frames.length:0;const image=frames[frame];if(image.complete&&image.naturalWidth)ctx.drawImage(image,-32,-32,64,64);else{ctx.scale(.7,.7);deerFallback(r)}ctx.restore()}
+function draw(){snow();ice.forEach(drawIce);drawPen();reindeer.forEach(r=>deer(r));elf(player||{x:130,y:350,vx:0,vy:0});particles.forEach(p=>{ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,5,5)});ctx.globalAlpha=1;if(state==='play'){ctx.fillStyle='#10271dcc';ctx.fillRect(18,H-26,180,12);ctx.fillStyle=player.sprint>20?'#f5ce59':'#d04747';ctx.fillRect(20,H-24,176*player.sprint/100,8);ctx.fillStyle='#153329';ctx.font='900 13px Trebuchet MS';ctx.textAlign='left';ctx.fillText('SPRINT',20,H-32)}}
+function loop(t){let dt=Math.min(.033,(t-last)/1000);last=t;if(state==='play')update(dt);draw();if(state==='play')raf=requestAnimationFrame(loop)}
+document.addEventListener('keydown',e=>{let k=e.key.length===1?e.key.toLowerCase():e.key;keys[k]=true;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();if(e.key==='Escape'){e.preventDefault();if(!e.repeat)exitGame();return}});document.addEventListener('keyup',e=>keys[e.key.length===1?e.key.toLowerCase():e.key]=false);
+document.querySelectorAll('.dir').forEach(b=>{let k=b.dataset.k;b.addEventListener('pointerdown',e=>{e.preventDefault();keys[k]=true});['pointerup','pointercancel','pointerleave'].forEach(ev=>b.addEventListener(ev,()=>keys[k]=false))});$('#boost').addEventListener('pointerdown',()=>keys.boost=true);['pointerup','pointercancel','pointerleave'].forEach(ev=>$('#boost').addEventListener(ev,()=>keys.boost=false));
+$('#startBtn').onclick=begin;$('#againBtn').onclick=begin;createSnowflakes();reset();draw();
+})();
+</script>
+</body>
+</html>
