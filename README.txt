@@ -110,3 +110,32 @@ V3.15.7 — BOSS CHASE MUSIC
 - Cocoa Conveyor Caper is muted while Sugar Alarm is playing.
 - The main theme resumes from its previous position when neither boss is chasing.
 - The Music On/Off control affects both tracks.
+
+
+V3.15.8 — CHASE MUSIC GRACE PERIOD
+- Sugar Alarm continues for three seconds after both bosses lose sight of the player.
+- Reacquiring the player during that grace period resets the timer without restarting the chase track.
+- Cocoa Conveyor Caper resumes only after the full three-second grace period expires.
+
+
+V3.15.9 — ALMERIA CUTTING-STATION COOLDOWN
+- After adding a task, Almeria returns to the cutting station on the left side of Production.
+- She stops at the right side of the cutting table and faces left toward it.
+- Her position and facing remain locked there for the full 30-second cooldown.
+- She resumes her normal patrol after the cooldown expires.
+
+V3.16.0 — ONLINE SCOREBOARD
+- Tracks live shift score and elapsed time.
+- Easy, medium, and hard tasks award 100, 200, and 300 base points.
+- Level 2 applies a 1.5x task-point multiplier.
+- Completed shifts earn a 500-point bonus and are uploaded using the active employee PIN.
+- Scoreboard includes highest scores plus fastest completed Level 1 and Level 2 shifts.
+- Incomplete shifts never qualify. The game remains playable if the scoreboard is offline.
+- Before using the online scoreboard, run supabase-setup.sql once in the Supabase SQL Editor.
+
+V3.16.1 — ARCADE INITIALS
+- Completed shifts now open a classic three-letter initials entry screen.
+- Scores are published under initials such as CJR; no email or account is required.
+- Employee PINs are used only to clock into the game and are not uploaded with scores.
+- Initials are restricted to exactly three uppercase A–Z characters.
+- The included SQL safely upgrades the V3.16.0 table while retaining existing scores.

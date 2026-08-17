@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.15.7</title>
+<title>Chocolate Accidents — V3.16.1</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -239,11 +239,14 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 .difficultyBtn[data-difficulty="hard"].selected{background:#7a294a!important;border-color:#e381a9!important;box-shadow:inset 0 0 0 1px #e381a966}
 .difficultyNote{font-size:10px;color:#bdc9d8;margin-top:8px}.difficultyConfirm{font-size:12px!important;font-weight:900;color:#f4f7fb!important;padding:7px 9px;border:1px solid #536985;border-radius:8px;text-align:center}
 @media(max-width:700px){.difficultyChoices{grid-template-columns:1fr}}
+.scorePill{min-width:82px!important}.leaderboardCard{width:min(980px,96vw)!important}.leaderboardGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.leaderboardPanel{background:#111827;border:1px solid #536985;border-radius:12px;padding:12px}.leaderboardPanel h3{margin:0 0 9px;color:#ffd779}.leaderboardRow{display:grid;grid-template-columns:28px 1fr auto;gap:7px;padding:7px 0;border-bottom:1px solid #334155;font-size:12px;text-align:left}.leaderboardRow:last-child{border-bottom:0}.leaderboardMeta{display:block;color:#9fb0c4;font-size:10px}.leaderboardEmpty{color:#9fb0c4;font-size:12px}.leaderboardActions{display:flex;gap:8px}.leaderboardActions button{flex:1}.endScoreSummary{margin:14px 0;padding:12px;border-radius:12px;background:#111827;border:1px solid #536985;font-weight:800}
+.initialsEntry{display:none;margin:14px 0;padding:16px;background:#090f1b;border:2px solid #ffd779;border-radius:12px}.initialsEntry.show{display:block}.initialsEntry label{display:block;color:#ffd779;font-weight:900;letter-spacing:.12em;margin-bottom:10px}.initialsInput{display:block;width:190px;margin:0 auto 10px;padding:8px 12px;background:#020617;color:#fff5b8;border:2px solid #7dd3fc;border-radius:8px;text-align:center;font:900 38px/1 monospace;letter-spacing:.28em;text-transform:uppercase}.initialsInput:focus{outline:3px solid #7dd3fc55}.initialsStatus{min-height:18px;margin:8px 0;color:#bdc9d8;font-size:12px}.initialsSubmit{width:100%;background:#8a5a0b!important;border-color:#ffd779!important}
+@media(max-width:900px){.leaderboardGrid{grid-template-columns:1fr}.scorePill{display:none!important}}
 
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.15.7</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.1</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -296,7 +299,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.15.7</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.1</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -388,7 +391,8 @@ outline:0!important;box-shadow:none!important;filter:none!important;
         <div class="taskBtns" id="taskBtns"></div>
       </div><p class="small" id="taskTip"></p><button id="leaveTaskBtn" style="width:100%;margin-top:10px">Abandon Task (Esc)</button></div></div>
 <div class="overlay" id="mapOverlay"><div class="card"><h2>Factory Map</h2><p class="sub">Yellow = task · Blue = you · Red = boss · Green = hiding spot · Gold gaps = doors</p><canvas id="mapCanvas" width="900" height="560" style="width:100%;height:auto;background:#120e0b;border-radius:12px;border:1px solid #5f412e"></canvas><button id="closeMapBtn" style="width:100%;margin-top:12px">Close Map</button></div></div>
-<div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
+<div class="overlay" id="leaderboardOverlay"><div class="card leaderboardCard"><h2>Factory Scoreboard</h2><p class="sub" id="leaderboardStatus">Loading completed shifts…</p><div class="leaderboardGrid"><section class="leaderboardPanel"><h3>Highest Scores</h3><div id="scoreBoardRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 1</h3><div id="easyTimeRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 2</h3><div id="hardTimeRows"></div></section></div><div class="leaderboardActions"><button id="refreshLeaderboardBtn">Refresh</button><button id="closeLeaderboardBtn">Close</button></div></div></div>
+<div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><div class="endScoreSummary" id="endScoreSummary"></div><div class="initialsEntry" id="initialsEntry"><label for="initialsInput">ENTER YOUR INITIALS</label><input class="initialsInput" id="initialsInput" type="text" maxlength="3" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="initialsStatus"><div class="initialsStatus" id="initialsStatus">Type exactly three letters.</div><button class="initialsSubmit" id="submitInitialsBtn" disabled>Submit High Score</button></div><button id="endScoresBtn" style="width:100%;margin-bottom:8px">View Scoreboard</button><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
 </div><div class="taskList" id="taskList"><b>SHIFT TASKS</b><div>Clock in to load tasks…</div></div></div>
 <div id="davidMessage">David: “Just a Minute...”</div>
 <audio id="themeMusic" src="assets/audio/cocoa-conveyor-caper.mp3" preload="auto" loop></audio>
@@ -398,9 +402,28 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
 const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),almeriaStatus:document.getElementById('almeriaStatus'),difficultyStatus:document.getElementById('difficultyStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
-const themeMusic=document.getElementById('themeMusic'),chaseMusic=document.getElementById('chaseMusic'),musicBtn=document.getElementById('musicBtn');let musicEnabled=true,activeMusicMode='none';themeMusic.volume=.32;chaseMusic.volume=.42;
+const scoreUI={scoreValue:document.getElementById('scoreValue'),shiftTime:document.getElementById('shiftTime'),overlay:document.getElementById('leaderboardOverlay'),status:document.getElementById('leaderboardStatus'),scores:document.getElementById('scoreBoardRows'),easy:document.getElementById('easyTimeRows'),hard:document.getElementById('hardTimeRows'),summary:document.getElementById('endScoreSummary'),initialsEntry:document.getElementById('initialsEntry'),initialsInput:document.getElementById('initialsInput'),initialsStatus:document.getElementById('initialsStatus'),submitInitialsBtn:document.getElementById('submitInitialsBtn')};
+const SCORE_API='https://mosqhttdiosevizkcwnh.supabase.co/rest/v1/game_scores';
+const SCORE_KEY='sb_publishable_Y2Dh0paxIO9Ck2Nz9olQ9A_H_eq4rYT';
+const taskTiers={coffee:'easy',solicitors:'easy',choice:'easy',sequence:'medium',timing:'medium',shippingScale:'medium',hold:'hard',memory:'hard'};
+const tierBase={easy:100,medium:200,hard:300};
+let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboardActive=false,leaderboardReturnToEnd=false,currentEmployeePin='',currentEmployee=null;
+function elapsedSeconds(){return shiftStartedAt?(running?(performance.now()-shiftStartedAt)/1000:shiftElapsed):0}
+function formatTime(seconds){seconds=Math.max(0,Math.floor(seconds||0));return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0')}
+function taskTier(task){return taskTiers[task.kind]||'medium'}
+function taskPoints(task){return Math.round(tierBase[taskTier(task)]*(gameDifficulty==='hard'?1.5:1))}
+function scoreHeaders(extra={}){return {apikey:SCORE_KEY,Authorization:'Bearer '+SCORE_KEY,...extra}}
+function renderBoard(target,rows,valueFn){target.textContent='';if(!rows.length){const empty=document.createElement('div');empty.className='leaderboardEmpty';empty.textContent='No completed shifts yet.';target.appendChild(empty);return}rows.forEach((row,i)=>{const item=document.createElement('div');item.className='leaderboardRow';const rank=document.createElement('b');rank.textContent=String(i+1);const name=document.createElement('span');name.textContent=row.player_initials;const meta=document.createElement('small');meta.className='leaderboardMeta';meta.textContent=(row.difficulty==='hard'?'Level 2':'Level 1')+' • '+row.tasks_completed+' tasks';name.appendChild(meta);const value=document.createElement('b');value.textContent=valueFn(row);item.append(rank,name,value);target.appendChild(item)})}
+async function fetchScores(order,difficulty=''){const params=new URLSearchParams({select:'player_initials,score,completion_seconds,tasks_completed,difficulty,created_at',completed_shift:'eq.true',order,limit:'10'});if(difficulty)params.set('difficulty','eq.'+difficulty);const response=await fetch(SCORE_API+'?'+params,{headers:scoreHeaders()});if(!response.ok)throw new Error('Score service returned '+response.status);return response.json()}
+async function loadLeaderboard(){scoreUI.status.textContent='Loading completed shifts…';try{const [scores,easy,hard]=await Promise.all([fetchScores('score.desc,completion_seconds.asc'),fetchScores('completion_seconds.asc,score.desc','easy'),fetchScores('completion_seconds.asc,score.desc','hard')]);renderBoard(scoreUI.scores,scores,r=>r.score.toLocaleString()+' pts');renderBoard(scoreUI.easy,easy,r=>formatTime(r.completion_seconds));renderBoard(scoreUI.hard,hard,r=>formatTime(r.completion_seconds));scoreUI.status.textContent='Only completed shifts qualify. Times are ranked separately by level.'}catch(error){scoreUI.status.textContent='Online scoreboard unavailable. The game and local scoring still work.';[scoreUI.scores,scoreUI.easy,scoreUI.hard].forEach(el=>renderBoard(el,[],()=>''))}}
+function openLeaderboard(returnToEnd=false){leaderboardActive=true;leaderboardReturnToEnd=returnToEnd;keys={};scoreUI.overlay.classList.add('show');loadLeaderboard()}
+function closeLeaderboard(){leaderboardActive=false;scoreUI.overlay.classList.remove('show');if(leaderboardReturnToEnd)ui.endOverlay.classList.add('show');leaderboardReturnToEnd=false;canvas.focus&&canvas.focus()}
+function cleanInitials(value){return String(value||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,3)}
+function prepareInitialsEntry(){scoreUI.initialsInput.value='';scoreUI.initialsStatus.textContent='Type exactly three letters.';scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsEntry.classList.add('show');setTimeout(()=>scoreUI.initialsInput.focus(),80)}
+async function submitCompletedShift(){const initials=cleanInitials(scoreUI.initialsInput.value);if(scoreSubmitted||initials.length!==3)return;scoreSubmitted=true;scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsInput.disabled=true;scoreUI.initialsStatus.textContent='Submitting '+initials+'…';const record={player_initials:initials,score:shiftScore,completion_seconds:Number(shiftElapsed.toFixed(2)),tasks_completed:completed(),difficulty:gameDifficulty,completed_shift:true};try{const response=await fetch(SCORE_API,{method:'POST',headers:scoreHeaders({'Content-Type':'application/json',Prefer:'return=minimal'}),body:JSON.stringify(record)});if(!response.ok)throw new Error('Score service returned '+response.status);scoreUI.initialsStatus.textContent='High score saved as '+initials+'!';scoreUI.status.textContent='Shift score saved online.';scoreUI.initialsEntry.classList.remove('show');loadLeaderboard()}catch(error){scoreSubmitted=false;scoreUI.initialsInput.disabled=false;scoreUI.submitInitialsBtn.disabled=false;scoreUI.initialsStatus.textContent='Could not upload. Run supabase-setup.sql, then try again.'}}
+const themeMusic=document.getElementById('themeMusic'),chaseMusic=document.getElementById('chaseMusic'),musicBtn=document.getElementById('musicBtn');let musicEnabled=true,activeMusicMode='none',chaseMusicGrace=0;themeMusic.volume=.32;chaseMusic.volume=.42;
 function updateMusicButton(){musicBtn.textContent=musicEnabled?'♫ Music: On':'♫ Music: Off';musicBtn.setAttribute('aria-pressed',musicEnabled?'true':'false')}
-function syncThemeMusic(){const chasing=boss.state==='CHASING'||almeria.state==='CHASING',wanted=musicEnabled&&running&&!arcadeActive?(chasing?'chase':'theme'):'none';if(wanted===activeMusicMode){updateMusicButton();return}themeMusic.pause();chaseMusic.pause();if(wanted==='theme'){const playback=themeMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}else if(wanted==='chase'){chaseMusic.currentTime=0;const playback=chaseMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}activeMusicMode=wanted;updateMusicButton()}
+function syncThemeMusic(dt=0){const spotted=boss.state==='CHASING'||almeria.state==='CHASING';if(spotted)chaseMusicGrace=3;else if(dt>0)chaseMusicGrace=Math.max(0,chaseMusicGrace-dt);const chaseActive=spotted||chaseMusicGrace>0,wanted=musicEnabled&&running&&!arcadeActive?(chaseActive?'chase':'theme'):'none';if(wanted===activeMusicMode){updateMusicButton();return}themeMusic.pause();chaseMusic.pause();if(wanted==='theme'){const playback=themeMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}else if(wanted==='chase'){chaseMusic.currentTime=0;const playback=chaseMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}activeMusicMode=wanted;updateMusicButton()}
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
@@ -480,8 +503,8 @@ const hides=[
 const player={hasBathroomKey:false,characterId:'chris',characterName:'Chris',x:210,y:950,r:13,speed:190,sprint:285,hidden:false,hideSpot:null,facing:'down',moving:false};
 const boss={x:1690,y:930,r:14,speed:132,angle:Math.PI,state:'PATROLLING',patrolIndex:1,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1690,lastY:930};
 let gameDifficulty='easy';
-const productionHome={x:1040,y:220};
-const almeria={x:1040,y:220,r:14,speed:142,chaseSpeed:180,angle:0,state:'PATROLLING',patrolIndex:0,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:1040,lastY:220,cooldown:0};
+const productionHome={x:850,y:330,angle:Math.PI};
+const almeria={x:850,y:330,r:14,speed:142,chaseSpeed:180,angle:Math.PI,state:'PATROLLING',patrolIndex:0,lastSeen:null,path:[],pathTimer:0,searchTimer:0,stuckTimer:0,lastX:850,lastY:330,cooldown:0};
 // Roaming routes intentionally enter every major department, including the west-side offices.
 const almeriaPatrol=[
  {x:1040,y:220},        // Production
@@ -1014,6 +1037,7 @@ function updateAlmeria(dt){
   if(!running||arcadeActive)return;
 
   if(almeria.state==='COOLDOWN'){
+    almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.angle=productionHome.angle;
     almeria.cooldown=Math.max(0,almeria.cooldown-dt);
     if(almeria.cooldown<=0){
       almeria.state='PATROLLING';
@@ -1028,6 +1052,7 @@ function updateAlmeria(dt){
     const target=productionHome;
     if(Math.hypot(almeria.x-target.x,almeria.y-target.y)<28){
       almeria.x=target.x;almeria.y=target.y;
+      almeria.angle=target.angle;
       almeria.state='COOLDOWN';
       almeria.cooldown=30;
       almeria.path=[];
@@ -1260,6 +1285,8 @@ function updateUI(){
   const n=completed(),total=activeTaskCount();
   ui.shiftFill.style.width=(total?n/total*100:0)+'%';
   ui.taskCount.textContent=n+'/'+total;
+  scoreUI.scoreValue.textContent=shiftScore.toLocaleString();
+  scoreUI.shiftTime.textContent=formatTime(elapsedSeconds());
   if(ui.difficultyStatus){
     ui.difficultyStatus.textContent=gameDifficulty==='hard'?'LEVEL 2 • HARD • 360°':'LEVEL 1 • EASY';
     ui.difficultyStatus.style.borderColor=gameDifficulty==='hard'?'#e381a9':'#536985';
@@ -1272,7 +1299,7 @@ function updateUI(){
     ui.almeriaStatus.style.borderColor=almeria.state==='CHASING'?'#b36de0':almeria.state==='COOLDOWN'?'#6f6085':'#684733';
   }
   const activeTasks=tasks.filter(t=>t.active);
-  ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+total+'</b>'+activeTasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+'</div>').join('');
+  ui.taskList.innerHTML='<b>SHIFT TASKS — '+n+'/'+total+'</b>'+activeTasks.map(t=>'<div class="'+(t.done?'done':'')+'">'+(t.done?'✓ ':'○ ')+t.name+' <span class="small">('+taskTier(t)+' • '+taskPoints(t)+' pts)</span></div>').join('');
 }
 const arcadeGames={
   'train-tag':{title:'TRAIN TAG',src:'minigames/train-tag/index.html'},
@@ -1407,7 +1434,7 @@ function abandonTask(){
   ui.taskOverlay.classList.remove('show');
   showHint('Task abandoned.');
 }
-function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){activeTask.done=true;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');updateUI();if(completed()===activeTaskCount())winGame()}
+function startTask(t){activeTask=t;ui.taskTitle.textContent=t.name;ui.taskDesc.textContent=t.desc;ui.taskOverlay.classList.add('show');buildMini(t)}function finishTask(){const finishedTask=activeTask;const earned=taskPoints(finishedTask);finishedTask.done=true;shiftScore+=earned;activeTask=null;taskState=null;ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';ui.miniBar.classList.remove('scanning');ui.taskOverlay.classList.remove('show');ui.roomToast.textContent='TASK COMPLETE +'+earned+' POINTS';ui.roomToast.classList.add('show');toastTimer=2;updateUI();if(completed()===activeTaskCount())winGame()}
 function mk(txt,fn){const b=document.createElement('button');b.textContent=txt;b.onclick=fn;ui.taskBtns.appendChild(b);return b}function buildMini(t){
 ui.taskBtns.innerHTML='';ui.heatGame.classList.remove('active');ui.shippingScaleGame.classList.remove('active');ui.miniBar.style.display='block';
 ui.miniBar.classList.remove('scanning');
@@ -1637,9 +1664,11 @@ if(activeTask.kind==='hold'){
   if(taskState.progress>=100)finishTask();
 }
 }
-function winGame(){running=false;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow.';ui.endOverlay.classList.add('show')}function loseGame(){running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it.';ui.endOverlay.classList.add('show')}
+function stopShiftClock(){if(shiftStartedAt)shiftElapsed=(performance.now()-shiftStartedAt)/1000}
+function winGame(){stopShiftClock();running=false;shiftScore+=500;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow. Enter three initials to claim your place on the scoreboard.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed)+' • 500-point completion bonus';ui.endOverlay.classList.add('show');updateUI();prepareInitialsEntry()}function loseGame(){stopShiftClock();running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it. Incomplete shifts are not uploaded.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed);scoreUI.initialsEntry.classList.remove('show');ui.endOverlay.classList.add('show');updateUI()}
 function reset(){
-  arcadeActive=false;
+  arcadeActive=false;chaseMusicGrace=0;
+  shiftScore=0;shiftElapsed=0;shiftStartedAt=performance.now();scoreSubmitted=false;leaderboardActive=false;scoreUI.initialsInput.value='';scoreUI.initialsInput.disabled=false;scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsEntry.classList.remove('show');
   if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
   lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;
   if(tasks.length>BASE_TASK_COUNT)tasks.splice(BASE_TASK_COUNT);
@@ -1647,9 +1676,9 @@ function reset(){
   tasks.forEach((t,i)=>{t.done=false;t.active=i<STARTING_TASK_COUNT});
   player.x=210;player.y=950;player.hidden=false;player.facing='down';player.moving=false;
   boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;
-  almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.state='PATROLLING';almeria.patrolIndex=0;almeria.path=[];almeria.pathTimer=0;almeria.lastSeen=null;almeria.stuckTimer=0;almeria.cooldown=0;almeria.lastX=almeria.x;almeria.lastY=almeria.y;
+  almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.angle=productionHome.angle;almeria.state='PATROLLING';almeria.patrolIndex=0;almeria.path=[];almeria.pathTimer=0;almeria.lastSeen=null;almeria.stuckTimer=0;almeria.cooldown=0;almeria.lastX=almeria.x;almeria.lastY=almeria.y;
   activeTask=null;lastRoom='';
-  ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');
+  ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');scoreUI.overlay.classList.remove('show');
   running=true;updateUI();syncThemeMusic();
 }
 
@@ -1827,7 +1856,7 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
   ctx.textAlign='left';
 }}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);syncThemeMusic();updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running&&!leaderboardActive){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);syncThemeMusic(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
   // V3.15.4: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
@@ -1909,10 +1938,12 @@ addEventListener('keyup',e=>{
   }
 });document.getElementById('startBtn').onclick=()=>{
   const chosen=commitDifficulty();
+  currentEmployeePin=enteredPin;
+  currentEmployee=selectedEmployee?{...selectedEmployee}:null;
   ui.startOverlay.classList.remove('show');
-  reset();
   gameDifficulty=chosen;
   document.documentElement.dataset.difficulty=chosen;
+  reset();
   updateUI();
   ui.roomToast.textContent=chosen==='hard'
     ? 'LEVEL 2 — HARD: 360° DETECTION ACTIVE'
@@ -1931,7 +1962,7 @@ function clockOut(){
   player.moving=false;
   keys={};
   running=false;
-  themeMusic.pause();themeMusic.currentTime=0;chaseMusic.pause();chaseMusic.currentTime=0;activeMusicMode='none';updateMusicButton();
+  themeMusic.pause();themeMusic.currentTime=0;chaseMusic.pause();chaseMusic.currentTime=0;activeMusicMode='none';chaseMusicGrace=0;updateMusicButton();
   try{if(ui.arcadeFrame)ui.arcadeFrame.src='about:blank';}catch(e){}
   ui.mapOverlay.classList.remove('show');
   ui.endOverlay.classList.remove('show');
@@ -1939,7 +1970,10 @@ function clockOut(){
   ui.startOverlay.classList.add('show');
   ui.hint.textContent='Clock in to begin your shift.';
 }
-document.getElementById('restartBtn').onclick=clockOut;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;document.getElementById('exitArcadeBtn').onclick=closeShippingComputer;
+document.getElementById('restartBtn').onclick=clockOut;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('scoresBtn').onclick=()=>openLeaderboard(false);document.getElementById('endScoresBtn').onclick=()=>{ui.endOverlay.classList.remove('show');openLeaderboard(true)};document.getElementById('refreshLeaderboardBtn').onclick=loadLeaderboard;document.getElementById('closeLeaderboardBtn').onclick=closeLeaderboard;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;document.getElementById('exitArcadeBtn').onclick=closeShippingComputer;
+scoreUI.initialsInput.addEventListener('input',()=>{const cleaned=cleanInitials(scoreUI.initialsInput.value);if(scoreUI.initialsInput.value!==cleaned)scoreUI.initialsInput.value=cleaned;scoreUI.submitInitialsBtn.disabled=cleaned.length!==3;scoreUI.initialsStatus.textContent=cleaned.length===3?'Press Enter or Submit High Score.':'Type exactly three letters.'});
+scoreUI.initialsInput.addEventListener('keydown',event=>{event.stopPropagation();if(event.key==='Enter'&&cleanInitials(scoreUI.initialsInput.value).length===3){event.preventDefault();submitCompletedShift()}});
+scoreUI.submitInitialsBtn.onclick=submitCompletedShift;
 musicBtn.onclick=()=>{musicEnabled=!musicEnabled;syncThemeMusic()};updateMusicButton();
 ui.backToArcadeBtn.onclick=showArcadeMenu;
 document.querySelectorAll('[data-arcade-game]').forEach(btn=>{
