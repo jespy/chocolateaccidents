@@ -139,3 +139,13 @@ V3.16.1 — ARCADE INITIALS
 - Employee PINs are used only to clock into the game and are not uploaded with scores.
 - Initials are restricted to exactly three uppercase A–Z characters.
 - The included SQL safely upgrades the V3.16.0 table while retaining existing scores.
+
+V3.16.2 HOTFIX — THE INHERITANCE PAUSE / EXIT
+- Escape now pauses and resumes The Inheritance instead of leaving the arcade.
+- Added an explicit "Exit Game" button to its pause menu.
+
+V3.16.2 — THE INHERITANCE ARCADE
+- Adds The Inheritance as the fifth locally bundled Shipping Computer arcade game.
+- The arcade selector uses a maximum of three game cards per row: three on the first row and two on the second.
+- The Inheritance retains its complete first-person mystery, evidence progression, and three endings.
+- ESC from normal Inheritance gameplay returns to SELECT A GAME; examination and login screens retain their internal ESC behavior.

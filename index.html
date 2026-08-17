@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.1</title>
+<title>Chocolate Accidents — V3.16.2</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -173,7 +173,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .arcadeMenu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;overflow:auto;background:radial-gradient(circle at 50% 20%,#1b2d46 0,#0b1220 60%)}
 .arcadeMenu h2{margin:0;font-size:28px;letter-spacing:.08em;color:#f5cf62}
 .arcadeMenu p{margin:0;color:#b8c7d8;text-align:center}
-.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .arcadeGameCard{min-height:190px;border:2px solid #526a86;border-radius:16px;background:#17243a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left}
 .arcadeGameCard:hover{border-color:#78a9d8;background:#1d304d}
 .arcadeGameCard h3{margin:0;color:#fff;font-size:20px}
@@ -246,7 +246,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.1</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.2</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -291,15 +291,21 @@ outline:0!important;box-shadow:none!important;filter:none!important;
           <p>Lead five escaped reindeer into their North Pole stable before time runs out.</p>
           <button type="button" data-arcade-game="reindeer-roundup">Play Reindeer Roundup</button>
         </div>
+        <div class="arcadeGameCard">
+          <div class="gameIcon">🕯️</div>
+          <h3>The Inheritance</h3>
+          <p>Explore the Hale house, gather evidence, expose a killer, and choose how the truth survives.</p>
+          <button type="button" data-arcade-game="the-inheritance">Play The Inheritance</button>
+        </div>
       </div>
-      <div class="arcadeNote">Train Tag, Fredo Skates, Pigeon Chase, and Reindeer Roundup are included directly in this package.</div>
+      <div class="arcadeNote">All five arcade games are included directly in this package.</div>
     </div>
     <div class="arcadeGameView" id="arcadeGameView">
       <iframe id="arcadeFrame" src="about:blank" title="Chocolate Accidents arcade game" allow="autoplay"></iframe>
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.1</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.2</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -1305,7 +1311,8 @@ const arcadeGames={
   'train-tag':{title:'TRAIN TAG',src:'minigames/train-tag/index.html'},
   'fredo-skates':{title:'FREDO SKATES',src:'minigames/fredo-skates/index.html'},
   'pigeon-chase':{title:'PIGEON CHASE',src:'minigames/pigeon-chase/index.html'},
-  'reindeer-roundup':{title:'REINDEER ROUNDUP',src:'minigames/reindeer-roundup/index.html'}
+  'reindeer-roundup':{title:'REINDEER ROUNDUP',src:'minigames/reindeer-roundup/index.html'},
+  'the-inheritance':{title:'THE INHERITANCE',src:'minigames/the-inheritance/index.html'}
 };
 let currentArcadeGame=null;
 
