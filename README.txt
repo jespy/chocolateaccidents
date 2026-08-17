@@ -140,6 +140,17 @@ V3.16.1 — ARCADE INITIALS
 - Initials are restricted to exactly three uppercase A–Z characters.
 - The included SQL safely upgrades the V3.16.0 table while retaining existing scores.
 
+V3.16.5 — ARCADE TIMER PAUSE
+- The shift timer now freezes while the Shipping Computer arcade is open.
+- Arcade selection and all five mini-games remain timer-neutral.
+- Exiting the arcade resumes the shift clock from its exact previous value.
+- Added a visible SHIFT TIMER PAUSED notice to the arcade header.
+
+V3.16.4 — 50% ROOM IMAGE TEST
+- Resized all 17 room PNGs to exactly 50% of their previous pixel dimensions.
+- Preserved filenames, aspect ratios, artwork, and all existing code references.
+- Removed print-only DPI metadata and verified every resized PNG can be fully decoded.
+
 V3.16.3 — FACTORY PAUSE MENU
 - Escape now pauses and resumes normal factory gameplay.
 - Pause freezes the shift clock, movement, supervisors, detection, tasks, animations, and music.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.3</title>
+<title>Chocolate Accidents — V3.16.5</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -167,6 +167,7 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .arcadeShell{width:min(100%,1060px);height:min(100%,730px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:2px solid #607894;border-radius:16px;background:#0b1220;box-shadow:0 24px 70px #000c}
 .arcadeBar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;background:#111827;border-bottom:1px solid #536985;color:#f4f7fb;font-weight:900}
 .arcadeBar strong{color:#69d18f;letter-spacing:.06em}
+.arcadePauseNotice{padding:4px 8px;border:1px solid #69d18f88;border-radius:999px;color:#b9f3cb;background:#163525;font-size:10px;letter-spacing:.06em;white-space:nowrap}
 .arcadeBar .arcadeActions{display:flex;gap:8px;align-items:center}
 .arcadeBar button{padding:6px 10px!important;background:#334155!important}
 #backToArcadeBtn{display:none}
@@ -247,7 +248,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.3</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.5</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -260,6 +261,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
   <div class="arcadeShell">
     <div class="arcadeBar">
       <strong id="arcadeTitle">SHIPPING COMPUTER — ARCADE</strong>
+      <span class="arcadePauseNotice">SHIFT TIMER PAUSED</span>
       <div class="arcadeActions">
         <button id="backToArcadeBtn">Back to Games</button>
         <button id="exitArcadeBtn">Exit Arcade (Esc)</button>
@@ -307,7 +309,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.3</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.5</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -417,8 +419,8 @@ const SCORE_API='https://mosqhttdiosevizkcwnh.supabase.co/rest/v1/game_scores';
 const SCORE_KEY='sb_publishable_Y2Dh0paxIO9Ck2Nz9olQ9A_H_eq4rYT';
 const taskTiers={coffee:'easy',solicitors:'easy',choice:'easy',sequence:'medium',timing:'medium',shippingScale:'medium',hold:'hard',memory:'hard'};
 const tierBase={easy:100,medium:200,hard:300};
-let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboardActive=false,leaderboardReturnToEnd=false,currentEmployeePin='',currentEmployee=null,paused=false,pauseStartedAt=0,pendingPauseAction=null;
-function elapsedSeconds(){return shiftStartedAt?(running?((paused?pauseStartedAt:performance.now())-shiftStartedAt)/1000:shiftElapsed):0}
+let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboardActive=false,leaderboardReturnToEnd=false,currentEmployeePin='',currentEmployee=null,paused=false,pauseStartedAt=0,arcadePauseStartedAt=0,pendingPauseAction=null;
+function elapsedSeconds(){const frozenAt=paused?pauseStartedAt:(arcadeActive&&arcadePauseStartedAt?arcadePauseStartedAt:performance.now());return shiftStartedAt?(running?(frozenAt-shiftStartedAt)/1000:shiftElapsed):0}
 function formatTime(seconds){seconds=Math.max(0,Math.floor(seconds||0));return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0')}
 function taskTier(task){return taskTiers[task.kind]||'medium'}
 function taskPoints(task){return Math.round(tierBase[taskTier(task)]*(gameDifficulty==='hard'?1.5:1))}
@@ -1353,6 +1355,7 @@ function launchArcadeGame(id){
 
 function openShippingComputer(){
   if(!running||activeTask||arcadeActive)return;
+  arcadePauseStartedAt=performance.now();
   arcadeActive=true;
   syncThemeMusic();
   player.moving=false;
@@ -1375,6 +1378,9 @@ function restoreGameFocus(){
 
 function closeShippingComputer(){
   if(!arcadeActive)return;
+  const now=performance.now();
+  if(arcadePauseStartedAt)shiftStartedAt+=now-arcadePauseStartedAt;
+  arcadePauseStartedAt=0;
   arcadeActive=false;
   currentArcadeGame=null;
   ui.arcadeOverlay.classList.remove('show');
@@ -1382,6 +1388,7 @@ function closeShippingComputer(){
   ui.arcadeGameView.classList.remove('show');
   ui.arcadeMenu.style.display='flex';
   ui.backToArcadeBtn.style.display='none';
+  last=now;
   restoreGameFocus();
   syncThemeMusic();
   showHint('Shipping computer closed. Back to work.');
@@ -1680,10 +1687,10 @@ if(activeTask.kind==='hold'){
   if(taskState.progress>=100)finishTask();
 }
 }
-function stopShiftClock(){if(shiftStartedAt)shiftElapsed=((paused?pauseStartedAt:performance.now())-shiftStartedAt)/1000}
+function stopShiftClock(){if(shiftStartedAt){const frozenAt=paused?pauseStartedAt:(arcadeActive&&arcadePauseStartedAt?arcadePauseStartedAt:performance.now());shiftElapsed=(frozenAt-shiftStartedAt)/1000}}
 function winGame(){stopShiftClock();running=false;shiftScore+=500;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow. Enter three initials to claim your place on the scoreboard.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed)+' • 500-point completion bonus';ui.endOverlay.classList.add('show');updateUI();prepareInitialsEntry()}function loseGame(){stopShiftClock();running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it. Incomplete shifts are not uploaded.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed);scoreUI.initialsEntry.classList.remove('show');ui.endOverlay.classList.add('show');updateUI()}
 function reset(){
-  arcadeActive=false;chaseMusicGrace=0;paused=false;pauseStartedAt=0;pendingPauseAction=null;
+  arcadeActive=false;arcadePauseStartedAt=0;chaseMusicGrace=0;paused=false;pauseStartedAt=0;pendingPauseAction=null;
   shiftScore=0;shiftElapsed=0;shiftStartedAt=performance.now();scoreSubmitted=false;leaderboardActive=false;scoreUI.initialsInput.value='';scoreUI.initialsInput.disabled=false;scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsEntry.classList.remove('show');
   if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
   lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;
@@ -1994,7 +2001,7 @@ addEventListener('keyup',e=>{
 };
 function clockOut(){
   // End the current shift and return to the employee punch-in screen.
-  arcadeActive=false;
+  arcadeActive=false;arcadePauseStartedAt=0;
   if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
   if(activeTask)abandonTask();
   player.hidden=false;
