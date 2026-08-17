@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.5</title>
+<title>Chocolate Accidents — V3.16.8</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -248,7 +248,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.5</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.8</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -309,7 +309,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.5</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.8</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -615,28 +615,32 @@ salesOfficeArt.src='assets/rooms/sales_office.png';
 const hideHereArt=new Image();
 hideHereArt.src='assets/ui/hide_here.png';
 
-// Chris replacement sprite set. Only the supplied replacement images are used.
-const chrisSprites={};
-const chrisFiles={
-  idle:'assets/chris/idle.png',
-  down1:'assets/chris/fwd1.png',
-  down2:'assets/chris/fwd2.png',
-  up1:'assets/chris/away1.png',
-  up2:'assets/chris/away2.png',
-  left1:'assets/chris/walk_left_1.png',
-  left2:'assets/chris/walk_left_2.png',
-  left3:'assets/chris/walk_left_3.png',
-  left4:'assets/chris/walk_left_4.png',
-  right1:'assets/chris/walk_right_1.png',
-  right2:'assets/chris/walk_right_2.png',
-  right3:'assets/chris/walk_right_3.png',
-  right4:'assets/chris/walk_right_4.png'
+// Each clock-in employee can supply the same 13-frame directional animation map.
+const employeeSpriteFiles={
+  chris:{
+    idle:'assets/chris/idle.png',down1:'assets/chris/fwd1.png',down2:'assets/chris/fwd2.png',up1:'assets/chris/away1.png',up2:'assets/chris/away2.png',
+    left1:'assets/chris/walk_left_1.png',left2:'assets/chris/walk_left_2.png',left3:'assets/chris/walk_left_3.png',left4:'assets/chris/walk_left_4.png',
+    right1:'assets/chris/walk_right_1.png',right2:'assets/chris/walk_right_2.png',right3:'assets/chris/walk_right_3.png',right4:'assets/chris/walk_right_4.png'
+  },
+  elfie:{
+    idle:'assets/elfie/idle.png',down1:'assets/elfie/fwd1.png',down2:'assets/elfie/fwd2.png',up1:'assets/elfie/away1.png',up2:'assets/elfie/away2.png',
+    left1:'assets/elfie/left1.png',left2:'assets/elfie/left2.png',left3:'assets/elfie/left3.png',left4:'assets/elfie/left4.png',
+    right1:'assets/elfie/right1.png',right2:'assets/elfie/right2.png',right3:'assets/elfie/right3.png',right4:'assets/elfie/right4.png'
+  },
+  ginger:{
+    idle:'assets/ginger/fwd1.png',down1:'assets/ginger/fwd1.png',down2:'assets/ginger/fwd2.png',up1:'assets/ginger/away1.png',up2:'assets/ginger/away2.png',
+    left1:'assets/ginger/left1.png',left2:'assets/ginger/left2.png',left3:'assets/ginger/left1.png',left4:'assets/ginger/left2.png',
+    right1:'assets/ginger/right1.png',right2:'assets/ginger/right2.png',right3:'assets/ginger/right1.png',right4:'assets/ginger/right2.png'
+  }
 };
-for(const [key,url] of Object.entries(chrisFiles)){
-  const img=new Image();
-  img.src=url;
-  chrisSprites[key]=img;
+const employeeSprites={};
+for(const [employeeId,files] of Object.entries(employeeSpriteFiles)){
+  employeeSprites[employeeId]={};
+  for(const [key,url] of Object.entries(files)){
+    const img=new Image();img.src=url;employeeSprites[employeeId][key]=img;
+  }
 }
+function activePlayerSprites(){return employeeSprites[currentEmployee?.id]||employeeSprites.chris}
 let playerAnimClock=0;
 function playerSpriteKey(){
   // Only the new Chris replacement sprites are used.
@@ -655,14 +659,14 @@ function playerSpriteKey(){
   const verticalFrame=(Math.floor(playerAnimClock*7)%2)+1;
   return player.facing==='up'?'up'+verticalFrame:'down'+verticalFrame;
 }
-function drawChris(c,minimap=false){
+function drawPlayer(c,minimap=false){
   if(minimap){
     c.beginPath();c.arc(player.x,player.y,player.r,0,Math.PI*2);
     c.fillStyle=player.hidden?'#67a9ff88':'#67a9ff';c.fill();
     c.strokeStyle='#0e2a4c';c.lineWidth=3;c.stroke();
     return;
   }
-  const img=chrisSprites[playerSpriteKey()];
+  const img=activePlayerSprites()[playerSpriteKey()];
   if(img&&img.complete&&img.naturalWidth){
     const h=69;
     const w=h*(img.naturalWidth/img.naturalHeight);
@@ -1847,7 +1851,7 @@ tasks.forEach(t=>{
     }
   }
 }drawBathroomApproach(c,minimap);
-drawRenee(c,minimap);drawAlmeria(c,minimap);drawChris(c,minimap);
+drawRenee(c,minimap);drawAlmeria(c,minimap);drawPlayer(c,minimap);
 if(!minimap&&player.hidden&&player.hideSpot){
   c.save();
   c.font='900 10px Arial';
@@ -2126,7 +2130,9 @@ difficultyButtons.forEach(btn=>btn.addEventListener('click',e=>{
 setDifficulty('easy');
 
 const employeePins={
-  '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
+  '6767':{id:'chris',name:'Chris',role:'Graphic Designer'},
+  '1225':{id:'elfie',name:'Elfie',role:'Employee'},
+  '1201':{id:'ginger',name:'Ginger',role:'Employee'}
 };
 let enteredPin='';
 let selectedEmployee=null;

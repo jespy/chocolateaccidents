@@ -140,6 +140,25 @@ V3.16.1 — ARCADE INITIALS
 - Initials are restricted to exactly three uppercase A–Z characters.
 - The included SQL safely upgrades the V3.16.0 table while retaining existing scores.
 
+V3.16.8 — GINGER EMPLOYEE
+- Added Ginger as a playable clock-in employee with PIN 1201.
+- Integrated Ginger's eight supplied transparent directional walking frames.
+- The first forward frame provides Ginger's stationary pose.
+- Two-frame side animations repeat cleanly through the existing walk cycle.
+
+V3.16.7 — ELFIE EMPLOYEE
+- Added Elfie as a playable clock-in employee with PIN 1225.
+- Integrated Elfie's supplied transparent idle and directional walking frames.
+- Employee selection now switches the complete player animation set at clock-in.
+- Chris remains available with PIN 6767 and his existing graphics are unchanged.
+
+V3.16.6 — THE INHERITANCE MOBILE CONTROLS
+- Added touch-only controls without changing desktop keyboard and mouse play.
+- Added a left movement joystick and right-side drag camera look.
+- Added Interact, Sprint, Evidence, and Pause touch buttons.
+- Improved touch modal sizing, safe-area spacing, and portrait orientation guidance.
+- Mobile play no longer depends on browser pointer lock.
+
 V3.16.5 — ARCADE TIMER PAUSE
 - The shift timer now freezes while the Shipping Computer arcade is open.
 - Arcade selection and all five mini-games remain timer-neutral.
