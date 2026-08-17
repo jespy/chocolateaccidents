@@ -140,6 +140,13 @@ V3.16.1 — ARCADE INITIALS
 - Initials are restricted to exactly three uppercase A–Z characters.
 - The included SQL safely upgrades the V3.16.0 table while retaining existing scores.
 
+V3.16.3 — FACTORY PAUSE MENU
+- Escape now pauses and resumes normal factory gameplay.
+- Pause freezes the shift clock, movement, supervisors, detection, tasks, animations, and music.
+- Added Resume Shift, Controls, Music, Restart Shift, and confirmed Clock Out actions.
+- Added a mobile Pause control and automatic pausing when the browser tab is hidden.
+- Escape still respects task, map, arcade, and leaderboard screens first.
+
 V3.16.2 HOTFIX — THE INHERITANCE PAUSE / EXIT
 - Escape now pauses and resumes The Inheritance instead of leaving the arcade.
 - Added an explicit "Exit Game" button to its pause menu.
