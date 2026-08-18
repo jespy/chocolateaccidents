@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.8</title>
+<title>Chocolate Accidents — V3.16.5</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -167,14 +167,13 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .arcadeShell{width:min(100%,1060px);height:min(100%,730px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:2px solid #607894;border-radius:16px;background:#0b1220;box-shadow:0 24px 70px #000c}
 .arcadeBar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;background:#111827;border-bottom:1px solid #536985;color:#f4f7fb;font-weight:900}
 .arcadeBar strong{color:#69d18f;letter-spacing:.06em}
-.arcadePauseNotice{padding:4px 8px;border:1px solid #69d18f88;border-radius:999px;color:#b9f3cb;background:#163525;font-size:10px;letter-spacing:.06em;white-space:nowrap}
 .arcadeBar .arcadeActions{display:flex;gap:8px;align-items:center}
 .arcadeBar button{padding:6px 10px!important;background:#334155!important}
 #backToArcadeBtn{display:none}
 .arcadeMenu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;overflow:auto;background:radial-gradient(circle at 50% 20%,#1b2d46 0,#0b1220 60%)}
 .arcadeMenu h2{margin:0;font-size:28px;letter-spacing:.08em;color:#f5cf62}
 .arcadeMenu p{margin:0;color:#b8c7d8;text-align:center}
-.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .arcadeGameCard{min-height:190px;border:2px solid #526a86;border-radius:16px;background:#17243a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left}
 .arcadeGameCard:hover{border-color:#78a9d8;background:#1d304d}
 .arcadeGameCard h3{margin:0;color:#fff;font-size:20px}
@@ -238,30 +237,28 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 .difficultyBtn span{display:block;font-size:10px;color:#bdc9d8;margin-top:3px;font-weight:600}
 .difficultyBtn.selected{background:#2563a6!important;border-color:#7dd3fc!important;box-shadow:inset 0 0 0 1px #7dd3fc66}
 .difficultyBtn[data-difficulty="hard"].selected{background:#7a294a!important;border-color:#e381a9!important;box-shadow:inset 0 0 0 1px #e381a966}
+.difficultyBtn[data-difficulty="expert"].selected{background:#7a1f1f!important;border-color:#ff8a65!important;box-shadow:inset 0 0 0 1px #ff8a6566}
 .difficultyNote{font-size:10px;color:#bdc9d8;margin-top:8px}.difficultyConfirm{font-size:12px!important;font-weight:900;color:#f4f7fb!important;padding:7px 9px;border:1px solid #536985;border-radius:8px;text-align:center}
 @media(max-width:700px){.difficultyChoices{grid-template-columns:1fr}}
-.scorePill{min-width:82px!important}.leaderboardCard{width:min(980px,96vw)!important}.leaderboardGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.leaderboardPanel{background:#111827;border:1px solid #536985;border-radius:12px;padding:12px}.leaderboardPanel h3{margin:0 0 9px;color:#ffd779}.leaderboardRow{display:grid;grid-template-columns:28px 1fr auto;gap:7px;padding:7px 0;border-bottom:1px solid #334155;font-size:12px;text-align:left}.leaderboardRow:last-child{border-bottom:0}.leaderboardMeta{display:block;color:#9fb0c4;font-size:10px}.leaderboardEmpty{color:#9fb0c4;font-size:12px}.leaderboardActions{display:flex;gap:8px}.leaderboardActions button{flex:1}.endScoreSummary{margin:14px 0;padding:12px;border-radius:12px;background:#111827;border:1px solid #536985;font-weight:800}
+.scorePill{min-width:82px!important}.leaderboardCard{width:min(980px,96vw)!important}.leaderboardGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}.leaderboardPanel{background:#111827;border:1px solid #536985;border-radius:12px;padding:12px}.leaderboardPanel h3{margin:0 0 9px;color:#ffd779}.leaderboardRow{display:grid;grid-template-columns:28px 1fr auto;gap:7px;padding:7px 0;border-bottom:1px solid #334155;font-size:12px;text-align:left}.leaderboardRow:last-child{border-bottom:0}.leaderboardMeta{display:block;color:#9fb0c4;font-size:10px}.leaderboardEmpty{color:#9fb0c4;font-size:12px}.leaderboardActions{display:flex;gap:8px}.leaderboardActions button{flex:1}.endScoreSummary{margin:14px 0;padding:12px;border-radius:12px;background:#111827;border:1px solid #536985;font-weight:800}
 .initialsEntry{display:none;margin:14px 0;padding:16px;background:#090f1b;border:2px solid #ffd779;border-radius:12px}.initialsEntry.show{display:block}.initialsEntry label{display:block;color:#ffd779;font-weight:900;letter-spacing:.12em;margin-bottom:10px}.initialsInput{display:block;width:190px;margin:0 auto 10px;padding:8px 12px;background:#020617;color:#fff5b8;border:2px solid #7dd3fc;border-radius:8px;text-align:center;font:900 38px/1 monospace;letter-spacing:.28em;text-transform:uppercase}.initialsInput:focus{outline:3px solid #7dd3fc55}.initialsStatus{min-height:18px;margin:8px 0;color:#bdc9d8;font-size:12px}.initialsSubmit{width:100%;background:#8a5a0b!important;border-color:#ffd779!important}
-.pauseCard{width:min(520px,94vw)!important;text-align:center}.pauseCard h1{color:#ffd779}.pauseActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.pauseActions button{min-height:46px}.pauseActions .wide{grid-column:1/-1}.pauseControls{margin:14px 0 0;padding:12px;background:#0d1726;border:1px solid #536985;border-radius:10px;text-align:left;line-height:1.65}.pauseControls[hidden],.pauseConfirm[hidden]{display:none}.pauseConfirm{margin-top:14px;padding:14px;background:#251516;border:1px solid #a85c59;border-radius:10px}.pauseConfirmActions{display:flex;gap:8px;margin-top:10px}.pauseConfirmActions button{flex:1}.dangerButton{background:#642c2c!important;border-color:#b76464!important}.pauseHint{color:#9fb0c4;font-size:12px;margin-top:14px}
 @media(max-width:900px){.leaderboardGrid{grid-template-columns:1fr}.scorePill{display:none!important}}
 
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.8</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.2</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
   <button id="hideBtn" class="actionBtn hideAction" aria-label="Hide"><span class="actionIcon">◉</span><span class="actionLabel">Hide</span></button>
   <button id="sprintBtn" class="actionBtn sprintAction" aria-label="Sprint"><span class="actionIcon">⚡</span><span class="actionLabel">Sprint</span></button>
-  <button id="pauseBtn" class="actionBtn" aria-label="Pause"><span class="actionIcon">Ⅱ</span><span class="actionLabel">Pause</span></button>
 </div>
 <div id="mobileJoystick" aria-label="Movement joystick"><div class="joystickRing"><div class="joystickKnob" id="joystickKnob"></div></div></div>
 <div class="arcadeOverlay" id="arcadeOverlay">
   <div class="arcadeShell">
     <div class="arcadeBar">
       <strong id="arcadeTitle">SHIPPING COMPUTER — ARCADE</strong>
-      <span class="arcadePauseNotice">SHIFT TIMER PAUSED</span>
       <div class="arcadeActions">
         <button id="backToArcadeBtn">Back to Games</button>
         <button id="exitArcadeBtn">Exit Arcade (Esc)</button>
@@ -309,7 +306,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.8</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.5</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -328,6 +325,10 @@ outline:0!important;box-shadow:none!important;filter:none!important;
         <button type="button" class="difficultyBtn" data-difficulty="hard" aria-pressed="false">
           <strong>LEVEL 2 — HARD</strong>
           <span>180/160 px visible 360° circles</span>
+        </button>
+        <button type="button" class="difficultyBtn" data-difficulty="expert" aria-pressed="false">
+          <strong>LEVEL 3 — EXPERT</strong>
+          <span>230/210 px 360° • faster supervisors</span>
         </button>
       </div>
       <div class="difficultyNote difficultyConfirm" id="difficultyNote">LEVEL 1 EASY SELECTED — directional vision cones.</div>
@@ -400,9 +401,8 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 
         <div class="taskBtns" id="taskBtns"></div>
       </div><p class="small" id="taskTip"></p><button id="leaveTaskBtn" style="width:100%;margin-top:10px">Abandon Task (Esc)</button></div></div>
-<div class="overlay" id="pauseOverlay"><div class="card pauseCard"><p class="small">SHIFT PAUSED</p><h1>The factory can wait. Probably.</h1><p class="sub">The shift timer, employees, tasks, and supervisors are frozen.</p><div class="pauseActions"><button id="resumeShiftBtn" class="wide">Resume Shift</button><button id="pauseControlsBtn">Controls</button><button id="pauseMusicBtn">♫ Music: On</button><button id="restartShiftBtn">Restart Shift</button><button id="pauseClockOutBtn" class="dangerButton">Clock Out</button></div><div id="pauseControlsPanel" class="pauseControls" hidden><b>Move:</b> WASD / Arrow Keys<br><b>Sprint:</b> Shift<br><b>Interact:</b> E<br><b>Play It Cool:</b> Space<br><b>Map:</b> M<br><b>Pause / Resume:</b> Esc</div><div id="pauseConfirm" class="pauseConfirm" hidden><strong id="pauseConfirmText"></strong><div class="pauseConfirmActions"><button id="pauseConfirmYes" class="dangerButton">Confirm</button><button id="pauseConfirmNo">Cancel</button></div></div><div class="pauseHint">Press Esc again to resume.</div></div></div>
 <div class="overlay" id="mapOverlay"><div class="card"><h2>Factory Map</h2><p class="sub">Yellow = task · Blue = you · Red = boss · Green = hiding spot · Gold gaps = doors</p><canvas id="mapCanvas" width="900" height="560" style="width:100%;height:auto;background:#120e0b;border-radius:12px;border:1px solid #5f412e"></canvas><button id="closeMapBtn" style="width:100%;margin-top:12px">Close Map</button></div></div>
-<div class="overlay" id="leaderboardOverlay"><div class="card leaderboardCard"><h2>Factory Scoreboard</h2><p class="sub" id="leaderboardStatus">Loading completed shifts…</p><div class="leaderboardGrid"><section class="leaderboardPanel"><h3>Highest Scores</h3><div id="scoreBoardRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 1</h3><div id="easyTimeRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 2</h3><div id="hardTimeRows"></div></section></div><div class="leaderboardActions"><button id="refreshLeaderboardBtn">Refresh</button><button id="closeLeaderboardBtn">Close</button></div></div></div>
+<div class="overlay" id="leaderboardOverlay"><div class="card leaderboardCard"><h2>Factory Scoreboard</h2><p class="sub" id="leaderboardStatus">Loading completed shifts…</p><div class="leaderboardGrid"><section class="leaderboardPanel"><h3>Highest Scores</h3><div id="scoreBoardRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 1</h3><div id="easyTimeRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 2</h3><div id="hardTimeRows"></div></section><section class="leaderboardPanel"><h3>Fastest — Level 3</h3><div id="expertTimeRows"></div></section></div><div class="leaderboardActions"><button id="refreshLeaderboardBtn">Refresh</button><button id="closeLeaderboardBtn">Close</button></div></div></div>
 <div class="overlay" id="endOverlay"><div class="card" style="text-align:center"><h1 id="endTitle"></h1><p class="sub" id="endText"></p><div class="endScoreSummary" id="endScoreSummary"></div><div class="initialsEntry" id="initialsEntry"><label for="initialsInput">ENTER YOUR INITIALS</label><input class="initialsInput" id="initialsInput" type="text" maxlength="3" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="initialsStatus"><div class="initialsStatus" id="initialsStatus">Type exactly three letters.</div><button class="initialsSubmit" id="submitInitialsBtn" disabled>Submit High Score</button></div><button id="endScoresBtn" style="width:100%;margin-bottom:8px">View Scoreboard</button><button id="endRestartBtn" style="width:100%">Play Again</button></div></div>
 </div><div class="taskList" id="taskList"><b>SHIFT TASKS</b><div>Clock in to load tasks…</div></div></div>
 <div id="davidMessage">David: “Just a Minute...”</div>
@@ -413,34 +413,28 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 (()=>{
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage'),mapCanvas=document.getElementById('mapCanvas'),mctx=mapCanvas.getContext('2d');
 const ui={shiftFill:document.getElementById('shiftFill'),taskCount:document.getElementById('taskCount'),taskList:document.getElementById('taskList'),bossStatus:document.getElementById('bossStatus'),almeriaStatus:document.getElementById('almeriaStatus'),difficultyStatus:document.getElementById('difficultyStatus'),hint:document.getElementById('hint'),roomToast:document.getElementById('roomToast'),startOverlay:document.getElementById('startOverlay'),taskOverlay:document.getElementById('taskOverlay'),mapOverlay:document.getElementById('mapOverlay'),endOverlay:document.getElementById('endOverlay'),taskTitle:document.getElementById('taskTitle'),taskDesc:document.getElementById('taskDesc'),miniFill:document.getElementById('miniFill'),miniBar:document.getElementById('miniBar'),scanInstruction:document.getElementById('scanInstruction'),heatGame:document.getElementById('heatGame'),heatTemp:document.getElementById('heatTemp'),heatNeedle:document.getElementById('heatNeedle'),temperFill:document.getElementById('temperFill'),temperPct:document.getElementById('temperPct'),heatHelp:document.getElementById('heatHelp'),taskBtns:document.getElementById('taskBtns'),shippingScaleGame:document.getElementById('shippingScaleGame'),scaleNeedle:document.getElementById('scaleNeedle'),scaleWeight:document.getElementById('scaleWeight'),scaleResult:document.getElementById('scaleResult'),scaleRoundStatus:document.getElementById('scaleRoundStatus'),scaleLockBtn:document.getElementById('scaleLockBtn'),scaleResetBtn:document.getElementById('scaleResetBtn'),scaleLockDownArt:document.getElementById('scaleLockDownArt'),scaleResetDownArt:document.getElementById('scaleResetDownArt'),taskTip:document.getElementById('taskTip'),endTitle:document.getElementById('endTitle'),endText:document.getElementById('endText'),arcadeOverlay:document.getElementById('arcadeOverlay'),arcadeMenu:document.getElementById('arcadeMenu'),arcadeGameView:document.getElementById('arcadeGameView'),arcadeFrame:document.getElementById('arcadeFrame'),arcadeTitle:document.getElementById('arcadeTitle'),backToArcadeBtn:document.getElementById('backToArcadeBtn')};
-const scoreUI={scoreValue:document.getElementById('scoreValue'),shiftTime:document.getElementById('shiftTime'),overlay:document.getElementById('leaderboardOverlay'),status:document.getElementById('leaderboardStatus'),scores:document.getElementById('scoreBoardRows'),easy:document.getElementById('easyTimeRows'),hard:document.getElementById('hardTimeRows'),summary:document.getElementById('endScoreSummary'),initialsEntry:document.getElementById('initialsEntry'),initialsInput:document.getElementById('initialsInput'),initialsStatus:document.getElementById('initialsStatus'),submitInitialsBtn:document.getElementById('submitInitialsBtn')};
-const pauseUI={overlay:document.getElementById('pauseOverlay'),resume:document.getElementById('resumeShiftBtn'),controls:document.getElementById('pauseControlsBtn'),controlsPanel:document.getElementById('pauseControlsPanel'),music:document.getElementById('pauseMusicBtn'),restart:document.getElementById('restartShiftBtn'),clockOut:document.getElementById('pauseClockOutBtn'),confirm:document.getElementById('pauseConfirm'),confirmText:document.getElementById('pauseConfirmText'),confirmYes:document.getElementById('pauseConfirmYes'),confirmNo:document.getElementById('pauseConfirmNo')};
+const scoreUI={scoreValue:document.getElementById('scoreValue'),shiftTime:document.getElementById('shiftTime'),overlay:document.getElementById('leaderboardOverlay'),status:document.getElementById('leaderboardStatus'),scores:document.getElementById('scoreBoardRows'),easy:document.getElementById('easyTimeRows'),hard:document.getElementById('hardTimeRows'),expert:document.getElementById('expertTimeRows'),summary:document.getElementById('endScoreSummary'),initialsEntry:document.getElementById('initialsEntry'),initialsInput:document.getElementById('initialsInput'),initialsStatus:document.getElementById('initialsStatus'),submitInitialsBtn:document.getElementById('submitInitialsBtn')};
 const SCORE_API='https://mosqhttdiosevizkcwnh.supabase.co/rest/v1/game_scores';
 const SCORE_KEY='sb_publishable_Y2Dh0paxIO9Ck2Nz9olQ9A_H_eq4rYT';
 const taskTiers={coffee:'easy',solicitors:'easy',choice:'easy',sequence:'medium',timing:'medium',shippingScale:'medium',hold:'hard',memory:'hard'};
 const tierBase={easy:100,medium:200,hard:300};
-let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboardActive=false,leaderboardReturnToEnd=false,currentEmployeePin='',currentEmployee=null,paused=false,pauseStartedAt=0,arcadePauseStartedAt=0,pendingPauseAction=null;
-function elapsedSeconds(){const frozenAt=paused?pauseStartedAt:(arcadeActive&&arcadePauseStartedAt?arcadePauseStartedAt:performance.now());return shiftStartedAt?(running?(frozenAt-shiftStartedAt)/1000:shiftElapsed):0}
+let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboardActive=false,leaderboardReturnToEnd=false,currentEmployeePin='',currentEmployee=null;
+function elapsedSeconds(){return shiftStartedAt?(running?(performance.now()-shiftStartedAt)/1000:shiftElapsed):0}
 function formatTime(seconds){seconds=Math.max(0,Math.floor(seconds||0));return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0')}
 function taskTier(task){return taskTiers[task.kind]||'medium'}
-function taskPoints(task){return Math.round(tierBase[taskTier(task)]*(gameDifficulty==='hard'?1.5:1))}
+function taskPoints(task){const mult=gameDifficulty==='expert'?2:gameDifficulty==='hard'?1.5:1;return Math.round(tierBase[taskTier(task)]*mult)}
 function scoreHeaders(extra={}){return {apikey:SCORE_KEY,Authorization:'Bearer '+SCORE_KEY,...extra}}
-function renderBoard(target,rows,valueFn){target.textContent='';if(!rows.length){const empty=document.createElement('div');empty.className='leaderboardEmpty';empty.textContent='No completed shifts yet.';target.appendChild(empty);return}rows.forEach((row,i)=>{const item=document.createElement('div');item.className='leaderboardRow';const rank=document.createElement('b');rank.textContent=String(i+1);const name=document.createElement('span');name.textContent=row.player_initials;const meta=document.createElement('small');meta.className='leaderboardMeta';meta.textContent=(row.difficulty==='hard'?'Level 2':'Level 1')+' • '+row.tasks_completed+' tasks';name.appendChild(meta);const value=document.createElement('b');value.textContent=valueFn(row);item.append(rank,name,value);target.appendChild(item)})}
+function renderBoard(target,rows,valueFn){target.textContent='';if(!rows.length){const empty=document.createElement('div');empty.className='leaderboardEmpty';empty.textContent='No completed shifts yet.';target.appendChild(empty);return}rows.forEach((row,i)=>{const item=document.createElement('div');item.className='leaderboardRow';const rank=document.createElement('b');rank.textContent=String(i+1);const name=document.createElement('span');name.textContent=row.player_initials;const meta=document.createElement('small');meta.className='leaderboardMeta';meta.textContent=(row.difficulty==='expert'?'Level 3':row.difficulty==='hard'?'Level 2':'Level 1')+' • '+row.tasks_completed+' tasks';name.appendChild(meta);const value=document.createElement('b');value.textContent=valueFn(row);item.append(rank,name,value);target.appendChild(item)})}
 async function fetchScores(order,difficulty=''){const params=new URLSearchParams({select:'player_initials,score,completion_seconds,tasks_completed,difficulty,created_at',completed_shift:'eq.true',order,limit:'10'});if(difficulty)params.set('difficulty','eq.'+difficulty);const response=await fetch(SCORE_API+'?'+params,{headers:scoreHeaders()});if(!response.ok)throw new Error('Score service returned '+response.status);return response.json()}
-async function loadLeaderboard(){scoreUI.status.textContent='Loading completed shifts…';try{const [scores,easy,hard]=await Promise.all([fetchScores('score.desc,completion_seconds.asc'),fetchScores('completion_seconds.asc,score.desc','easy'),fetchScores('completion_seconds.asc,score.desc','hard')]);renderBoard(scoreUI.scores,scores,r=>r.score.toLocaleString()+' pts');renderBoard(scoreUI.easy,easy,r=>formatTime(r.completion_seconds));renderBoard(scoreUI.hard,hard,r=>formatTime(r.completion_seconds));scoreUI.status.textContent='Only completed shifts qualify. Times are ranked separately by level.'}catch(error){scoreUI.status.textContent='Online scoreboard unavailable. The game and local scoring still work.';[scoreUI.scores,scoreUI.easy,scoreUI.hard].forEach(el=>renderBoard(el,[],()=>''))}}
-function openLeaderboard(returnToEnd=false){if(running&&!paused)openPause();leaderboardActive=true;leaderboardReturnToEnd=returnToEnd;keys={};scoreUI.overlay.classList.add('show');loadLeaderboard()}
+async function loadLeaderboard(){scoreUI.status.textContent='Loading completed shifts…';try{const [scores,easy,hard,expert]=await Promise.all([fetchScores('score.desc,completion_seconds.asc'),fetchScores('completion_seconds.asc,score.desc','easy'),fetchScores('completion_seconds.asc,score.desc','hard'),fetchScores('completion_seconds.asc,score.desc','expert')]);renderBoard(scoreUI.scores,scores,r=>r.score.toLocaleString()+' pts');renderBoard(scoreUI.easy,easy,r=>formatTime(r.completion_seconds));renderBoard(scoreUI.hard,hard,r=>formatTime(r.completion_seconds));renderBoard(scoreUI.expert,expert,r=>formatTime(r.completion_seconds));scoreUI.status.textContent='Only completed shifts qualify. Times are ranked separately by level.'}catch(error){scoreUI.status.textContent='Online scoreboard unavailable. The game and local scoring still work.';[scoreUI.scores,scoreUI.easy,scoreUI.hard,scoreUI.expert].forEach(el=>renderBoard(el,[],()=>''))}}
+function openLeaderboard(returnToEnd=false){leaderboardActive=true;leaderboardReturnToEnd=returnToEnd;keys={};scoreUI.overlay.classList.add('show');loadLeaderboard()}
 function closeLeaderboard(){leaderboardActive=false;scoreUI.overlay.classList.remove('show');if(leaderboardReturnToEnd)ui.endOverlay.classList.add('show');leaderboardReturnToEnd=false;canvas.focus&&canvas.focus()}
 function cleanInitials(value){return String(value||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,3)}
 function prepareInitialsEntry(){scoreUI.initialsInput.value='';scoreUI.initialsStatus.textContent='Type exactly three letters.';scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsEntry.classList.add('show');setTimeout(()=>scoreUI.initialsInput.focus(),80)}
 async function submitCompletedShift(){const initials=cleanInitials(scoreUI.initialsInput.value);if(scoreSubmitted||initials.length!==3)return;scoreSubmitted=true;scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsInput.disabled=true;scoreUI.initialsStatus.textContent='Submitting '+initials+'…';const record={player_initials:initials,score:shiftScore,completion_seconds:Number(shiftElapsed.toFixed(2)),tasks_completed:completed(),difficulty:gameDifficulty,completed_shift:true};try{const response=await fetch(SCORE_API,{method:'POST',headers:scoreHeaders({'Content-Type':'application/json',Prefer:'return=minimal'}),body:JSON.stringify(record)});if(!response.ok)throw new Error('Score service returned '+response.status);scoreUI.initialsStatus.textContent='High score saved as '+initials+'!';scoreUI.status.textContent='Shift score saved online.';scoreUI.initialsEntry.classList.remove('show');loadLeaderboard()}catch(error){scoreSubmitted=false;scoreUI.initialsInput.disabled=false;scoreUI.submitInitialsBtn.disabled=false;scoreUI.initialsStatus.textContent='Could not upload. Run supabase-setup.sql, then try again.'}}
 const themeMusic=document.getElementById('themeMusic'),chaseMusic=document.getElementById('chaseMusic'),musicBtn=document.getElementById('musicBtn');let musicEnabled=true,activeMusicMode='none',chaseMusicGrace=0;themeMusic.volume=.32;chaseMusic.volume=.42;
 function updateMusicButton(){musicBtn.textContent=musicEnabled?'♫ Music: On':'♫ Music: Off';musicBtn.setAttribute('aria-pressed',musicEnabled?'true':'false')}
-function syncThemeMusic(dt=0){const spotted=boss.state==='CHASING'||almeria.state==='CHASING';if(spotted)chaseMusicGrace=3;else if(dt>0)chaseMusicGrace=Math.max(0,chaseMusicGrace-dt);const chaseActive=spotted||chaseMusicGrace>0,wanted=musicEnabled&&running&&!arcadeActive&&!paused?(chaseActive?'chase':'theme'):'none';if(wanted===activeMusicMode){updateMusicButton();updatePauseMusicButton();return}themeMusic.pause();chaseMusic.pause();if(wanted==='theme'){const playback=themeMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}else if(wanted==='chase'){chaseMusic.currentTime=0;const playback=chaseMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}activeMusicMode=wanted;updateMusicButton();updatePauseMusicButton()}
-function updatePauseMusicButton(){if(pauseUI.music)pauseUI.music.textContent=musicEnabled?'♫ Music: On':'♫ Music: Off'}
-function hidePauseConfirmation(){pendingPauseAction=null;pauseUI.confirm.hidden=true}
-function showPauseConfirmation(action){pendingPauseAction=action;pauseUI.confirmText.textContent=action==='restart'?'Restart this shift? Current task progress and score will be lost.':'Clock out now? Current shift progress will be lost.';pauseUI.confirm.hidden=false}
-function openPause(force=false){if(!running||paused||(activeTask&&!force)||arcadeActive||leaderboardActive)return;paused=true;pauseStartedAt=performance.now();keys={};player.moving=false;ui.mapOverlay.classList.remove('show');pauseUI.controlsPanel.hidden=true;pauseUI.controls.textContent='Controls';hidePauseConfirmation();pauseUI.overlay.classList.add('show');syncThemeMusic();updatePauseMusicButton()}
-function resumeShift(){if(!paused)return;const now=performance.now();shiftStartedAt+=now-pauseStartedAt;paused=false;pauseStartedAt=0;pendingPauseAction=null;pauseUI.overlay.classList.remove('show');pauseUI.confirm.hidden=true;keys={};last=now;syncThemeMusic();canvas.focus&&canvas.focus()}
+function syncThemeMusic(dt=0){const spotted=boss.state==='CHASING'||almeria.state==='CHASING';if(spotted)chaseMusicGrace=3;else if(dt>0)chaseMusicGrace=Math.max(0,chaseMusicGrace-dt);const chaseActive=spotted||chaseMusicGrace>0,wanted=musicEnabled&&running&&!arcadeActive?(chaseActive?'chase':'theme'):'none';if(wanted===activeMusicMode){updateMusicButton();return}themeMusic.pause();chaseMusic.pause();if(wanted==='theme'){const playback=themeMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}else if(wanted==='chase'){chaseMusic.currentTime=0;const playback=chaseMusic.play();if(playback&&playback.catch)playback.catch(()=>{})}activeMusicMode=wanted;updateMusicButton()}
 const WORLD={w:1800,h:1080}, WALL=14, DOOR=104;
 const rooms=[
  {id:'shipping',name:'Shipping',x:40,y:40,w:660,h:280,c:'#6d4c36'},{id:'fancy',name:'Fancy Packaging',x:40,y:320,w:420,h:300,c:'#77533b'},{id:'walkin',name:'Walk-In Freezer',x:460,y:320,w:240,h:300,c:'#4e6876'},{id:'production',name:'Production',x:700,y:40,w:640,h:580,c:'#73543d'},
@@ -566,7 +560,78 @@ const patrol=[
  {x:1475,y:650},        // Warehouse B
  {x:1510,y:900},        // Sales
  {x:1690,y:930}         // Control Room
+
 ];
+
+// V3.16.5 Expert-only unpredictable roaming.
+// Supervisors use the existing safe room waypoints as a destination pool, but no longer
+// follow them in a fixed sequence. Neglected destinations gain weight so the whole map
+// continues to be covered, while random mid-route retargets make movement hard to predict.
+function ensureRoamMemory(entity,points){
+  if(!entity.roamVisits||entity.roamVisits.length!==points.length){
+    entity.roamClock=0;
+    entity.roamVisits=points.map(()=>-20-Math.random()*80);
+    entity.roamRecent=[];
+    entity.roamRetarget=1.5+Math.random()*5.5;
+    entity.roamTargetIndex=Math.max(0,Math.min(points.length-1,entity.patrolIndex||0));
+  }
+}
+function chooseRoamTarget(entity,points,force=false){
+  ensureRoamMemory(entity,points);
+  const current=Number.isInteger(entity.roamTargetIndex)?entity.roamTargetIndex:0;
+  const ages=points.map((_,i)=>entity.roamClock-entity.roamVisits[i]);
+  let next=-1;
+
+  // Coverage guarantee: if an area has gone too long without a visit, strongly prioritize it.
+  let stalest=0;
+  for(let i=1;i<ages.length;i++)if(ages[i]>ages[stalest])stalest=i;
+  if(ages[stalest]>55 && stalest!==current){
+    next=stalest;
+  }else{
+    const weights=points.map((pt,i)=>{
+      if(points.length>1 && i===current)return force?.03:.10;
+      const d=Math.hypot(entity.x-pt.x,entity.y-pt.y);
+      const age=Math.max(0,ages[i]);
+      let w=1 + Math.min(12,age/7) + Math.min(5,d/340);
+      const recentPos=entity.roamRecent.indexOf(i);
+      if(recentPos>=0)w*=recentPos===0?.08:.22;
+      return Math.max(.01,w);
+    });
+    let total=weights.reduce((a,b)=>a+b,0),roll=Math.random()*total;
+    for(let i=0;i<weights.length;i++){roll-=weights[i];if(roll<=0){next=i;break}}
+    if(next<0)next=stalest;
+  }
+
+  entity.roamTargetIndex=next;
+  entity.patrolIndex=next; // retained for compatibility with existing HUD/debug/reset code
+  entity.roamRecent.unshift(next);
+  entity.roamRecent=[...new Set(entity.roamRecent)].slice(0,4);
+  entity.roamRetarget=2.2+Math.random()*7.8;
+  entity.path=[];
+  entity.pathTimer=0;
+  return points[next];
+}
+function updateRoamDecision(entity,points,dt){
+  ensureRoamMemory(entity,points);
+  entity.roamClock+=dt;
+  entity.roamRetarget-=dt;
+  const target=points[entity.roamTargetIndex];
+
+  // Arrival counts as a real visit and immediately selects a new unpredictable destination.
+  if(target&&Math.hypot(entity.x-target.x,entity.y-target.y)<32){
+    entity.roamVisits[entity.roamTargetIndex]=entity.roamClock;
+    return chooseRoamTarget(entity,points,true);
+  }
+
+  // Random change-of-mind while en route. Not every timer causes a turn, which makes timing
+  // itself unpredictable. Expert changes its mind slightly more often.
+  if(entity.roamRetarget<=0){
+    const turnChance=gameDifficulty==='expert'?.72:gameDifficulty==='hard'?.58:.48;
+    if(Math.random()<turnChance)return chooseRoamTarget(entity,points,true);
+    entity.roamRetarget=1.6+Math.random()*5.8;
+  }
+  return target;
+}
 let keys={},running=false,activeTask=null,taskState=null,last=0,camera={x:0,y:0},lastRoom='',toastTimer=0;
 let arcadeActive=false;
 const shippingComputer={x:190,y:136,r:82};
@@ -615,32 +680,28 @@ salesOfficeArt.src='assets/rooms/sales_office.png';
 const hideHereArt=new Image();
 hideHereArt.src='assets/ui/hide_here.png';
 
-// Each clock-in employee can supply the same 13-frame directional animation map.
-const employeeSpriteFiles={
-  chris:{
-    idle:'assets/chris/idle.png',down1:'assets/chris/fwd1.png',down2:'assets/chris/fwd2.png',up1:'assets/chris/away1.png',up2:'assets/chris/away2.png',
-    left1:'assets/chris/walk_left_1.png',left2:'assets/chris/walk_left_2.png',left3:'assets/chris/walk_left_3.png',left4:'assets/chris/walk_left_4.png',
-    right1:'assets/chris/walk_right_1.png',right2:'assets/chris/walk_right_2.png',right3:'assets/chris/walk_right_3.png',right4:'assets/chris/walk_right_4.png'
-  },
-  elfie:{
-    idle:'assets/elfie/idle.png',down1:'assets/elfie/fwd1.png',down2:'assets/elfie/fwd2.png',up1:'assets/elfie/away1.png',up2:'assets/elfie/away2.png',
-    left1:'assets/elfie/left1.png',left2:'assets/elfie/left2.png',left3:'assets/elfie/left3.png',left4:'assets/elfie/left4.png',
-    right1:'assets/elfie/right1.png',right2:'assets/elfie/right2.png',right3:'assets/elfie/right3.png',right4:'assets/elfie/right4.png'
-  },
-  ginger:{
-    idle:'assets/ginger/fwd1.png',down1:'assets/ginger/fwd1.png',down2:'assets/ginger/fwd2.png',up1:'assets/ginger/away1.png',up2:'assets/ginger/away2.png',
-    left1:'assets/ginger/left1.png',left2:'assets/ginger/left2.png',left3:'assets/ginger/left1.png',left4:'assets/ginger/left2.png',
-    right1:'assets/ginger/right1.png',right2:'assets/ginger/right2.png',right3:'assets/ginger/right1.png',right4:'assets/ginger/right2.png'
-  }
+// Chris replacement sprite set. Only the supplied replacement images are used.
+const chrisSprites={};
+const chrisFiles={
+  idle:'assets/chris/idle.png',
+  down1:'assets/chris/fwd1.png',
+  down2:'assets/chris/fwd2.png',
+  up1:'assets/chris/away1.png',
+  up2:'assets/chris/away2.png',
+  left1:'assets/chris/walk_left_1.png',
+  left2:'assets/chris/walk_left_2.png',
+  left3:'assets/chris/walk_left_3.png',
+  left4:'assets/chris/walk_left_4.png',
+  right1:'assets/chris/walk_right_1.png',
+  right2:'assets/chris/walk_right_2.png',
+  right3:'assets/chris/walk_right_3.png',
+  right4:'assets/chris/walk_right_4.png'
 };
-const employeeSprites={};
-for(const [employeeId,files] of Object.entries(employeeSpriteFiles)){
-  employeeSprites[employeeId]={};
-  for(const [key,url] of Object.entries(files)){
-    const img=new Image();img.src=url;employeeSprites[employeeId][key]=img;
-  }
+for(const [key,url] of Object.entries(chrisFiles)){
+  const img=new Image();
+  img.src=url;
+  chrisSprites[key]=img;
 }
-function activePlayerSprites(){return employeeSprites[currentEmployee?.id]||employeeSprites.chris}
 let playerAnimClock=0;
 function playerSpriteKey(){
   // Only the new Chris replacement sprites are used.
@@ -659,14 +720,14 @@ function playerSpriteKey(){
   const verticalFrame=(Math.floor(playerAnimClock*7)%2)+1;
   return player.facing==='up'?'up'+verticalFrame:'down'+verticalFrame;
 }
-function drawPlayer(c,minimap=false){
+function drawChris(c,minimap=false){
   if(minimap){
     c.beginPath();c.arc(player.x,player.y,player.r,0,Math.PI*2);
     c.fillStyle=player.hidden?'#67a9ff88':'#67a9ff';c.fill();
     c.strokeStyle='#0e2a4c';c.lineWidth=3;c.stroke();
     return;
   }
-  const img=activePlayerSprites()[playerSpriteKey()];
+  const img=chrisSprites[playerSpriteKey()];
   if(img&&img.complete&&img.naturalWidth){
     const h=69;
     const w=h*(img.naturalWidth/img.naturalHeight);
@@ -793,9 +854,8 @@ function lineBlocked(a,b){const steps=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/18);
 function canSee(){
   if(player.hidden)return false;
   const d=Math.hypot(player.x-boss.x,player.y-boss.y);
-  if(gameDifficulty==='hard'){
-    return d<=180;
-  }
+  if(gameDifficulty==='expert')return d<=230;
+  if(gameDifficulty==='hard')return d<=180;
   const max=(keys.ShiftLeft||keys.ShiftRight)?310:245;
   if(d>max||lineBlocked(boss,player))return false;
   const ang=Math.atan2(player.y-boss.y,player.x-boss.x);
@@ -922,7 +982,8 @@ function recoverBoss(target){
   boss.lastX=boss.x;
   boss.lastY=boss.y;
   if(boss.state==='PATROLLING'&&target&&Math.hypot(boss.x-target.x,boss.y-target.y)>220){
-    boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+    if(gameDifficulty==='expert')chooseRoamTarget(boss,patrol,true);
+    else boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
   }
 }
 function updateBoss(dt){
@@ -940,14 +1001,20 @@ function updateBoss(dt){
     if(boss.searchTimer<=0){
       boss.state='PATROLLING';
       boss.lastSeen=null;
+      if(gameDifficulty==='expert')chooseRoamTarget(boss,patrol,true);
     }
   }
 
+  let patrolTarget=boss.state==='PATROLLING'
+    ? (gameDifficulty==='expert'
+        ? updateRoamDecision(boss,patrol,dt)
+        : patrol[boss.patrolIndex])
+    : patrol[boss.patrolIndex];
   let target=boss.state==='CHASING'
     ? player
     : boss.state==='SEARCHING'&&boss.lastSeen
       ? boss.lastSeen
-      : patrol[boss.patrolIndex];
+      : patrolTarget;
 
   const moved=Math.hypot(boss.x-boss.lastX,boss.y-boss.lastY);
   if(moved>0.75){
@@ -964,7 +1031,7 @@ function updateBoss(dt){
       ? player
       : boss.state==='SEARCHING'&&boss.lastSeen
         ? boss.lastSeen
-        : patrol[boss.patrolIndex];
+        : patrol[gameDifficulty==='expert'?(boss.roamTargetIndex??boss.patrolIndex):boss.patrolIndex];
   }
 
   boss.pathTimer-=dt;
@@ -973,8 +1040,12 @@ function updateBoss(dt){
     boss.pathTimer=boss.state==='CHASING'?.20:.85;
 
     if(!boss.path.length&&boss.state==='PATROLLING'&&Math.hypot(boss.x-target.x,boss.y-target.y)>36){
-      boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
-      target=patrol[boss.patrolIndex];
+      if(gameDifficulty==='expert'){
+        target=chooseRoamTarget(boss,patrol,true);
+      }else{
+        boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+        target=patrol[boss.patrolIndex];
+      }
       boss.path=findPath(boss,target);
       boss.pathTimer=.35;
     }
@@ -983,8 +1054,14 @@ function updateBoss(dt){
   const wp=boss.path[0];
   if(!wp){
     if(boss.state==='PATROLLING'&&Math.hypot(boss.x-target.x,boss.y-target.y)<34){
-      boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
-      boss.pathTimer=0;
+      if(gameDifficulty==='expert'){
+        ensureRoamMemory(boss,patrol);
+        boss.roamVisits[boss.roamTargetIndex]=boss.roamClock;
+        chooseRoamTarget(boss,patrol,true);
+      }else{
+        boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+        boss.pathTimer=0;
+      }
     }
     if(!player.hidden&&dist(player,boss)<34)loseGame();
     return;
@@ -1000,8 +1077,8 @@ function updateBoss(dt){
     const beforeX=boss.x,beforeY=boss.y;
     moveEntity(
       boss,
-      dx*(boss.state==='CHASING'?175:boss.speed)*dt,
-      dy*(boss.state==='CHASING'?175:boss.speed)*dt
+      dx*(boss.state==='CHASING'?(gameDifficulty==='expert'?215:175):(gameDifficulty==='expert'?boss.speed*1.22:boss.speed))*dt,
+      dy*(boss.state==='CHASING'?(gameDifficulty==='expert'?215:175):(gameDifficulty==='expert'?boss.speed*1.22:boss.speed))*dt
     );
     if(Math.hypot(boss.x-beforeX,boss.y-beforeY)<0.08){
       boss.pathTimer=0;
@@ -1009,9 +1086,15 @@ function updateBoss(dt){
   }
 
   if(boss.state==='PATROLLING'&&dist(boss,target)<30){
-    boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
-    boss.path=[];
-    boss.pathTimer=0;
+    if(gameDifficulty==='expert'){
+      ensureRoamMemory(boss,patrol);
+      boss.roamVisits[boss.roamTargetIndex]=boss.roamClock;
+      chooseRoamTarget(boss,patrol,true);
+    }else{
+      boss.patrolIndex=(boss.patrolIndex+1)%patrol.length;
+      boss.path=[];
+      boss.pathTimer=0;
+    }
   }
 
   if(!player.hidden&&dist(player,boss)<34)loseGame();
@@ -1020,9 +1103,8 @@ function updateBoss(dt){
 function canAlmeriaSee(){
   if(player.hidden||almeria.state==='RETURNING'||almeria.state==='COOLDOWN')return false;
   const d=Math.hypot(player.x-almeria.x,player.y-almeria.y);
-  if(gameDifficulty==='hard'){
-    return d<=160;
-  }
+  if(gameDifficulty==='expert')return d<=210;
+  if(gameDifficulty==='hard')return d<=160;
   const max=(keys.ShiftLeft||keys.ShiftRight)?285:225;
   if(d>max||lineBlocked(almeria,player))return false;
   const ang=Math.atan2(player.y-almeria.y,player.x-almeria.x);
@@ -1038,7 +1120,8 @@ function recoverAlmeria(target){
   almeria.lastX=almeria.x;
   almeria.lastY=almeria.y;
   if(almeria.state==='PATROLLING'&&target&&Math.hypot(almeria.x-target.x,almeria.y-target.y)>220){
-    almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+    if(gameDifficulty==='expert')chooseRoamTarget(almeria,almeriaPatrol,true);
+    else almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
   }
 }
 function almeriaAssignTask(){
@@ -1062,9 +1145,12 @@ function updateAlmeria(dt){
     almeria.cooldown=Math.max(0,almeria.cooldown-dt);
     if(almeria.cooldown<=0){
       almeria.state='PATROLLING';
-      almeria.patrolIndex=0;
-      almeria.path=[];
-      almeria.pathTimer=0;
+      if(gameDifficulty==='expert')chooseRoamTarget(almeria,almeriaPatrol,true);
+      else{
+        almeria.patrolIndex=0;
+        almeria.path=[];
+        almeria.pathTimer=0;
+      }
     }
     return;
   }
@@ -1075,7 +1161,7 @@ function updateAlmeria(dt){
       almeria.x=target.x;almeria.y=target.y;
       almeria.angle=target.angle;
       almeria.state='COOLDOWN';
-      almeria.cooldown=30;
+      almeria.cooldown=gameDifficulty==='expert'?18:30;
       almeria.path=[];
       almeria.pathTimer=0;
       return;
@@ -1091,7 +1177,7 @@ function updateAlmeria(dt){
       if(d<14)almeria.path.shift();
       else if(d>1){
         dx/=d;dy/=d;almeria.angle=Math.atan2(dy,dx);
-        moveEntity(almeria,dx*almeria.speed*dt,dy*almeria.speed*dt);
+        moveEntity(almeria,dx*(gameDifficulty==='expert'?almeria.speed*1.2:almeria.speed)*dt,dy*(gameDifficulty==='expert'?almeria.speed*1.2:almeria.speed)*dt);
       }
     }
     return;
@@ -1109,14 +1195,20 @@ function updateAlmeria(dt){
     if(almeria.searchTimer<=0){
       almeria.state='PATROLLING';
       almeria.lastSeen=null;
+      if(gameDifficulty==='expert')chooseRoamTarget(almeria,almeriaPatrol,true);
     }
   }
 
+  let patrolTarget=almeria.state==='PATROLLING'
+    ? (gameDifficulty==='expert'
+        ? updateRoamDecision(almeria,almeriaPatrol,dt)
+        : almeriaPatrol[almeria.patrolIndex])
+    : almeriaPatrol[almeria.patrolIndex];
   let target=almeria.state==='CHASING'
     ?player
     :almeria.state==='SEARCHING'&&almeria.lastSeen
       ?almeria.lastSeen
-      :almeriaPatrol[almeria.patrolIndex];
+      :patrolTarget;
 
   const moved=Math.hypot(almeria.x-almeria.lastX,almeria.y-almeria.lastY);
   almeria.stuckTimer=moved>.75?Math.max(0,almeria.stuckTimer-dt*3):almeria.stuckTimer+dt;
@@ -1128,8 +1220,12 @@ function updateAlmeria(dt){
     almeria.path=findPath(almeria,target);
     almeria.pathTimer=almeria.state==='CHASING'?.20:.85;
     if(!almeria.path.length&&almeria.state==='PATROLLING'){
-      almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
-      target=almeriaPatrol[almeria.patrolIndex];
+      if(gameDifficulty==='expert'){
+        target=chooseRoamTarget(almeria,almeriaPatrol,true);
+      }else{
+        almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+        target=almeriaPatrol[almeria.patrolIndex];
+      }
       almeria.path=findPath(almeria,target);
     }
   }
@@ -1141,14 +1237,20 @@ function updateAlmeria(dt){
     else if(d>1){
       dx/=d;dy/=d;almeria.angle=Math.atan2(dy,dx);
       const beforeX=almeria.x,beforeY=almeria.y;
-      moveEntity(almeria,dx*(almeria.state==='CHASING'?almeria.chaseSpeed:almeria.speed)*dt,dy*(almeria.state==='CHASING'?almeria.chaseSpeed:almeria.speed)*dt);
+      moveEntity(almeria,dx*(almeria.state==='CHASING'?(gameDifficulty==='expert'?220:almeria.chaseSpeed):(gameDifficulty==='expert'?almeria.speed*1.2:almeria.speed))*dt,dy*(almeria.state==='CHASING'?(gameDifficulty==='expert'?220:almeria.chaseSpeed):(gameDifficulty==='expert'?almeria.speed*1.2:almeria.speed))*dt);
       if(Math.hypot(almeria.x-beforeX,almeria.y-beforeY)<.08)almeria.pathTimer=0;
     }
   }
 
   if(almeria.state==='PATROLLING'&&Math.hypot(almeria.x-target.x,almeria.y-target.y)<30){
-    almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
-    almeria.path=[];almeria.pathTimer=0;
+    if(gameDifficulty==='expert'){
+      ensureRoamMemory(almeria,almeriaPatrol);
+      almeria.roamVisits[almeria.roamTargetIndex]=almeria.roamClock;
+      chooseRoamTarget(almeria,almeriaPatrol,true);
+    }else{
+      almeria.patrolIndex=(almeria.patrolIndex+1)%almeriaPatrol.length;
+      almeria.path=[];almeria.pathTimer=0;
+    }
   }
 
   if(almeria.state==='CHASING'&&!player.hidden&&dist(player,almeria)<34){
@@ -1309,14 +1411,14 @@ function updateUI(){
   scoreUI.scoreValue.textContent=shiftScore.toLocaleString();
   scoreUI.shiftTime.textContent=formatTime(elapsedSeconds());
   if(ui.difficultyStatus){
-    ui.difficultyStatus.textContent=gameDifficulty==='hard'?'LEVEL 2 • HARD • 360°':'LEVEL 1 • EASY';
-    ui.difficultyStatus.style.borderColor=gameDifficulty==='hard'?'#e381a9':'#536985';
+    ui.difficultyStatus.textContent=gameDifficulty==='expert'?'LEVEL 3 • EXPERT • 360°':gameDifficulty==='hard'?'LEVEL 2 • HARD • 360°':'LEVEL 1 • EASY';
+    ui.difficultyStatus.style.borderColor=gameDifficulty==='expert'?'#ff8a65':gameDifficulty==='hard'?'#e381a9':'#536985';
   }
-  ui.bossStatus.textContent='THE BIG BOSS: '+boss.state+(gameDifficulty==='hard'?' • 360°':'');
+  ui.bossStatus.textContent='THE BIG BOSS: '+boss.state+(gameDifficulty==='expert'?' • 360° EXPERT':gameDifficulty==='hard'?' • 360°':'');
   ui.bossStatus.style.borderColor=boss.state==='CHASING'?'#c13d36':'#684733';
   if(ui.almeriaStatus){
     const label=almeria.state==='COOLDOWN'?`COOLDOWN ${Math.ceil(almeria.cooldown)}s`:almeria.state;
-    ui.almeriaStatus.textContent='ALMERIA: '+label+(gameDifficulty==='hard'&&almeria.state!=='COOLDOWN'?' • 360°':'');
+    ui.almeriaStatus.textContent='ALMERIA: '+label+((gameDifficulty==='hard'||gameDifficulty==='expert')&&almeria.state!=='COOLDOWN'?(gameDifficulty==='expert'?' • 360° EXPERT':' • 360°'):'');
     ui.almeriaStatus.style.borderColor=almeria.state==='CHASING'?'#b36de0':almeria.state==='COOLDOWN'?'#6f6085':'#684733';
   }
   const activeTasks=tasks.filter(t=>t.active);
@@ -1359,7 +1461,6 @@ function launchArcadeGame(id){
 
 function openShippingComputer(){
   if(!running||activeTask||arcadeActive)return;
-  arcadePauseStartedAt=performance.now();
   arcadeActive=true;
   syncThemeMusic();
   player.moving=false;
@@ -1382,9 +1483,6 @@ function restoreGameFocus(){
 
 function closeShippingComputer(){
   if(!arcadeActive)return;
-  const now=performance.now();
-  if(arcadePauseStartedAt)shiftStartedAt+=now-arcadePauseStartedAt;
-  arcadePauseStartedAt=0;
   arcadeActive=false;
   currentArcadeGame=null;
   ui.arcadeOverlay.classList.remove('show');
@@ -1392,7 +1490,6 @@ function closeShippingComputer(){
   ui.arcadeGameView.classList.remove('show');
   ui.arcadeMenu.style.display='flex';
   ui.backToArcadeBtn.style.display='none';
-  last=now;
   restoreGameFocus();
   syncThemeMusic();
   showHint('Shipping computer closed. Back to work.');
@@ -1691,10 +1788,10 @@ if(activeTask.kind==='hold'){
   if(taskState.progress>=100)finishTask();
 }
 }
-function stopShiftClock(){if(shiftStartedAt){const frozenAt=paused?pauseStartedAt:(arcadeActive&&arcadePauseStartedAt?arcadePauseStartedAt:performance.now());shiftElapsed=(frozenAt-shiftStartedAt)/1000}}
+function stopShiftClock(){if(shiftStartedAt)shiftElapsed=(performance.now()-shiftStartedAt)/1000}
 function winGame(){stopShiftClock();running=false;shiftScore+=500;ui.endTitle.textContent='Shift Complete!';ui.endText.textContent='Chocolate Accidents survived another shift. Somehow. Enter three initials to claim your place on the scoreboard.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed)+' • 500-point completion bonus';ui.endOverlay.classList.add('show');updateUI();prepareInitialsEntry()}function loseGame(){stopShiftClock();running=false;ui.endTitle.textContent='Caught by The Big Boss';ui.endText.textContent='You had a perfectly reasonable explanation. The boss did not ask for it. Incomplete shifts are not uploaded.';scoreUI.summary.textContent=shiftScore.toLocaleString()+' points • '+formatTime(shiftElapsed);scoreUI.initialsEntry.classList.remove('show');ui.endOverlay.classList.add('show');updateUI()}
 function reset(){
-  arcadeActive=false;arcadePauseStartedAt=0;chaseMusicGrace=0;paused=false;pauseStartedAt=0;pendingPauseAction=null;
+  arcadeActive=false;chaseMusicGrace=0;
   shiftScore=0;shiftElapsed=0;shiftStartedAt=performance.now();scoreSubmitted=false;leaderboardActive=false;scoreUI.initialsInput.value='';scoreUI.initialsInput.disabled=false;scoreUI.submitInitialsBtn.disabled=true;scoreUI.initialsEntry.classList.remove('show');
   if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
   lockedBathroomDoor.locked=true;lockedBathroomDoor.open=0;player.hasBathroomKey=false;
@@ -1705,7 +1802,7 @@ function reset(){
   boss.x=1690;boss.y=930;boss.state='PATROLLING';boss.patrolIndex=1;boss.path=[];boss.pathTimer=0;boss.lastSeen=null;boss.stuckTimer=0;boss.lastX=boss.x;boss.lastY=boss.y;
   almeria.x=productionHome.x;almeria.y=productionHome.y;almeria.angle=productionHome.angle;almeria.state='PATROLLING';almeria.patrolIndex=0;almeria.path=[];almeria.pathTimer=0;almeria.lastSeen=null;almeria.stuckTimer=0;almeria.cooldown=0;almeria.lastX=almeria.x;almeria.lastY=almeria.y;
   activeTask=null;lastRoom='';
-  ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');scoreUI.overlay.classList.remove('show');pauseUI.overlay.classList.remove('show');pauseUI.confirm.hidden=true;pauseUI.controlsPanel.hidden=true;
+  ui.endOverlay.classList.remove('show');ui.taskOverlay.classList.remove('show');ui.mapOverlay.classList.remove('show');scoreUI.overlay.classList.remove('show');
   running=true;updateUI();syncThemeMusic();
 }
 
@@ -1825,23 +1922,25 @@ tasks.forEach(t=>{
   c.lineWidth=3;
   c.stroke();
 });if(!minimap){
-  if(gameDifficulty==='hard'){
-    // HARD MODE: always show the exact 360-degree detection areas.
+  if(gameDifficulty==='hard'||gameDifficulty==='expert'){
+    // HARD / EXPERT: always show the exact 360-degree detection areas.
     c.save();
-    c.beginPath();c.arc(boss.x,boss.y,180,0,Math.PI*2);
+    const bossDetectRadius=gameDifficulty==='expert'?230:180;
+    const almeriaDetectRadius=gameDifficulty==='expert'?210:160;
+    c.beginPath();c.arc(boss.x,boss.y,bossDetectRadius,0,Math.PI*2);
     c.fillStyle=boss.state==='CHASING'?'rgba(255,60,50,.28)':'rgba(255,60,50,.11)';c.fill();
     c.beginPath();c.arc(boss.x,boss.y,8,0,Math.PI*2);c.fillStyle='#ff5f56';c.fill();
     c.font='900 14px Arial';c.textAlign='center';c.fillStyle='#fff';
-    c.fillText('BIG BOSS — 360°',boss.x,boss.y-150);
+    c.fillText(gameDifficulty==='expert'?'BIG BOSS — EXPERT 360°':'BIG BOSS — 360°',boss.x,boss.y-(bossDetectRadius-30));
     c.restore();
 
     if(almeria.state!=='COOLDOWN'&&almeria.state!=='RETURNING'){
       c.save();
-      c.beginPath();c.arc(almeria.x,almeria.y,160,0,Math.PI*2);
+      c.beginPath();c.arc(almeria.x,almeria.y,almeriaDetectRadius,0,Math.PI*2);
       c.fillStyle=almeria.state==='CHASING'?'rgba(179,109,224,.28)':'rgba(179,109,224,.11)';c.fill();
       c.beginPath();c.arc(almeria.x,almeria.y,8,0,Math.PI*2);c.fillStyle='#d497ff';c.fill();
       c.font='900 14px Arial';c.textAlign='center';c.fillStyle='#fff';
-      c.fillText('ALMERIA — 360°',almeria.x,almeria.y-130);
+      c.fillText(gameDifficulty==='expert'?'ALMERIA — EXPERT 360°':'ALMERIA — 360°',almeria.x,almeria.y-(almeriaDetectRadius-30));
       c.restore();
     }
   }else{
@@ -1851,7 +1950,7 @@ tasks.forEach(t=>{
     }
   }
 }drawBathroomApproach(c,minimap);
-drawRenee(c,minimap);drawAlmeria(c,minimap);drawPlayer(c,minimap);
+drawRenee(c,minimap);drawAlmeria(c,minimap);drawChris(c,minimap);
 if(!minimap&&player.hidden&&player.hideSpot){
   c.save();
   c.font='900 10px Arial';
@@ -1883,7 +1982,7 @@ function draw(){const w=stage.clientWidth,h=stage.clientHeight;camera.x=Math.max
   ctx.textAlign='left';
 }}function drawMap(){mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);const p=18,s=Math.min((mapCanvas.width-p*2)/WORLD.w,(mapCanvas.height-p*2)/WORLD.h);drawWorld(mctx,p,p,s,true)}function toggleMap(){if(!running)return;ui.mapOverlay.classList.toggle('show');drawMap()}
 
-function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;if(running&&!leaderboardActive&&!paused){bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);syncThemeMusic(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+function loop(ts){const dt=Math.min(.033,(ts-last)/1000||0);last=ts;bossAnimClock+=dt;almeriaAnimClock+=dt;playerAnimClock+=dt;if(running&&!leaderboardActive){updatePlayer(dt);updateDoors(dt);updateBoss(dt);updateAlmeria(dt);syncThemeMusic(dt);updateMini(dt);updateHint();updateInteractButton();updateUI()}draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
 addEventListener('keydown',e=>{
   // V3.15.4: keyboard support for employee clock-in.
   if(ui.startOverlay.classList.contains('show')&&!running){
@@ -1918,18 +2017,6 @@ addEventListener('keydown',e=>{
       return;
     }
   }
-  if(e.code==='Escape'&&leaderboardActive){
-    e.preventDefault();
-    if(!e.repeat)closeLeaderboard();
-    return;
-  }
-  if(paused){
-    if(e.code==='Escape'){
-      e.preventDefault();
-      if(!e.repeat)resumeShift();
-    }
-    return;
-  }
   keys[e.code]=true;
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
 
@@ -1945,18 +2032,6 @@ addEventListener('keydown',e=>{
   if(e.code==='Escape'&&activeTask){
     e.preventDefault();
     if(!e.repeat)abandonTask();
-    return;
-  }
-
-  if(e.code==='Escape'&&ui.mapOverlay.classList.contains('show')){
-    e.preventDefault();
-    if(!e.repeat)ui.mapOverlay.classList.remove('show');
-    return;
-  }
-
-  if(e.code==='Escape'&&running){
-    e.preventDefault();
-    if(!e.repeat)openPause();
     return;
   }
 
@@ -1996,22 +2071,24 @@ addEventListener('keyup',e=>{
   document.documentElement.dataset.difficulty=chosen;
   reset();
   updateUI();
-  ui.roomToast.textContent=chosen==='hard'
-    ? 'LEVEL 2 — HARD: 360° DETECTION ACTIVE'
-    : 'LEVEL 1 — EASY';
+  ui.roomToast.textContent=chosen==='expert'
+    ? 'LEVEL 3 — EXPERT: EXTENDED 360° DETECTION + FASTER SUPERVISORS'
+    : chosen==='hard'
+      ? 'LEVEL 2 — HARD: 360° DETECTION ACTIVE'
+      : 'LEVEL 1 — EASY';
   ui.roomToast.classList.add('show');
   toastTimer=2.5;
   canvas.focus&&canvas.focus();
 };
 function clockOut(){
   // End the current shift and return to the employee punch-in screen.
-  arcadeActive=false;arcadePauseStartedAt=0;
+  arcadeActive=false;
   if(ui.arcadeOverlay)ui.arcadeOverlay.classList.remove('show');
   if(activeTask)abandonTask();
   player.hidden=false;
   player.hideSpot=null;
   player.moving=false;
-  keys={};paused=false;pauseStartedAt=0;pendingPauseAction=null;pauseUI.overlay.classList.remove('show');
+  keys={};
   running=false;
   themeMusic.pause();themeMusic.currentTime=0;chaseMusic.pause();chaseMusic.currentTime=0;activeMusicMode='none';chaseMusicGrace=0;updateMusicButton();
   try{if(ui.arcadeFrame)ui.arcadeFrame.src='about:blank';}catch(e){}
@@ -2022,20 +2099,10 @@ function clockOut(){
   ui.hint.textContent='Clock in to begin your shift.';
 }
 document.getElementById('restartBtn').onclick=clockOut;document.getElementById('endRestartBtn').onclick=reset;document.getElementById('scoresBtn').onclick=()=>openLeaderboard(false);document.getElementById('endScoresBtn').onclick=()=>{ui.endOverlay.classList.remove('show');openLeaderboard(true)};document.getElementById('refreshLeaderboardBtn').onclick=loadLeaderboard;document.getElementById('closeLeaderboardBtn').onclick=closeLeaderboard;document.getElementById('interactBtn').onclick=interact;document.getElementById('hideBtn').onclick=toggleHide;document.getElementById('mapBtn').onclick=toggleMap;document.getElementById('closeMapBtn').onclick=()=>ui.mapOverlay.classList.remove('show');document.getElementById('leaveTaskBtn').onclick=abandonTask;document.getElementById('exitArcadeBtn').onclick=closeShippingComputer;
-document.getElementById('pauseBtn').onclick=()=>openPause();
-document.getElementById('restartBtn').onclick=()=>{openPause();if(paused)showPauseConfirmation('clockout')};
-pauseUI.resume.onclick=resumeShift;
-pauseUI.controls.onclick=()=>{pauseUI.controlsPanel.hidden=!pauseUI.controlsPanel.hidden;pauseUI.controls.textContent=pauseUI.controlsPanel.hidden?'Controls':'Hide Controls'};
-pauseUI.music.onclick=()=>{musicEnabled=!musicEnabled;syncThemeMusic()};
-pauseUI.restart.onclick=()=>showPauseConfirmation('restart');
-pauseUI.clockOut.onclick=()=>showPauseConfirmation('clockout');
-pauseUI.confirmNo.onclick=hidePauseConfirmation;
-pauseUI.confirmYes.onclick=()=>{const action=pendingPauseAction;hidePauseConfirmation();if(action==='restart')reset();else if(action==='clockout')clockOut()};
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused&&!arcadeActive&&!leaderboardActive)openPause(true)});
 scoreUI.initialsInput.addEventListener('input',()=>{const cleaned=cleanInitials(scoreUI.initialsInput.value);if(scoreUI.initialsInput.value!==cleaned)scoreUI.initialsInput.value=cleaned;scoreUI.submitInitialsBtn.disabled=cleaned.length!==3;scoreUI.initialsStatus.textContent=cleaned.length===3?'Press Enter or Submit High Score.':'Type exactly three letters.'});
 scoreUI.initialsInput.addEventListener('keydown',event=>{event.stopPropagation();if(event.key==='Enter'&&cleanInitials(scoreUI.initialsInput.value).length===3){event.preventDefault();submitCompletedShift()}});
 scoreUI.submitInitialsBtn.onclick=submitCompletedShift;
-musicBtn.onclick=()=>{musicEnabled=!musicEnabled;syncThemeMusic()};updateMusicButton();updatePauseMusicButton();
+musicBtn.onclick=()=>{musicEnabled=!musicEnabled;syncThemeMusic()};updateMusicButton();
 ui.backToArcadeBtn.onclick=showArcadeMenu;
 document.querySelectorAll('[data-arcade-game]').forEach(btn=>{
   btn.addEventListener('click',()=>launchArcadeGame(btn.dataset.arcadeGame));
@@ -2097,7 +2164,7 @@ updateUI();
 const difficultyButtons=[...document.querySelectorAll('.difficultyBtn')];
 const difficultyNote=document.getElementById('difficultyNote');
 function setDifficulty(level){
-  const chosen=level==='hard'?'hard':'easy';
+  const chosen=level==='expert'?'expert':level==='hard'?'hard':'easy';
   const startButton=document.getElementById('startBtn');
   if(startButton)startButton.dataset.difficulty=chosen;
   document.documentElement.dataset.selectedDifficulty=chosen;
@@ -2107,9 +2174,11 @@ function setDifficulty(level){
     btn.setAttribute('aria-pressed',isSelected?'true':'false');
   });
   if(difficultyNote){
-    difficultyNote.textContent=chosen==='hard'
-      ? 'LEVEL 2 HARD SELECTED — Clock In will use 360° detection.'
-      : 'LEVEL 1 EASY SELECTED — directional vision cones.';
+    difficultyNote.textContent=chosen==='expert'
+      ? 'LEVEL 3 EXPERT SELECTED — larger 360° detection, faster supervisors, shorter Almeria cooldown.'
+      : chosen==='hard'
+        ? 'LEVEL 2 HARD SELECTED — Clock In will use 360° detection.'
+        : 'LEVEL 1 EASY SELECTED — directional vision cones.';
   }
 }
 function commitDifficulty(){
@@ -2118,7 +2187,7 @@ function commitDifficulty(){
   const chosen=(selectedButton&&selectedButton.dataset.difficulty)
     ||(startButton&&startButton.dataset.difficulty)
     ||'easy';
-  gameDifficulty=chosen==='hard'?'hard':'easy';
+  gameDifficulty=chosen==='expert'?'expert':chosen==='hard'?'hard':'easy';
   document.documentElement.dataset.difficulty=gameDifficulty;
   return gameDifficulty;
 }
@@ -2130,9 +2199,7 @@ difficultyButtons.forEach(btn=>btn.addEventListener('click',e=>{
 setDifficulty('easy');
 
 const employeePins={
-  '6767':{id:'chris',name:'Chris',role:'Graphic Designer'},
-  '1225':{id:'elfie',name:'Elfie',role:'Employee'},
-  '1201':{id:'ginger',name:'Ginger',role:'Employee'}
+  '6767':{id:'chris',name:'Chris',role:'Graphic Designer'}
 };
 let enteredPin='';
 let selectedEmployee=null;
