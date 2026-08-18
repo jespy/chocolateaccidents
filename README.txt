@@ -1,5 +1,20 @@
 Chocolate Accidents V3.10.4
 
+V3.16.10 — EXPERT FASTEST-TIME SCOREBOARD
+- Added a dedicated Fastest — Level 3 Expert leaderboard panel.
+- Expert rankings query only completed shifts saved with difficulty "expert".
+- Easy, Hard, and Highest Scores panels remain unchanged.
+- The four panels use a readable two-column desktop layout and stack on smaller screens.
+
+V3.16.9 — EXPERT RANDOM ROAMING
+- Added Level 3 Expert without changing Easy or Hard behavior.
+- The Big Boss and Almeria independently shuffle full-factory destination lists.
+- Every patrol cycle still covers every destination before reshuffling.
+- Consecutive cycles cannot repeat the same complete route or immediately repeat the last stop.
+- Expert radar: The Big Boss 215 px; Almeria 195 px.
+- Expert speeds: Big Boss 165 patrol / 220 chase; Almeria 178 patrol / 225 chase.
+- Expert scores are supported by the included scoreboard SQL migration.
+
 Doorway test:
 - Moved the functional passage between Reception and Break Room 50 game-world pixels to the right.
 - Door definition changed from x:180 to x:230.
@@ -140,34 +155,49 @@ V3.16.1 — ARCADE INITIALS
 - Initials are restricted to exactly three uppercase A–Z characters.
 - The included SQL safely upgrades the V3.16.0 table while retaining existing scores.
 
+V3.16.8 — GINGER EMPLOYEE
+- Added Ginger as a playable clock-in employee with PIN 1201.
+- Integrated Ginger's eight supplied transparent directional walking frames.
+- The first forward frame provides Ginger's stationary pose.
+- Two-frame side animations repeat cleanly through the existing walk cycle.
+
+V3.16.7 — ELFIE EMPLOYEE
+- Added Elfie as a playable clock-in employee with PIN 1225.
+- Integrated Elfie's supplied transparent idle and directional walking frames.
+- Employee selection now switches the complete player animation set at clock-in.
+- Chris remains available with PIN 6767 and his existing graphics are unchanged.
+
+V3.16.6 — THE INHERITANCE MOBILE CONTROLS
+- Added touch-only controls without changing desktop keyboard and mouse play.
+- Added a left movement joystick and right-side drag camera look.
+- Added Interact, Sprint, Evidence, and Pause touch buttons.
+- Improved touch modal sizing, safe-area spacing, and portrait orientation guidance.
+- Mobile play no longer depends on browser pointer lock.
+
+V3.16.5 — ARCADE TIMER PAUSE
+- The shift timer now freezes while the Shipping Computer arcade is open.
+- Arcade selection and all five mini-games remain timer-neutral.
+- Exiting the arcade resumes the shift clock from its exact previous value.
+- Added a visible SHIFT TIMER PAUSED notice to the arcade header.
+
+V3.16.4 — 50% ROOM IMAGE TEST
+- Resized all 17 room PNGs to exactly 50% of their previous pixel dimensions.
+- Preserved filenames, aspect ratios, artwork, and all existing code references.
+- Removed print-only DPI metadata and verified every resized PNG can be fully decoded.
+
+V3.16.3 — FACTORY PAUSE MENU
+- Escape now pauses and resumes normal factory gameplay.
+- Pause freezes the shift clock, movement, supervisors, detection, tasks, animations, and music.
+- Added Resume Shift, Controls, Music, Restart Shift, and confirmed Clock Out actions.
+- Added a mobile Pause control and automatic pausing when the browser tab is hidden.
+- Escape still respects task, map, arcade, and leaderboard screens first.
+
+V3.16.2 HOTFIX — THE INHERITANCE PAUSE / EXIT
+- Escape now pauses and resumes The Inheritance instead of leaving the arcade.
+- Added an explicit "Exit Game" button to its pause menu.
+
 V3.16.2 — THE INHERITANCE ARCADE
 - Adds The Inheritance as the fifth locally bundled Shipping Computer arcade game.
 - The arcade selector uses a maximum of three game cards per row: three on the first row and two on the second.
 - The Inheritance retains its complete first-person mystery, evidence progression, and three endings.
 - ESC from normal Inheritance gameplay returns to SELECT A GAME; examination and login screens retain their internal ESC behavior.
-
-
-V3.16.3 — EXPERT DIFFICULTY
-- Added Level 3 — Expert to the clock-in difficulty selector.
-- Expert Big Boss detection radius: 230 px, 360 degrees.
-- Expert Almeria detection radius: 210 px, 360 degrees.
-- Expert supervisors patrol/chase about 20–25% faster.
-- Almeria Expert cooldown reduced from 30s to 18s.
-- Expert task scores use a 2.0x multiplier (Hard remains 1.5x).
-- Added Level 3 leaderboard timing panel.
-- Easy and Hard behavior remain unchanged.
-
-V3.16.4 RANDOM ROAMING
-- The Big Boss and Almeria no longer follow fixed sequential patrol loops.
-- Each chooses weighted-random reachable room targets from the existing safe waypoint network.
-- Supervisors can unpredictably change destination while already walking.
-- Recently visited areas are de-prioritized while neglected areas gain weight.
-- A stale-area rule strongly prioritizes rooms not visited recently so both supervisors continue covering the entire factory.
-- Chasing, searching, collision geometry, pathfinding, Easy/Hard/Expert detection, and Almeria's Production cooldown behavior are otherwise preserved.
-
-V3.16.5 EXPERT-ONLY RANDOM ROAMING
-- Corrected V3.16.4 so unpredictable roaming applies ONLY to Level 3 — Expert.
-- Level 1 — Easy restores the original fixed sequential supervisor patrol routes.
-- Level 2 — Hard restores the original fixed sequential supervisor patrol routes.
-- Level 3 — Expert keeps weighted-random destinations, mid-route direction changes, recent-area avoidance, and whole-map coverage weighting.
-- Existing Easy, Hard, and Expert detection/speed/scoring rules remain unchanged.
