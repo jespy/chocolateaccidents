@@ -1,4 +1,11 @@
 
+V3.16.14 — CHOCOLATE NIGHT SHIFT
+- Added Chocolate Night Shift to the Shipping Computer arcade as the eighth locally packaged minigame.
+- Integrated Night Shift v0.15 gameplay, random floor tiles, dynamic 4×4 ceiling lights, and pause-screen brightness setting.
+- Escape pauses and resumes Chocolate Night Shift instead of immediately leaving the arcade.
+- Added Exit Game to the Night Shift pause screen; it returns to SELECT A GAME.
+- Chocolate Accidents shift time remains frozen while Night Shift is open or paused.
+
 V3.16.12 — ARCADE EXPANSION
 - Added Cocoa Quest to the Shipping Department computer arcade.
 - Added Temper Tantrum, including its local music and boss/weapon assets.
