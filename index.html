@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.10 Expert Scoreboard</title>
+<title>Chocolate Accidents — V3.16.12 Arcade Expansion</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -249,7 +249,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.10</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.12</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -302,15 +302,27 @@ outline:0!important;box-shadow:none!important;filter:none!important;
           <p>Explore the Hale house, gather evidence, expose a killer, and choose how the truth survives.</p>
           <button type="button" data-arcade-game="the-inheritance">Play The Inheritance</button>
         </div>
+        <div class="arcadeGameCard">
+          <div class="gameIcon">🍫</div>
+          <h3>Cocoa Quest</h3>
+          <p>Run, jump, collect cocoa beans, and battle chocolate monsters in a side-scrolling adventure.</p>
+          <button type="button" data-arcade-game="cocoa-quest">Play Cocoa Quest</button>
+        </div>
+        <div class="arcadeGameCard">
+          <div class="gameIcon">🚀</div>
+          <h3>Temper Tantrum</h3>
+          <p>Fly the maintenance craft through runaway chocolate batches, weapon upgrades, and three bosses.</p>
+          <button type="button" data-arcade-game="temper-tantrum">Play Temper Tantrum</button>
+        </div>
       </div>
-      <div class="arcadeNote">All five arcade games are included directly in this package.</div>
+      <div class="arcadeNote">All seven arcade games are included directly in this package.</div>
     </div>
     <div class="arcadeGameView" id="arcadeGameView">
       <iframe id="arcadeFrame" src="about:blank" title="Chocolate Accidents arcade game" allow="autoplay"></iframe>
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.10</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.12</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -428,7 +440,13 @@ let shiftScore=0,shiftStartedAt=0,shiftElapsed=0,scoreSubmitted=false,leaderboar
 function elapsedSeconds(){const frozenAt=paused?pauseStartedAt:(arcadeActive&&arcadePauseStartedAt?arcadePauseStartedAt:performance.now());return shiftStartedAt?(running?(frozenAt-shiftStartedAt)/1000:shiftElapsed):0}
 function formatTime(seconds){seconds=Math.max(0,Math.floor(seconds||0));return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0')}
 function taskTier(task){return taskTiers[task.kind]||'medium'}
-function taskPoints(task){return Math.round(tierBase[taskTier(task)]*(gameDifficulty==='hard'?1.5:1))}
+function taskPoints(task){
+  const base=tierBase[taskTier(task)];
+  const hardPoints=Math.round(base*1.5);
+  if(gameDifficulty==='expert')return hardPoints+50;
+  if(gameDifficulty==='hard')return hardPoints;
+  return base;
+}
 function scoreHeaders(extra={}){return {apikey:SCORE_KEY,Authorization:'Bearer '+SCORE_KEY,...extra}}
 function renderBoard(target,rows,valueFn){target.textContent='';if(!rows.length){const empty=document.createElement('div');empty.className='leaderboardEmpty';empty.textContent='No completed shifts yet.';target.appendChild(empty);return}rows.forEach((row,i)=>{const item=document.createElement('div');item.className='leaderboardRow';const rank=document.createElement('b');rank.textContent=String(i+1);const name=document.createElement('span');name.textContent=row.player_initials;const meta=document.createElement('small');meta.className='leaderboardMeta';meta.textContent=(row.difficulty==='expert'?'Level 3':row.difficulty==='hard'?'Level 2':'Level 1')+' • '+row.tasks_completed+' tasks';name.appendChild(meta);const value=document.createElement('b');value.textContent=valueFn(row);item.append(rank,name,value);target.appendChild(item)})}
 async function fetchScores(order,difficulty=''){const params=new URLSearchParams({select:'player_initials,score,completion_seconds,tasks_completed,difficulty,created_at',completed_shift:'eq.true',order,limit:'10'});if(difficulty)params.set('difficulty','eq.'+difficulty);const response=await fetch(SCORE_API+'?'+params,{headers:scoreHeaders()});if(!response.ok)throw new Error('Score service returned '+response.status);return response.json()}
@@ -1405,7 +1423,9 @@ const arcadeGames={
   'fredo-skates':{title:'FREDO SKATES',src:'minigames/fredo-skates/index.html'},
   'pigeon-chase':{title:'PIGEON CHASE',src:'minigames/pigeon-chase/index.html'},
   'reindeer-roundup':{title:'REINDEER ROUNDUP',src:'minigames/reindeer-roundup/index.html'},
-  'the-inheritance':{title:'THE INHERITANCE',src:'minigames/the-inheritance/index.html'}
+  'the-inheritance':{title:'THE INHERITANCE',src:'minigames/the-inheritance/index.html'},
+  'cocoa-quest':{title:'COCOA QUEST',src:'minigames/cocoa-quest/index.html'},
+  'temper-tantrum':{title:'TEMPER TANTRUM',src:'minigames/temper-tantrum/index.html'}
 };
 let currentArcadeGame=null;
 

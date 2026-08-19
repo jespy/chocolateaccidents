@@ -1,3 +1,12 @@
+
+V3.16.12 — ARCADE EXPANSION
+- Added Cocoa Quest to the Shipping Department computer arcade.
+- Added Temper Tantrum, including its local music and boss/weapon assets.
+- Shipping arcade now contains seven locally packaged mini-games.
+- Pressing Esc inside Cocoa Quest or Temper Tantrum returns directly to the Shipping Computer game selector.
+- Existing Back to Games and Exit Arcade controls remain available.
+- Chocolate Accidents shift time remains paused while any arcade game is open.
+
 Chocolate Accidents V3.10.4
 
 V3.16.10 — EXPERT FASTEST-TIME SCOREBOARD
@@ -201,3 +210,8 @@ V3.16.2 — THE INHERITANCE ARCADE
 - The arcade selector uses a maximum of three game cards per row: three on the first row and two on the second.
 - The Inheritance retains its complete first-person mystery, evidence progression, and three endings.
 - ESC from normal Inheritance gameplay returns to SELECT A GAME; examination and login screens retain their internal ESC behavior.
+
+
+V3.16.13 - Arcade Pause Update
+- Cocoa Quest: ESC pauses/resumes; pause menu now includes Exit Game to return to Shipping Computer arcade selector.
+- Temper Tantrum: ESC pauses/resumes; pause menu now includes Exit Game to return to Shipping Computer arcade selector.
