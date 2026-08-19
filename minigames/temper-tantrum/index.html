@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Temper Tantrum</title>
+  <link rel="stylesheet" href="style.css">
+  <style>.music-toggle{position:absolute;z-index:4;top:68px;right:10px;border:1px solid #d8b55f;background:#101b20cc;color:#e7ca7a;padding:7px 10px;font-size:10px;box-shadow:2px 2px #0008}.music-toggle:hover{background:#263a43}.overlay{z-index:2}</style>
+</head>
+<body>
+  <main class="shell">
+    <section class="cabinet">
+      <div class="screen">
+        <canvas id="game" width="960" height="600"></canvas>
+        <audio id="music" src="assets/audio/80s-tv-theme.ogg" preload="auto" loop></audio>
+        <button id="music-toggle" class="music-toggle hidden" type="button" aria-label="Turn music off">MUSIC ON</button>
+        <div id="overlay" class="overlay">
+          <span id="stamp">SHIFT 01</span><h2 id="title">THE TEMPERING LINE<br>HAS GONE ROGUE.</h2>
+          <p id="message">Keep the chocolate in temper. Clear three factory batches. Do not burn the product.</p>
+          <button id="primary">CLOCK IN</button><button id="secondary" class="secondary hidden">MAIN MENU</button>
+          <small id="instructions">MOVE: WASD / ARROWS · FIRE: SPACE · BOMB: B · PAUSE: ESC</small>
+        </div>
+      </div>
+      <div class="mobile-controls">
+        <div class="dpad"><button data-key="ArrowLeft">←</button><div><button data-key="ArrowUp">↑</button><button data-key="ArrowDown">↓</button></div><button data-key="ArrowRight">→</button></div>
+        <button class="fire" data-key="Space">FIRE</button><button id="bomb" class="bomb">COCOA<br>BOMB</button>
+      </div>
+    </section>
+    <footer><b>KEEP IT TEMPERED.</b> Hotter chocolate hits harder, but overheats fast.</footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
