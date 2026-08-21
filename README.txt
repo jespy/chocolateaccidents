@@ -1,3 +1,8 @@
+V3.16.15 — RESPONSIVE SHIPPING COMPUTER ARCADE
+- Arcade game cards are smaller so the complete current library fits inside the Shipping Computer screen.
+- The selector now calculates its own row/column layout from the number of game cards, so future games automatically reflow and resize.
+- Removed the top clipping caused by the old fixed three-column / 190px-card layout.
+
 
 V3.16.14 — CHOCOLATE NIGHT SHIFT
 - Added Chocolate Night Shift to the Shipping Computer arcade as the eighth locally packaged minigame.
@@ -222,3 +227,5 @@ V3.16.2 — THE INHERITANCE ARCADE
 V3.16.13 - Arcade Pause Update
 - Cocoa Quest: ESC pauses/resumes; pause menu now includes Exit Game to return to Shipping Computer arcade selector.
 - Temper Tantrum: ESC pauses/resumes; pause menu now includes Exit Game to return to Shipping Computer arcade selector.
+
+V3.16.16: Updated embedded Chocolate Night Shift to uploaded current build and added The Walk-In v1.0.15 to Shipping Computer arcade. Arcade now contains nine games and keeps responsive count-aware layout.

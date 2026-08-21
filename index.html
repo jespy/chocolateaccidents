@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Chocolate Accidents — V3.16.14 Night Shift Integration</title>
+<title>Chocolate Accidents — V3.16.16 Responsive Arcade</title>
 <style>
 :root{--cream:#fff5e5;--brown:#27180f;--accent:#ffc35c;--danger:#ff6258;--green:#69d18f}
 *{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#100c09;color:var(--cream);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}
@@ -171,24 +171,25 @@ button{background:#2563a6!important;border-color:#62a6d8!important;color:#fff!im
 .arcadeBar .arcadeActions{display:flex;gap:8px;align-items:center}
 .arcadeBar button{padding:6px 10px!important;background:#334155!important}
 #backToArcadeBtn{display:none}
-.arcadeMenu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;overflow:auto;background:radial-gradient(circle at 50% 20%,#1b2d46 0,#0b1220 60%)}
-.arcadeMenu h2{margin:0;font-size:28px;letter-spacing:.08em;color:#f5cf62}
-.arcadeMenu p{margin:0;color:#b8c7d8;text-align:center}
-.arcadeGames{width:min(980px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.arcadeGameCard{min-height:190px;border:2px solid #526a86;border-radius:16px;background:#17243a;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left}
+.arcadeMenu{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;padding:12px 16px 10px;overflow:hidden;min-height:0;background:radial-gradient(circle at 50% 20%,#1b2d46 0,#0b1220 60%)}
+.arcadeMenu h2{margin:0;font-size:22px;line-height:1.05;letter-spacing:.08em;color:#f5cf62;flex:0 0 auto}
+.arcadeMenu>p{margin:0;color:#b8c7d8;text-align:center;font-size:12px;line-height:1.25;flex:0 0 auto}
+.arcadeGames{--arcade-cols:4;--arcade-rows:2;width:min(1000px,100%);flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(var(--arcade-cols),minmax(0,1fr));grid-template-rows:repeat(var(--arcade-rows),minmax(0,1fr));gap:9px}
+.arcadeGameCard{min-width:0;min-height:0;overflow:hidden;border:2px solid #526a86;border-radius:12px;background:#17243a;padding:10px 11px;display:flex;flex-direction:column;justify-content:space-between;gap:5px;text-align:left}
 .arcadeGameCard:hover{border-color:#78a9d8;background:#1d304d}
-.arcadeGameCard h3{margin:0;color:#fff;font-size:20px}
-.arcadeGameCard p{margin:0;text-align:left;color:#b9c9da;font-size:13px;line-height:1.4}
-.arcadeGameCard .gameIcon{font-size:38px}
-.arcadeGameCard button{align-self:stretch;margin-top:8px;background:#2563a6!important}
+.arcadeGameCard h3{margin:0;color:#fff;font-size:clamp(13px,1.55vw,17px);line-height:1.05}
+.arcadeGameCard p{margin:0;text-align:left;color:#b9c9da;font-size:clamp(9px,1.05vw,11px);line-height:1.2;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.arcadeGameCard .gameIcon{font-size:clamp(20px,2.7vw,30px);line-height:1}
+.arcadeGameCard button{align-self:stretch;margin-top:2px;padding:6px 7px!important;min-height:30px;font-size:11px;background:#2563a6!important}
+.arcadeNote{flex:0 0 auto}
 .arcadeGameView{display:none;min-height:0;background:#08090c}
 .arcadeGameView.show{display:block}
 #arcadeFrame{display:block;width:100%;height:100%;border:0;background:#08090c}
 .arcadeNote{font-size:11px;color:#91a2b6}
 @media(max-width:760px){
-  .arcadeOverlay{padding:4px}.arcadeShell{border-radius:10px}.arcadeBar{font-size:11px;padding:5px 7px}
-  .arcadeGames{grid-template-columns:1fr}.arcadeGameCard{min-height:130px;padding:12px}
-  .arcadeMenu{padding:12px}.arcadeMenu h2{font-size:21px}
+  .arcadeOverlay{padding:4px}.arcadeShell{border-radius:10px}.arcadeBar{font-size:10px;padding:5px 7px;gap:5px}.arcadePauseNotice{display:none}
+  .arcadeMenu{padding:8px;gap:6px}.arcadeMenu h2{font-size:18px}.arcadeMenu>p{font-size:10px}
+  .arcadeGames{gap:6px}.arcadeGameCard{padding:7px;border-radius:9px}.arcadeGameCard p{font-size:9px;-webkit-line-clamp:1}.arcadeGameCard button{font-size:9px;padding:5px!important;min-height:27px}
 }
 
 
@@ -249,7 +250,7 @@ outline:0!important;box-shadow:none!important;filter:none!important;
 </style>
 </head>
 <body><div id="app">
-<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.14</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
+<div class="topbar"><div class="brand">🍫 <span>Chocolate Accidents</span> <small>V3.16.16</small></div><div class="progress-wrap"><div class="stat">SHIFT</div><div class="bar"><div class="fill" id="shiftFill"></div></div><div class="stat" id="taskCount">0/10</div></div><div class="pill scorePill">SCORE <span id="scoreValue">0</span></div><div class="pill scorePill">TIME <span id="shiftTime">00:00</span></div><div class="pill" id="bossStatus">THE BIG BOSS: PATROLLING</div><div class="pill" id="almeriaStatus">ALMERIA: ACTIVE</div><div class="pill" id="difficultyStatus">LEVEL 1 • EASY</div><button id="scoresBtn">Scores</button><button id="musicBtn" type="button" aria-pressed="true">♫ Music: On</button><button id="tasksToggleBtn" aria-expanded="false">Tasks</button><button id="mapBtn">Map (M)</button><button id="restartBtn">Clock Out</button></div>
 <div class="stage" id="stage"><canvas id="game" tabindex="0"></canvas><div class="roomToast" id="roomToast"></div><div class="hint" id="hint">Use the doors to move between rooms.</div>
 <div class="controls" id="actionControls">
   <button id="interactBtn" class="actionBtn interactAction" aria-label="Interact"><span class="actionIcon">✋</span><span class="actionLabel">Interact</span></button>
@@ -320,15 +321,21 @@ outline:0!important;box-shadow:none!important;filter:none!important;
           <p>Survive three minutes of living chocolate rejects, factory hazards, weapon upgrades, and unstable lights.</p>
           <button type="button" data-arcade-game="chocolate-night-shift">Play Chocolate Night Shift</button>
         </div>
+        <div class="arcadeGameCard">
+          <div class="gameIcon">🥶</div>
+          <h3>The Walk-In</h3>
+          <p>Enter the freezer, complete the inspection tasks, hold back the Shadow with your flashlight, and carry the Sea Salt Truffles out.</p>
+          <button type="button" data-arcade-game="the-walk-in">Play The Walk-In</button>
+        </div>
       </div>
-      <div class="arcadeNote">All eight arcade games are included directly in this package.</div>
+      <div class="arcadeNote">All nine arcade games are included directly in this package.</div>
     </div>
     <div class="arcadeGameView" id="arcadeGameView">
       <iframe id="arcadeFrame" src="about:blank" title="Chocolate Accidents arcade game" allow="autoplay"></iframe>
     </div>
   </div>
 </div>
-<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.14</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
+<div class="overlay show" id="startOverlay"><div class="card"><h1>Chocolate Accidents — V3.16.16</h1><p class="sub">Ten jobs are assigned at the start of your shift. Follow the task list, use E at yellow task markers, and finish the shift while the boss keeps roaming.</p><div class="row"><div><b>Move</b><br><span class="small">WASD / arrows</span></div><div><b>Interact</b><br><span class="small">E</span></div><div><b>Play It Cool</b><br><span class="small">Space</span></div><div><b>Map</b><br><span class="small">M</span></div></div><p class="small">Yellow markers are tasks. Get close and press E to start a mini-game. The Big Boss and Almeria can both chase you, so keep moving.</p>
 <div class="punchWrap" id="punchWrap">
   <div>
     <div class="employeeCard">
@@ -1432,9 +1439,24 @@ const arcadeGames={
   'the-inheritance':{title:'THE INHERITANCE',src:'minigames/the-inheritance/index.html'},
   'cocoa-quest':{title:'COCOA QUEST',src:'minigames/cocoa-quest/index.html'},
   'temper-tantrum':{title:'TEMPER TANTRUM',src:'minigames/temper-tantrum/index.html'},
-  'chocolate-night-shift':{title:'CHOCOLATE NIGHT SHIFT',src:'minigames/chocolate-night-shift/index.html'}
+  'chocolate-night-shift':{title:'CHOCOLATE NIGHT SHIFT',src:'minigames/chocolate-night-shift/index.html'},
+  'the-walk-in':{title:'THE WALK-IN',src:'minigames/the-walk-in/index.html'}
 };
 let currentArcadeGame=null;
+
+function fitArcadeGameGrid(){
+  const grid=document.querySelector('.arcadeGames');
+  if(!grid)return;
+  const count=grid.querySelectorAll('.arcadeGameCard').length;
+  if(!count)return;
+  const wide=window.innerWidth>760;
+  const cols=wide?Math.max(2,Math.ceil(Math.sqrt(count*1.7))):Math.max(2,Math.ceil(Math.sqrt(count*1.15)));
+  const rows=Math.ceil(count/cols);
+  grid.style.setProperty('--arcade-cols',cols);
+  grid.style.setProperty('--arcade-rows',rows);
+}
+
+window.addEventListener('resize',()=>{if(arcadeActive&&!currentArcadeGame)fitArcadeGameGrid()});
 
 function showArcadeMenu(){
   currentArcadeGame=null;
@@ -1443,6 +1465,7 @@ function showArcadeMenu(){
   ui.arcadeGameView.classList.remove('show');
   ui.backToArcadeBtn.style.display='none';
   ui.arcadeFrame.src='about:blank';
+  fitArcadeGameGrid();
   keys={};
   try{window.focus()}catch(e){}
   setTimeout(()=>{
