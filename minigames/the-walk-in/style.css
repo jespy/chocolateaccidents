@@ -1,0 +1,59 @@
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:#111820;color:#eef5f7;font-family:Arial,sans-serif;overflow:hidden}#wrap{height:100%;display:flex;flex-direction:column}header{height:46px;background:#202b32;border-bottom:2px solid #d5b744;display:flex;align-items:center;gap:18px;padding:0 16px;font-size:13px}header b{color:#f4dc72;letter-spacing:.5px}#hud{flex:1;text-align:center}button{background:#d5b744;border:0;padding:7px 12px;font-weight:800;cursor:pointer}canvas{display:block;width:100%;height:calc(100vh - 46px);background:#64747d;image-rendering:auto}.show{display:flex!important}#overlay{display:none;position:fixed;inset:46px 0 0;background:#071018cc;align-items:center;justify-content:center}.card{width:min(680px,88vw);background:#e9eef0;color:#172027;border:4px solid #d5b744;padding:28px;box-shadow:0 20px 70px #000}.card h1{margin-top:0}.card .warning{background:#c94636;color:white;padding:8px;font-weight:900}.card button{margin:8px 8px 0 0}.small{font-size:13px;color:#48565d}.keys{background:#d6e0e3;padding:10px}
+
+#gameArea{position:relative;flex:1;min-height:0}#gameArea canvas{height:100%}#taskPanel{position:absolute;top:14px;right:14px;width:285px;background:#17232bea;border:2px solid #d5b744;padding:12px 14px;box-shadow:0 8px 24px #0008;pointer-events:none}.taskTitle{color:#f4dc72;font-weight:900;font-size:13px;letter-spacing:.8px;margin-bottom:8px}.taskHint{font-size:11px;color:#c9d6da;margin-bottom:9px}.taskRow{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-top:1px solid #ffffff1c;font-size:12px}.taskRow.current{background:#d5b74422;margin:0 -6px;padding:7px 6px}.taskMark{width:18px;text-align:center;font-weight:900;color:#f4dc72}.taskRow.done{opacity:.55;text-decoration:line-through}.taskRow.optional{color:#d7e3e6}.taskFooter{margin-top:8px;padding-top:8px;border-top:1px solid #ffffff2b;font-size:11px;color:#b8c7cc}#tasksBtn{display:none}@media(max-width:850px){#taskPanel{width:240px;font-size:11px}}
+.trayInspect{height:190px;background:#aab7bb;border:3px solid #73858c;position:relative;margin:18px 0;box-shadow:inset 0 0 0 7px #c7d0d3}.trayChocolate{position:absolute;left:45px;right:45px;top:42px;bottom:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.trayChocolate span{background:#533023;border:3px solid #6d4431;box-shadow:inset 0 -8px #3c241b}.oldLabel,.newLabel{position:absolute;background:#edf1e7;color:#182128;padding:7px 10px;font-weight:900;font-size:15px;border:1px solid #5d686c;line-height:1.05}.oldLabel{right:58px;bottom:13px;transform:rotate(-7deg);opacity:.8}.newLabel{right:39px;bottom:20px;transform:rotate(4deg);box-shadow:0 3px 5px #0006}.oldLabel small,.newLabel small{font-size:9px}.inspectionFinding{background:#fff4c8;border-left:6px solid #d5b744;padding:12px 14px;line-height:1.45}.discrepancy{margin:8px -4px 4px;padding:8px;background:#a747352e;border-left:4px solid #d66b53;color:#f0d5cf;font-size:11px;line-height:1.35}
+
+/* v0.6 compact objective tracker */
+#tasksBtn{display:inline-block}
+#taskPanel{
+  top:12px;left:12px;right:auto;width:330px;
+  padding:9px 11px;
+  background:rgba(23,35,43,.82);
+  border:1px solid rgba(213,183,68,.85);
+  box-shadow:0 5px 16px rgba(0,0,0,.34);
+  backdrop-filter:blur(2px);
+}
+#taskPanel:not(.expanded){max-width:min(330px,calc(100vw - 28px))}
+#taskPanel.expanded{width:300px;padding:12px 14px;background:rgba(23,35,43,.94)}
+.compactTop{display:flex;justify-content:space-between;gap:12px;color:#f4dc72;font-size:10px;font-weight:900;letter-spacing:.8px}
+.compactObjective{font-size:13px;font-weight:900;color:#fff;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.compactHint{font-size:10px;color:#cbd7db;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.carryHint{margin-top:6px;padding-top:5px;border-top:1px solid #ffffff24;color:#f4dc72;font-size:10px;font-weight:800}
+.tabHint{float:right;color:#b8c7cc;font-size:9px;font-weight:700;letter-spacing:.4px}
+#taskPanel.expanded .taskHint{margin-bottom:6px}
+#taskPanel.expanded .taskRow{padding:5px 0}
+@media(max-width:850px){
+ #taskPanel{left:8px;top:8px;width:min(300px,calc(100vw - 16px))}
+ #taskPanel.expanded{width:min(270px,calc(100vw - 16px))}
+ .compactHint{display:none}
+}
+
+/* v0.6.1 — compact tracker moved to bottom-left */
+#taskPanel{
+  top:auto;
+  bottom:12px;
+  left:12px;
+  right:auto;
+}
+@media(max-width:850px){
+  #taskPanel{
+    top:auto;
+    bottom:8px;
+    left:8px;
+    right:auto;
+  }
+}
+
+/* v0.7 Night Shift / Production Panic visual-family pass */
+canvas{background:#758790}
+header{box-shadow:0 3px 14px rgba(0,0,0,.28);z-index:3}
+#taskPanel{border-radius:2px}
+
+/* v0.8.5 temperature-log inspection */
+.tempLogSheet{margin:16px 0;background:#f3f0df;border:2px solid #697980;color:#1d272c;padding:14px;box-shadow:inset 0 0 0 4px #d9ded8}
+.tempLogHeader{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid #697980;padding-bottom:9px;font-size:11px}
+.tempLogHeader span{font-size:9px;color:#59676c}
+.tempReading{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:center;padding:11px 0}
+.tempReading span{font-size:10px;font-weight:900;letter-spacing:.08em}.tempReading b{grid-row:1/3;grid-column:2;font-size:30px;color:#244d62}.tempReading small{font-size:9px;color:#5e6d72}
+.tempTable{width:100%;border-collapse:collapse;font-size:11px;background:#fff}.tempTable th,.tempTable td{border:1px solid #7e898d;padding:6px;text-align:left}.tempTable th{background:#dce3e2;font-size:9px}
+.tempWarning{margin-top:10px;padding:9px;background:#fff2c9;border-left:5px solid #d5b744;font-size:10px;line-height:1.4}
